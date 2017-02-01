@@ -3,3 +3,16 @@ CSS Validator Testsuite
 
 This is where the regression test suite and the positive and negative tests
 for the CSS Validator are located. 
+
+Missing tests:
+
+ * css-will-change-1
+ * compositing-1
+ * css-grid-1
+ * css-writing-modes-3
+ * css-inline-3
+ * css-sizing-3
+ * css-flexbox-1
+
+This list is not complete.
+
