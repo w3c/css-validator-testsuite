@@ -15,6 +15,7 @@ Missing tests:
  * css-flexbox-1
  * css-counter-styles-3
  * css-scroll-snap-1
+ * css-contain-1
 
 This list is not complete.
 
