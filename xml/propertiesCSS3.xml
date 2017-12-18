@@ -2070,4 +2070,89 @@ test markup also accepts 3 properties: warning, profile and medium
     </test>
  </type>
 
+  <type title="touch-action">
+    <test profile="css3">
+      <file>testsuite/properties/css3/touch-action/values-isvalid.css</file>
+      <description>touch-action: valid values</description>
+      <result valid="true"/>
+    </test>
+    <test profile="css3">
+      <file>testsuite/properties/css3/touch-action/bad-value-baz-bar-foo-novalid.css</file>
+      <description>touch-action: bad value: 'baz'</description>
+      <result valid="false">
+        <errors>1</errors>
+      </result>
+    </test>
+    <test profile="css3">
+      <file>testsuite/properties/css3/touch-action/dupe-horizontal-novalid.css</file>
+      <description>touch-action: multiple pan-* horizontal values</description>
+      <result valid="false">
+        <errors>1</errors>
+      </result>
+    </test>
+    <test profile="css3">
+      <file>testsuite/properties/css3/touch-action/dupe-vertical-novalid.css</file>
+      <description>touch-action: multiple pan-* vertical values</description>
+      <result valid="false">
+        <errors>1</errors>
+      </result>
+    </test>
+    <test profile="css3">
+      <file>testsuite/properties/css3/touch-action/dupe-pinch-zoom-novalid.css</file>
+      <description>touch-action: multiple 'pinch-zoom' values</description>
+      <result valid="false">
+        <errors>1</errors>
+      </result>
+    </test>
+    <test profile="css3">
+      <file>testsuite/properties/css3/touch-action/dupe-pinch-zoom-plus-pan-novalid.css</file>
+      <description>touch-action: multiple 'pinch-zoom' values with a 'pan-x' in between</description>
+      <result valid="false">
+        <errors>1</errors>
+      </result>
+    </test>
+    <test profile="css3">
+      <file>testsuite/properties/css3/touch-action/misspelled-manipualtion-novalid.css</file>
+      <description>touch-action: 'manipulation' misspelled as 'manipualtion'</description>
+      <result valid="false">
+        <errors>1</errors>
+      </result>
+    </test>
+    <test profile="css3">
+      <file>testsuite/properties/css3/touch-action/too-many-values-auto-manipulation-novalid.css</file>
+      <description>touch-action: too many values: 'auto' and 'manipulation'</description>
+      <result valid="false">
+        <errors>1</errors>
+      </result>
+    </test>
+    <test profile="css3">
+      <file>testsuite/properties/css3/touch-action/too-many-values-auto-none-novalid.css</file>
+      <description>touch-action: too many values: 'auto' and 'none'</description>
+      <result valid="false">
+        <errors>1</errors>
+      </result>
+    </test>
+    <test profile="css3">
+      <file>testsuite/properties/css3/touch-action/too-many-values-manipulation-none-novalid.css</file>
+      <description>touch-action: too many values: 'manipulation' and 'none'</description>
+      <result valid="false">
+        <errors>1</errors>
+      </result>
+    </test>
+    <test profile="css3">
+      <file>testsuite/properties/css3/touch-action/too-many-values-none-pan-novalid.css</file>
+      <description>touch-action: too many values: 'none' and 'pan-x'</description>
+      <result valid="false">
+        <errors>1</errors>
+      </result>
+    </test>
+    <test profile="css3">
+      <file>testsuite/properties/css3/touch-action/too-many-values-none-pinch-zoom-novalid.css</file>
+      <description>touch-action: too many values: 'none' and 'pinch-zoom'</description>
+      <result valid="false">
+        <errors>1</errors>
+      </result>
+    </test>
+  </type>
+
 </testsuite>
