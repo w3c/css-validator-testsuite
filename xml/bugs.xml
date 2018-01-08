@@ -174,13 +174,6 @@ test markup also accepts 3 properties: warning, profile and medium
       http://www.w3.org/Bugs/Public/show_bug.cgi?id=703&lt;/a&gt;</description>
       <result valid="true"/>
     </test>
-    <test medium="mobile">
-      <file>testsuite/bugs/763mobile.css</file>
-      <description>See&amp;nbsp;&lt;a href=&quot;http://www.w3.org/Bugs/Public/show_bug.cgi?id=763&quot;&gt;
-      http://www.w3.org/Bugs/Public/show_bug.cgi?id=763&lt;/a&gt;</description>
-      <result valid="true">
-      </result>
-    </test>
     <test>
       <file>testsuite/bugs/777.css</file>
       <description>See&amp;nbsp;&lt;a href=&quot;http://www.w3.org/Bugs/Public/show_bug.cgi?id=777&quot;&gt;
