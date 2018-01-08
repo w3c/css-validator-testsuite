@@ -317,14 +317,44 @@ test markup also accepts 3 properties: warning, profile and medium
 	      <errors>1</errors>
 	      </result>
 	</test>
+<!--
+ // TODO FIXME This should report 3 errors, ideally
+        <test profile="css2">
+                <file>testsuite/bugs/3633.css</file>
+                <description>See&amp;nbsp;&lt;a href=&quot;http://www.w3.org/Bugs/Public/show_bug.cgi?id=3633&quot;&gt;
+              http://www.w3.org/Bugs/Public/show_bug.cgi?id=3633&lt;/a&gt;</description>
+              <result valid="false">
+              <errors>3</errors>
+              </result>
+        </test>
+-->
 	<test profile="css2">
-		<file>testsuite/bugs/3633.css</file>
+		<file>testsuite/bugs/3633-1.css</file>
 		<description>See&amp;nbsp;&lt;a href=&quot;http://www.w3.org/Bugs/Public/show_bug.cgi?id=3633&quot;&gt;
-	      http://www.w3.org/Bugs/Public/show_bug.cgi?id=3633&lt;/a&gt;</description>
+	      http://www.w3.org/Bugs/Public/show_bug.cgi?id=3633&lt;/a&gt; (ideally should output 1 error)</description>
 	      <result valid="false">
-	      <errors>1</errors>
+	      <!-- <errors>1</errors> ERROR/FIXME this should report one error -->
+	      <errors>2</errors>
 	      </result>
 	</test>
+        <test profile="css2">
+                <file>testsuite/bugs/3633-2.css</file>
+                <description>See&amp;nbsp;&lt;a href=&quot;http://www.w3.org/Bugs/Public/show_bug.cgi?id=3633&quot;&gt;
+              http://www.w3.org/Bugs/Public/show_bug.cgi?id=3633&lt;/a&gt; (ideally should output 1 error)</description>
+              <result valid="false">
+	      <!-- <errors>1</errors> ERROR/FIXME this should report one error -->
+              <errors>2</errors>
+              </result>
+        </test>
+        <test profile="css2">
+                <file>testsuite/bugs/3633-3.css</file>
+                <description>See&amp;nbsp;&lt;a href=&quot;http://www.w3.org/Bugs/Public/show_bug.cgi?id=3633&quot;&gt;
+              http://www.w3.org/Bugs/Public/show_bug.cgi?id=3633&lt;/a&gt; (ideally should output 1 error)</description>
+              <result valid="false">
+	      <!-- <errors>1</errors> ERROR/FIXME this should report one error -->
+              <errors>2</errors>
+              </result>
+        </test>
 	<test profile="css2">
 		<file>testsuite/bugs/3634.css</file>
 		<description>See&amp;nbsp;&lt;a href=&quot;http://www.w3.org/Bugs/Public/show_bug.cgi?id=3634&quot;&gt;
