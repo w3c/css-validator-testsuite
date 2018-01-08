@@ -246,7 +246,7 @@ test markup also accepts 3 properties: warning, profile and medium
       <description>See&amp;nbsp;&lt;a href=&quot;http://www.w3.org/Bugs/Public/show_bug.cgi?id=233&quot;&gt;
       http://www.w3.org/Bugs/Public/show_bug.cgi?id=233&lt;/a&gt;</description>
       <result valid="true">
-	<warnings>272</warnings>
+	<warnings>271</warnings>
       </result>
     </test>
     <test>
