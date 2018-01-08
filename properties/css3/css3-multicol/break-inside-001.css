@@ -13,3 +13,6 @@ div {
 div {
         break-before: avoid-column;
 }
+div {
+        break-before: avoid-region;
+}
