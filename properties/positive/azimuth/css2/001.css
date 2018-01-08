@@ -1,6 +1,6 @@
 azim1  { azimuth: 10deg }
 azim2  { azimuth: -360deg }
-azim3  { azimuth: 0 }
+/* azim3  { azimuth: 0 } */
 azim4  { azimuth: 400grad}
 azim5  { azimuth: 6rad}
 azim6  { azimuth: 0deg}
