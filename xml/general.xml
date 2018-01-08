@@ -248,7 +248,7 @@ test markup also accepts 3 properties: warning, profile and medium
     </test>
   </type>
   <type title="Valid_CSS_with_warnings">
-    <test>
+    <test warning="2">
       <file>testsuite/general/warnings/font-family.css</file>
       <description>font-family without generic family</description>
       <result valid="true">
