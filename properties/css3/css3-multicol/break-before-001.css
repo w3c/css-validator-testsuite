@@ -5,10 +5,13 @@ div {
 	break-before: auto;
 }
 div {
-        break-before: always;
+        break-before: avoid;
+}
+div {   
+        break-before: avoid-page;
 }
 div {
-        break-before: avoid;
+	break-before: page;
 }
 div {
         break-before: left;
@@ -17,15 +20,20 @@ div {
         break-before: right;
 }
 div {
-        break-before: page;
+        break-before: recto;
+}
+div {
+        break-before: verso;
+}
+div {
+        break-before: avoid-column;
 }
 div {
         break-before: column;
 }
 div {
-        break-before: avoid-page;
+        break-before: avoid-region;
 }
 div {
-        break-before: avoid-column;
+        break-before: region;
 }
-
