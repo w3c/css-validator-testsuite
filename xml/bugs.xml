@@ -221,7 +221,9 @@ test markup also accepts 3 properties: warning, profile and medium
       <file>testsuite/bugs/2560.css</file>
       <description>See&amp;nbsp;&lt;a href=&quot;http://www.w3.org/Bugs/Public/show_bug.cgi?id=2560&quot;&gt;
       http://www.w3.org/Bugs/Public/show_bug.cgi?id=2560&lt;/a&gt;</description>
-      <result valid="true"/>
+      <result valid="true">
+        <warnings>1</warnings>
+      </result>
     </test>
     <test>
       <file>testsuite/bugs/3037.css</file>
