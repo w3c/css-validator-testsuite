@@ -5,15 +5,6 @@ test markup also accepts 3 properties: warning, profile and medium
 <testsuite>
   <type title="misc">
     <test>
-      <url>http://www.google.com/intl/zh-CN/</url>
-      <description>Chinese Google&lt;br/&gt;
-            Empty 'font-family' property</description>
-      <result valid="false">
-	<errors>1</errors>
-	<warnings>0</warnings>
-      </result>
-    </test>
-    <test>
       <file>testsuite/general/misc/sampleCSS1.css</file>
       <description>
 	This style sheet is written according to the suggested rendering in the 
