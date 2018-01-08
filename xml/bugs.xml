@@ -443,7 +443,7 @@ test markup also accepts 3 properties: warning, profile and medium
 	      </result>
 	</test>
 	<test profile="css3">
-    <url>http://www.w3.org/Bugs/Public/attachment.cgi?id=540</url>
+    <file>testsuite/bugs/5588.css</file>
         <description>See&amp;nbsp;&lt;a href=&quot;http://www.w3.org/Bugs/Public/show_bug.cgi?id=5588&quot;&gt;Bug 5588&lt;/a&gt;</description>
 	      <result valid="true" />
 	</test>
@@ -476,14 +476,16 @@ test markup also accepts 3 properties: warning, profile and medium
       </result>
     </test>
     <test profile="css21">
-        <url>http://www.w3.org/Bugs/Public/attachment.cgi?id=610</url>
+        <file>testsuite/bugs/6297.css</file>
+<!--         <url>http://www.w3.org/Bugs/Public/attachment.cgi?id=610</url> -->
       <description>See&amp;nbsp;&lt;a href=&quot;http://www.w3.org/Bugs/Public/show_bug.cgi?id=6297&quot;&gt;Bug 6297&lt;/a&gt;</description>
       <result valid="false">
-      	<errors>2</errors>
+      	<errors>3</errors>
+      	<!-- FIXME TODO This should be 1 error only <errors>1</errors> -->
       </result>
     </test>
       <test profile="css21">
-          <url>http://www.w3.org/Bugs/Public/attachment.cgi?id=611</url>
+        <file>testsuite/bugs/6297-1.html</file>
         <description>See&amp;nbsp;&lt;a href=&quot;http://www.w3.org/Bugs/Public/show_bug.cgi?id=6297&quot;&gt;Bug 6297&lt;/a&gt;</description>
         <result valid="false">
         	<errors>1</errors>
