@@ -1,3 +1,4 @@
+// auto | avoid | avoid-page | page | left | right | recto | verso | avoid-column | column | avoid-region | region
 div {
         break-after: inherit;
 }
@@ -5,10 +6,13 @@ div {
 	break-after: auto;
 }
 div {
-        break-after: always;
+        break-after: avoid;
+}
+div {   
+        break-after: avoid-page;
 }
 div {
-        break-after: avoid;
+	break-after: page;
 }
 div {
         break-after: left;
@@ -17,15 +21,20 @@ div {
         break-after: right;
 }
 div {
-        break-after: page;
+        break-after: recto;
+}
+div {
+        break-after: verso;
+}
+div {
+        break-after: avoid-column;
 }
 div {
         break-after: column;
 }
 div {
-        break-after: avoid-page;
+        break-after: avoid-region;
 }
 div {
-        break-after: avoid-column;
+        break-after: region;
 }
-
