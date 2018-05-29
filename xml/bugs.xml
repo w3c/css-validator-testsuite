@@ -20,9 +20,9 @@ test markup also accepts 3 properties: warning, profile and medium
       <description>
 	See&amp;nbsp;&lt;a href=&quot;http://www.w3.org/Bugs/Public/show_bug.cgi?id=750&quot;&gt;
 	http://www.w3.org/Bugs/Public/show_bug.cgi?id=750&lt;/a&gt;</description>
-      <result valid="false">
-	<errors>1</errors>
-	<warnings>0</warnings>
+      <result valid="true">
+	<errors>0</errors>
+	<warnings>1</warnings>
       </result>
     </test>
     <test>
