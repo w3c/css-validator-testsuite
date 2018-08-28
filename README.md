@@ -16,6 +16,7 @@ Missing tests:
  * css-counter-styles-3
  * css-scroll-snap-1
  * css-contain-1
+ * css-align-3
 
 This list is not complete.
 
