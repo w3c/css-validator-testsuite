@@ -465,7 +465,7 @@ test markup also accepts 3 properties: warning, profile and medium
     <description>Attribute multivalue selector (#7b)</description>
     <result valid="true">
       <errors>0</errors>
-      <warnings>0</warnings>
+      <warnings>1</warnings>
     </result>
   </test>
 
