@@ -589,22 +589,6 @@ test markup also accepts 3 properties: warning, profile and medium
         </result>
     </test>
     <test profile="css21">
-        <file>testsuite/general/selectors/multipleattributes-043.css</file>
-        <description>Conflict checks when multiple selectors attributes are defined</description>
-        <result valid="true">
-         <errors>0</errors>
-           <warnings>1</warnings>
-        </result>
-    </test>
-    <test profile="css21">
-        <file>testsuite/general/selectors/multipleattributes-044.css</file>
-        <description>Conflict checks when multiple selectors attributes are defined</description>
-        <result valid="true">
-         <errors>0</errors>
-           <warnings>1</warnings>
-        </result>
-    </test>
-    <test profile="css21">
         <file>testsuite/general/selectors/multipleattributes-045.css</file>
         <description>Conflict checks when multiple selectors attributes are defined</description>
         <result valid="true">
