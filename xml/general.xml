@@ -276,6 +276,14 @@ test markup also accepts 3 properties: warning, profile and medium
     </test>
   </type>
   <type title="Attribute_Selectors">
+    <test profile="css3">
+        <file>testsuite/general/selectors/attributeoneof-001.css</file>
+        <description>attribute one-of should not contain spaces</description>
+        <result valid="true">
+        <errors>0</errors>
+            <warnings>1</warnings>
+        </result>
+    </test>
     <test profile="css21">
         <file>testsuite/general/selectors/multipleattributes-001.css</file>
         <description>Conflict checks when multiple selectors attributes are defined</description>
