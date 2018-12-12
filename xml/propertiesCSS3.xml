@@ -306,9 +306,9 @@ test markup also accepts 3 properties: warning, profile and medium
 
     <test profile="css3">
       <file>testsuite/properties/css3/rgb009.css</file>
-      <description>invalid RGB construct - alpha channel is for RGBa</description>
-      <result valid="false">
-	<errors>1</errors>
+      <description>Valid RGB construct - alpha channel is possible in css-color-4 for rgb()</description>
+      <result valid="true">
+	<errors>0</errors>
 	<warnings>0</warnings>
       </result>
     </test>
