@@ -1,2 +1,2 @@
 element { color: hsl(0, 50%, 50%, 0.5) }
-/* 1 error (valid for hsla, not hsl */
+/* no error (valid for hsla, and hsl since color-4 */
