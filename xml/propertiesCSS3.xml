@@ -67,9 +67,9 @@ test markup also accepts 3 properties: warning, profile and medium
     </test>
     <test profile="css3">
       <file>testsuite/properties/css3/hsl009.css</file>
-      <description>color: Invalid HSL, too many values (HSLA definition)</description>
-      <result valid="false">
-	<errors>1</errors>
+      <description>color: Valid HSL, optional alpha (css-color-4)</description>
+      <result valid="true">
+	<errors>0</errors>
 	<warnings>0</warnings>
       </result>
     </test>
@@ -144,9 +144,9 @@ test markup also accepts 3 properties: warning, profile and medium
     </test>
     <test profile="css3">
       <file>testsuite/properties/css3/hsl019.css</file>
-      <description>background-color: Invalid HSL, too many values (HSLA definition)</description>
-      <result valid="false">
-	<errors>1</errors>
+      <description>background-color: Valid HSL, (optional alpha)</description>
+      <result valid="true">
+	<errors>0</errors>
 	<warnings>0</warnings>
       </result>
     </test>
