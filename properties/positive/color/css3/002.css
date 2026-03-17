@@ -1,0 +1,53 @@
+:root {
+  --bg: hsl(120 100% 25%);
+}
+
+.test-rgb {
+  color: rgb(from red r g b);
+  color: rgb(from #ff0000 255 g b / 0.5);
+  color: rgb(from var(--bg) calc(r / 2) g b);
+  color: rgba(from blue r g b / alpha);
+}
+
+.test-hsl {
+  color: hsl(from green h s l);
+  color: hsl(from rgb(0 255 0) calc(h + 180) s l / 50%);
+  color: hsla(from #00ff00 h 100% 50% / alpha);
+  color: hsl(from var(--brand) h s l / calc(alpha * 0.8));
+}
+
+.test-hwb {
+  color: hwb(from fuchsia h w b);
+  color: hwb(from fuchsia h 10% b / 0.8);
+  color: hwb(from currentcolor h calc(w + 10) b);
+}
+
+.test-lab {
+  color: lab(from purple l a b);
+  color: lab(from purple 50 a b / alpha);
+  color: lab(from lab(50% 40 40) calc(l + 10) a b);
+}
+
+.test-lch {
+  color: lch(from pink l c h);
+  color: lch(from pink l c calc(h + 45));
+  color: lch(from lch(60% 50 250) l calc(c * 0.5) h / 0.9);
+}
+
+.test-oklab {
+  color: oklab(from orange l a b);
+  color: oklab(from orange 0.75 a b / 100%);
+}
+
+.test-oklch {
+  color: oklch(from yellow l c h);
+  color: oklch(from yellow l c 0.5 / alpha);
+  color: oklch(from var(--accent) calc(l * 0.9) c h);
+}
+/* uncomment when implemented
+.test-color {
+  color: color(from cyan display-p3 r g b);
+  color: color(from cyan srgb r calc(g * 0.5) b / alpha);
+  color: color(from #123456 rec2020 r g b / 0.25);
+}
+*/

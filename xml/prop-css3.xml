@@ -1365,6 +1365,11 @@ where warning means warninglevel in use (0 => normal, no => none).
       <description>Valid color level css3</description>
       <result valid="true" />
     </test>
+    <test profile="css3" warning="no">
+      <file>testsuite/properties/positive/color/css3/002.css</file>
+      <description>Valid color level css3</description>
+      <result valid="true" />
+    </test>
   </type>
   <type title="Valid_column-count">
     <test profile="css3" warning="no">
