@@ -2015,6 +2015,11 @@ where warning means warninglevel in use (0 => normal, no => none).
       <description>Valid text-decoration level css3</description>
       <result valid="true" />
     </test>
+    <test profile="css3" warning="no">
+      <file>testsuite/properties/positive/text-decoration/css3/002.css</file>
+      <description>Valid text-decoration level css3</description>
+      <result valid="true" />
+    </test>
   </type>
   <type title="Valid_text-decoration-color">
     <test profile="css3" warning="no">

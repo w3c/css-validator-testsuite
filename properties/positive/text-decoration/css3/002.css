@@ -1,0 +1,501 @@
+/* =============================================================================
+ * Positive tests for the CSS Text Decoration Level 4 'text-decoration' property
+ * Spec: https://www.w3.org/TR/2022/WD-css-text-decor-4-20220504/#text-decoration-property
+ *
+ * Grammar (CSS4 shorthand):
+ *   text-decoration: <'text-decoration-line'>   ||
+ *                    <'text-decoration-thickness'> ||
+ *                    <'text-decoration-style'>    ||
+ *                    <'text-decoration-color'>
+ *
+ * Where:
+ *   text-decoration-line      : none | [underline || overline || line-through || blink]
+ *                             | spelling-error | grammar-error
+ *   text-decoration-thickness : auto | from-font | <length> | <percentage>
+ *   text-decoration-style     : solid | double | dotted | dashed | wavy
+ *   text-decoration-color     : <color>
+ *
+ * This file focuses on CSS Level 4 additions:
+ *   1. text-decoration-thickness in the shorthand (auto, from-font, <length>, <percentage>)
+ *   2. New line keywords: spelling-error, grammar-error
+ *   3. Full 4-component combinations in every meaningful order
+ *   4. All CSS-wide keywords
+ * ============================================================================= */
+
+
+/* ── 1. CSS-wide keywords ──────────────────────────────────────────────────── */
+
+td4_cw_01 { text-decoration: initial }
+td4_cw_02 { text-decoration: inherit }
+td4_cw_03 { text-decoration: unset   }
+td4_cw_04 { text-decoration: revert  }
+
+
+/* ── 2. text-decoration-line alone ─────────────────────────────────────────── */
+
+/* none */
+td4_l_01 { text-decoration: none }
+
+/* single keywords */
+td4_l_02 { text-decoration: underline   }
+td4_l_03 { text-decoration: overline    }
+td4_l_04 { text-decoration: line-through }
+td4_l_05 { text-decoration: blink       }
+
+/* CSS4-new line-only keywords */
+td4_l_06 { text-decoration: spelling-error }
+td4_l_07 { text-decoration: grammar-error  }
+
+/* two-line combinations */
+td4_l_08 { text-decoration: underline overline     }
+td4_l_09 { text-decoration: underline line-through  }
+td4_l_10 { text-decoration: underline blink         }
+td4_l_11 { text-decoration: overline  line-through  }
+td4_l_12 { text-decoration: overline  blink         }
+td4_l_13 { text-decoration: line-through blink      }
+
+/* three-line combinations */
+td4_l_14 { text-decoration: underline overline line-through }
+td4_l_15 { text-decoration: underline overline blink        }
+td4_l_16 { text-decoration: underline line-through blink    }
+td4_l_17 { text-decoration: overline  line-through blink    }
+
+/* all four line keywords */
+td4_l_18 { text-decoration: underline overline line-through blink }
+
+
+/* ── 3. text-decoration-thickness alone (CSS4 new sub-property) ─────────────
+ *
+ * When only a thickness value is given the shorthand still parses: the
+ * parser sets text-decoration-line to its initial value (none) and the
+ * other sub-properties to their initial values.
+ *
+ * Note: a bare <length> or <percentage> is always unambiguous because
+ * no other sub-property accepts those value types.
+ * ────────────────────────────────────────────────────────────────────────── */
+
+td4_th_01 { text-decoration: auto      }   /* thickness: auto      */
+td4_th_02 { text-decoration: from-font }   /* thickness: from-font */
+td4_th_03 { text-decoration: 0px       }   /* thickness: 0px       */
+td4_th_04 { text-decoration: 1px       }   /* thickness: 1px       */
+td4_th_05 { text-decoration: 2px       }   /* thickness: 2px       */
+td4_th_06 { text-decoration: 0.5px     }   /* thickness: 0.5px     */
+td4_th_07 { text-decoration: 1em       }   /* thickness: 1em       */
+td4_th_08 { text-decoration: 0.1em     }   /* thickness: 0.1em     */
+td4_th_09 { text-decoration: 2rem      }   /* thickness: 2rem      */
+td4_th_10 { text-decoration: 4pt       }   /* thickness: 4pt       */
+td4_th_11 { text-decoration: 10%       }   /* thickness: 10%       */
+td4_th_12 { text-decoration: 5%        }   /* thickness: 5%        */
+td4_th_13 { text-decoration: 0.5%      }   /* thickness: 0.5%      */
+td4_th_14 { text-decoration: 100%      }   /* thickness: 100%      */
+
+
+/* ── 4. line + thickness ───────────────────────────────────────────────────── */
+
+/* underline + thickness keyword */
+td4_lt_01 { text-decoration: underline auto      }
+td4_lt_02 { text-decoration: underline from-font }
+td4_lt_03 { text-decoration: auto      underline }   /* order-independent */
+td4_lt_04 { text-decoration: from-font underline }
+
+/* underline + thickness length */
+td4_lt_05 { text-decoration: underline 1px   }
+td4_lt_06 { text-decoration: underline 2px   }
+td4_lt_07 { text-decoration: underline 0.5em }
+td4_lt_08 { text-decoration: underline 1rem  }
+td4_lt_09 { text-decoration: underline 4pt   }
+td4_lt_10 { text-decoration: 1px   underline }   /* order-independent */
+td4_lt_11 { text-decoration: 0.5em underline }
+
+/* underline + thickness percentage */
+td4_lt_12 { text-decoration: underline 10%  }
+td4_lt_13 { text-decoration: underline 5%   }
+td4_lt_14 { text-decoration: 10%  underline }   /* order-independent */
+
+/* overline + thickness */
+td4_lt_15 { text-decoration: overline auto      }
+td4_lt_16 { text-decoration: overline from-font }
+td4_lt_17 { text-decoration: overline 1px       }
+td4_lt_18 { text-decoration: overline 0.5em     }
+td4_lt_19 { text-decoration: overline 10%       }
+
+/* line-through + thickness */
+td4_lt_20 { text-decoration: line-through auto      }
+td4_lt_21 { text-decoration: line-through from-font }
+td4_lt_22 { text-decoration: line-through 1px       }
+td4_lt_23 { text-decoration: line-through 0.5em     }
+td4_lt_24 { text-decoration: line-through 10%       }
+
+/* multi-line + thickness */
+td4_lt_25 { text-decoration: underline overline auto      }
+td4_lt_26 { text-decoration: underline overline from-font }
+td4_lt_27 { text-decoration: underline overline 1px       }
+td4_lt_28 { text-decoration: underline overline 10%       }
+td4_lt_29 { text-decoration: underline line-through auto  }
+td4_lt_30 { text-decoration: underline line-through 2px   }
+td4_lt_31 { text-decoration: overline  line-through 2px   }
+td4_lt_32 { text-decoration: underline overline line-through 1px }
+
+
+/* ── 5. line + style ───────────────────────────────────────────────────────── */
+
+td4_ls_01 { text-decoration: underline solid   }
+td4_ls_02 { text-decoration: underline double  }
+td4_ls_03 { text-decoration: underline dotted  }
+td4_ls_04 { text-decoration: underline dashed  }
+td4_ls_05 { text-decoration: underline wavy    }
+td4_ls_06 { text-decoration: solid   underline }   /* order-independent */
+td4_ls_07 { text-decoration: wavy    underline }
+
+td4_ls_08 { text-decoration: overline solid   }
+td4_ls_09 { text-decoration: overline double  }
+td4_ls_10 { text-decoration: overline dotted  }
+td4_ls_11 { text-decoration: overline dashed  }
+td4_ls_12 { text-decoration: overline wavy    }
+
+td4_ls_13 { text-decoration: line-through solid   }
+td4_ls_14 { text-decoration: line-through double  }
+td4_ls_15 { text-decoration: line-through dotted  }
+td4_ls_16 { text-decoration: line-through dashed  }
+td4_ls_17 { text-decoration: line-through wavy    }
+
+td4_ls_18 { text-decoration: underline overline solid   }
+td4_ls_19 { text-decoration: underline overline dashed  }
+td4_ls_20 { text-decoration: underline line-through wavy }
+td4_ls_21 { text-decoration: underline overline line-through double }
+
+
+/* ── 6. line + color ───────────────────────────────────────────────────────── */
+
+/* named colors */
+td4_lc_01 { text-decoration: underline red        }
+td4_lc_02 { text-decoration: underline blue       }
+td4_lc_03 { text-decoration: underline green      }
+td4_lc_04 { text-decoration: underline transparent }
+td4_lc_05 { text-decoration: underline currentcolor }
+td4_lc_06 { text-decoration: underline chocolate  }
+td4_lc_07 { text-decoration: underline rebeccapurple }
+
+/* hex colors */
+td4_lc_08 { text-decoration: underline #f00       }
+td4_lc_09 { text-decoration: underline #00f       }
+td4_lc_10 { text-decoration: underline #0f0       }
+td4_lc_11 { text-decoration: underline #ff0000    }
+td4_lc_12 { text-decoration: underline #00000000  }  /* transparent via 8-digit hex */
+
+/* functional colors */
+td4_lc_13 { text-decoration: underline rgb(255, 0, 0)    }
+td4_lc_14 { text-decoration: underline rgb(0, 0, 255)    }
+td4_lc_15 { text-decoration: underline rgba(255,0,0,0.5) }
+td4_lc_16 { text-decoration: underline hsl(120, 100%, 50%) }
+td4_lc_17 { text-decoration: underline hsla(240, 100%, 50%, 0.75) }
+
+/* order-independent */
+td4_lc_18 { text-decoration: red  underline  }
+td4_lc_19 { text-decoration: #f00 underline  }
+
+/* other lines with color */
+td4_lc_20 { text-decoration: overline    red }
+td4_lc_21 { text-decoration: line-through blue }
+td4_lc_22 { text-decoration: blink       green }
+
+/* multi-line with color */
+td4_lc_23 { text-decoration: underline overline red  }
+td4_lc_24 { text-decoration: underline line-through blue }
+td4_lc_25 { text-decoration: underline overline line-through chocolate }
+
+
+/* ── 7. thickness + style ──────────────────────────────────────────────────── */
+
+td4_ths_01 { text-decoration: auto      solid  }
+td4_ths_02 { text-decoration: from-font solid  }
+td4_ths_03 { text-decoration: 1px       solid  }
+td4_ths_04 { text-decoration: 10%       solid  }
+td4_ths_05 { text-decoration: auto      wavy   }
+td4_ths_06 { text-decoration: from-font dashed }
+td4_ths_07 { text-decoration: 2px       dotted }
+td4_ths_08 { text-decoration: 5%        double }
+td4_ths_09 { text-decoration: solid     auto   }   /* order-independent */
+td4_ths_10 { text-decoration: dashed    from-font }
+
+
+/* ── 8. thickness + color ──────────────────────────────────────────────────── */
+
+td4_thc_01 { text-decoration: auto      red        }
+td4_thc_02 { text-decoration: from-font blue       }
+td4_thc_03 { text-decoration: 1px       #f00       }
+td4_thc_04 { text-decoration: 10%       chocolate  }
+td4_thc_05 { text-decoration: 0.5em     rgb(0,128,0) }
+td4_thc_06 { text-decoration: red       auto       }   /* order-independent */
+td4_thc_07 { text-decoration: #00f      from-font  }
+
+
+/* ── 9. style + color ──────────────────────────────────────────────────────── */
+
+td4_sc_01 { text-decoration: solid  red       }
+td4_sc_02 { text-decoration: double blue      }
+td4_sc_03 { text-decoration: dotted #f00      }
+td4_sc_04 { text-decoration: dashed chocolate }
+td4_sc_05 { text-decoration: wavy   rgb(0,0,255) }
+td4_sc_06 { text-decoration: red    solid     }   /* order-independent */
+
+
+/* ── 10. line + thickness + style ──────────────────────────────────────────── */
+
+td4_lts_01 { text-decoration: underline auto      solid  }
+td4_lts_02 { text-decoration: underline auto      double }
+td4_lts_03 { text-decoration: underline auto      dotted }
+td4_lts_04 { text-decoration: underline auto      dashed }
+td4_lts_05 { text-decoration: underline auto      wavy   }
+td4_lts_06 { text-decoration: underline from-font solid  }
+td4_lts_07 { text-decoration: underline from-font double }
+td4_lts_08 { text-decoration: underline from-font dotted }
+td4_lts_09 { text-decoration: underline from-font dashed }
+td4_lts_10 { text-decoration: underline from-font wavy   }
+td4_lts_11 { text-decoration: underline 1px       solid  }
+td4_lts_12 { text-decoration: underline 1px       double }
+td4_lts_13 { text-decoration: underline 1px       dotted }
+td4_lts_14 { text-decoration: underline 1px       dashed }
+td4_lts_15 { text-decoration: underline 1px       wavy   }
+td4_lts_16 { text-decoration: underline 0.5em     solid  }
+td4_lts_17 { text-decoration: underline 0.5em     wavy   }
+td4_lts_18 { text-decoration: underline 10%       solid  }
+td4_lts_19 { text-decoration: underline 10%       wavy   }
+
+td4_lts_20 { text-decoration: overline auto      solid  }
+td4_lts_21 { text-decoration: overline from-font wavy   }
+td4_lts_22 { text-decoration: overline 1px       dashed }
+td4_lts_23 { text-decoration: overline 10%       dotted }
+
+td4_lts_24 { text-decoration: line-through auto      solid  }
+td4_lts_25 { text-decoration: line-through from-font wavy   }
+td4_lts_26 { text-decoration: line-through 2px       dashed }
+td4_lts_27 { text-decoration: line-through 5%        double }
+
+/* order variations */
+td4_lts_28 { text-decoration: solid  auto      underline }
+td4_lts_29 { text-decoration: wavy   from-font overline  }
+td4_lts_30 { text-decoration: 1px    solid     underline }
+td4_lts_31 { text-decoration: dashed 2px       line-through }
+td4_lts_32 { text-decoration: auto   dashed    underline }
+
+/* multi-line + thickness + style */
+td4_lts_33 { text-decoration: underline overline auto      solid  }
+td4_lts_34 { text-decoration: underline overline from-font dashed }
+td4_lts_35 { text-decoration: underline overline 1px       wavy   }
+td4_lts_36 { text-decoration: underline overline 10%       double }
+td4_lts_37 { text-decoration: underline line-through auto  wavy   }
+td4_lts_38 { text-decoration: underline line-through 2px   dotted }
+td4_lts_39 { text-decoration: overline  line-through from-font dashed }
+td4_lts_40 { text-decoration: underline overline line-through 1px solid }
+
+
+/* ── 11. line + thickness + color ──────────────────────────────────────────── */
+
+td4_ltc_01 { text-decoration: underline auto      red        }
+td4_ltc_02 { text-decoration: underline auto      blue       }
+td4_ltc_03 { text-decoration: underline auto      #f00       }
+td4_ltc_04 { text-decoration: underline auto      chocolate  }
+td4_ltc_05 { text-decoration: underline auto      rgb(0,0,255) }
+td4_ltc_06 { text-decoration: underline from-font red        }
+td4_ltc_07 { text-decoration: underline from-font blue       }
+td4_ltc_08 { text-decoration: underline from-font #f00       }
+td4_ltc_09 { text-decoration: underline from-font chocolate  }
+td4_ltc_10 { text-decoration: underline from-font rgba(0,0,0,0.5) }
+td4_ltc_11 { text-decoration: underline 1px       red        }
+td4_ltc_12 { text-decoration: underline 1px       blue       }
+td4_ltc_13 { text-decoration: underline 1px       #f00       }
+td4_ltc_14 { text-decoration: underline 1px       chocolate  }
+td4_ltc_15 { text-decoration: underline 0.5em     rgb(255,0,0) }
+td4_ltc_16 { text-decoration: underline 10%       red        }
+td4_ltc_17 { text-decoration: underline 10%       #00f       }
+
+td4_ltc_18 { text-decoration: overline auto       red        }
+td4_ltc_19 { text-decoration: overline from-font  blue       }
+td4_ltc_20 { text-decoration: overline 2px        chocolate  }
+
+td4_ltc_21 { text-decoration: line-through auto      red        }
+td4_ltc_22 { text-decoration: line-through from-font blue       }
+td4_ltc_23 { text-decoration: line-through 1px       chocolate  }
+
+/* order variations */
+td4_ltc_24 { text-decoration: red  auto      underline }
+td4_ltc_25 { text-decoration: #f00 from-font overline  }
+td4_ltc_26 { text-decoration: blue 2px       line-through }
+
+/* multi-line + thickness + color */
+td4_ltc_27 { text-decoration: underline overline auto      red        }
+td4_ltc_28 { text-decoration: underline overline from-font blue       }
+td4_ltc_29 { text-decoration: underline overline 1px       chocolate  }
+td4_ltc_30 { text-decoration: underline overline 10%       #f00       }
+td4_ltc_31 { text-decoration: underline line-through 2px   rgb(0,128,0) }
+td4_ltc_32 { text-decoration: underline overline line-through 1px red }
+
+
+/* ── 12. line + style + color ──────────────────────────────────────────────── */
+
+td4_lsc_01 { text-decoration: underline solid  red        }
+td4_lsc_02 { text-decoration: underline double blue       }
+td4_lsc_03 { text-decoration: underline dotted #f00       }
+td4_lsc_04 { text-decoration: underline dashed chocolate  }
+td4_lsc_05 { text-decoration: underline wavy   rgb(0,0,255) }
+td4_lsc_06 { text-decoration: underline solid  currentcolor }
+td4_lsc_07 { text-decoration: underline wavy   transparent  }
+
+td4_lsc_08 { text-decoration: overline solid   red   }
+td4_lsc_09 { text-decoration: overline double  blue  }
+td4_lsc_10 { text-decoration: overline dotted  #f00  }
+td4_lsc_11 { text-decoration: overline dashed  chocolate }
+td4_lsc_12 { text-decoration: overline wavy    rgba(0,128,0,0.8) }
+
+td4_lsc_13 { text-decoration: line-through solid  red   }
+td4_lsc_14 { text-decoration: line-through double blue  }
+td4_lsc_15 { text-decoration: line-through dotted #f00  }
+td4_lsc_16 { text-decoration: line-through dashed chocolate }
+td4_lsc_17 { text-decoration: line-through wavy   rgb(255,0,0) }
+
+/* order variations */
+td4_lsc_18 { text-decoration: solid  red  underline       }
+td4_lsc_19 { text-decoration: red    wavy underline       }
+td4_lsc_20 { text-decoration: #f00   dashed line-through  }
+
+/* multi-line + style + color */
+td4_lsc_21 { text-decoration: underline overline solid    red        }
+td4_lsc_22 { text-decoration: underline overline dashed   blue       }
+td4_lsc_23 { text-decoration: underline overline wavy     chocolate  }
+td4_lsc_24 { text-decoration: underline overline dotted   #f00       }
+td4_lsc_25 { text-decoration: underline overline double   rgb(0,0,255) }
+td4_lsc_26 { text-decoration: underline line-through wavy red        }
+td4_lsc_27 { text-decoration: overline  line-through dashed blue     }
+td4_lsc_28 { text-decoration: underline overline line-through dotted chocolate }
+
+
+/* ── 13. Full 4-component shorthand (all sub-properties) ───────────────────── */
+
+/* auto thickness */
+td4_full_01 { text-decoration: underline    auto      solid  red        }
+td4_full_02 { text-decoration: underline    auto      double blue       }
+td4_full_03 { text-decoration: underline    auto      dotted #f00       }
+td4_full_04 { text-decoration: underline    auto      dashed chocolate  }
+td4_full_05 { text-decoration: underline    auto      wavy   rgb(0,0,255) }
+td4_full_06 { text-decoration: overline     auto      solid  red        }
+td4_full_07 { text-decoration: overline     auto      wavy   blue       }
+td4_full_08 { text-decoration: line-through auto      solid  red        }
+td4_full_09 { text-decoration: line-through auto      dashed #f00       }
+td4_full_10 { text-decoration: line-through auto      wavy   chocolate  }
+
+/* from-font thickness */
+td4_full_11 { text-decoration: underline    from-font solid  red        }
+td4_full_12 { text-decoration: underline    from-font double blue       }
+td4_full_13 { text-decoration: underline    from-font dotted #f00       }
+td4_full_14 { text-decoration: underline    from-font dashed chocolate  }
+td4_full_15 { text-decoration: underline    from-font wavy   rgb(0,0,255) }
+td4_full_16 { text-decoration: overline     from-font solid  red        }
+td4_full_17 { text-decoration: overline     from-font wavy   blue       }
+td4_full_18 { text-decoration: line-through from-font solid  red        }
+td4_full_19 { text-decoration: line-through from-font dashed #f00       }
+td4_full_20 { text-decoration: line-through from-font wavy   chocolate  }
+
+/* <length> thickness – 1px */
+td4_full_21 { text-decoration: underline    1px  solid  red        }
+td4_full_22 { text-decoration: underline    1px  double blue       }
+td4_full_23 { text-decoration: underline    1px  dotted #f00       }
+td4_full_24 { text-decoration: underline    1px  dashed chocolate  }
+td4_full_25 { text-decoration: underline    1px  wavy   rgb(0,0,255) }
+td4_full_26 { text-decoration: overline     1px  solid  red        }
+td4_full_27 { text-decoration: overline     1px  wavy   blue       }
+td4_full_28 { text-decoration: line-through 1px  solid  red        }
+td4_full_29 { text-decoration: line-through 1px  dashed #f00       }
+td4_full_30 { text-decoration: line-through 1px  wavy   chocolate  }
+
+/* <length> thickness – 2px */
+td4_full_31 { text-decoration: underline    2px  solid  red        }
+td4_full_32 { text-decoration: underline    2px  wavy   blue       }
+td4_full_33 { text-decoration: overline     2px  dashed #f00       }
+td4_full_34 { text-decoration: line-through 2px  double chocolate  }
+
+/* <length> thickness – em / rem */
+td4_full_35 { text-decoration: underline    0.1em solid  red        }
+td4_full_36 { text-decoration: underline    0.5em wavy   blue       }
+td4_full_37 { text-decoration: overline     1em   dashed #f00       }
+td4_full_38 { text-decoration: line-through 0.2rem dotted chocolate }
+
+/* <percentage> thickness */
+td4_full_39 { text-decoration: underline    5%   solid  red        }
+td4_full_40 { text-decoration: underline    10%  double blue       }
+td4_full_41 { text-decoration: underline    20%  dotted #f00       }
+td4_full_42 { text-decoration: underline    5%   dashed chocolate  }
+td4_full_43 { text-decoration: underline    10%  wavy   rgb(0,0,255) }
+td4_full_44 { text-decoration: overline     5%   solid  red        }
+td4_full_45 { text-decoration: overline     10%  wavy   blue       }
+td4_full_46 { text-decoration: line-through 5%   solid  red        }
+td4_full_47 { text-decoration: line-through 10%  dashed #f00       }
+td4_full_48 { text-decoration: line-through 20%  wavy   chocolate  }
+
+/* multi-line + thickness + style + color */
+td4_full_49 { text-decoration: underline overline    auto      solid  red        }
+td4_full_50 { text-decoration: underline overline    from-font wavy   blue       }
+td4_full_51 { text-decoration: underline overline    1px       dashed #f00       }
+td4_full_52 { text-decoration: underline overline    2px       dotted chocolate  }
+td4_full_53 { text-decoration: underline overline    10%       double rgb(0,0,255) }
+td4_full_54 { text-decoration: underline line-through auto     solid  red        }
+td4_full_55 { text-decoration: underline line-through from-font wavy  blue       }
+td4_full_56 { text-decoration: underline line-through 1px      dashed #f00       }
+td4_full_57 { text-decoration: overline  line-through auto     solid  red        }
+td4_full_58 { text-decoration: overline  line-through 2px      wavy   chocolate  }
+td4_full_59 { text-decoration: underline overline line-through auto      solid  red      }
+td4_full_60 { text-decoration: underline overline line-through from-font wavy   blue     }
+td4_full_61 { text-decoration: underline overline line-through 1px       dashed #f00     }
+td4_full_62 { text-decoration: underline overline line-through 2px       dotted chocolate }
+td4_full_63 { text-decoration: underline overline line-through 10%       double rgb(0,0,255) }
+
+/* order-independent: style first */
+td4_full_64 { text-decoration: solid  auto      underline red        }
+td4_full_65 { text-decoration: wavy   from-font underline blue       }
+td4_full_66 { text-decoration: dashed 1px       overline  #f00       }
+td4_full_67 { text-decoration: dotted 10%       line-through chocolate }
+
+/* order-independent: color first */
+td4_full_68 { text-decoration: red   auto      underline solid  }
+td4_full_69 { text-decoration: blue  from-font overline  wavy   }
+td4_full_70 { text-decoration: #f00  1px       line-through dashed }
+td4_full_71 { text-decoration: chocolate 10%   underline double }
+
+/* order-independent: thickness first */
+td4_full_72 { text-decoration: auto      underline solid  red   }
+td4_full_73 { text-decoration: from-font overline  wavy   blue  }
+td4_full_74 { text-decoration: 1px       line-through dashed #f00 }
+td4_full_75 { text-decoration: 10%       underline double chocolate }
+
+
+/* ── 14. Additional color formats ──────────────────────────────────────────── */
+
+td4_col_01 { text-decoration: underline 1px solid hsl(0, 100%, 50%)            }
+td4_col_02 { text-decoration: underline 1px solid hsla(120, 100%, 25%, 0.5)    }
+td4_col_03 { text-decoration: underline 1px solid oklch(60% 0.2 240)           }
+td4_col_04 { text-decoration: underline 1px solid lab(50% -40 60)              }
+td4_col_05 { text-decoration: underline 1px solid rgb(from red g r b)          }
+td4_col_06 { text-decoration: underline 1px solid #abc                         }
+td4_col_07 { text-decoration: underline 1px solid #aabbcc                      }
+td4_col_08 { text-decoration: underline 1px solid #aabbccdd                    }
+
+
+/* ── 15. spelling-error / grammar-error with other components ──────────────── */
+
+/* Note: the spec says the UA _may_ ignore other sub-properties for these
+ * keywords, but they are still syntactically valid in the shorthand. */
+
+td4_se_01 { text-decoration: spelling-error }
+td4_se_02 { text-decoration: grammar-error  }
+td4_se_03 { text-decoration: spelling-error red         }
+td4_se_04 { text-decoration: spelling-error wavy        }
+td4_se_05 { text-decoration: spelling-error wavy  red   }
+td4_se_06 { text-decoration: spelling-error 1px         }
+td4_se_07 { text-decoration: spelling-error 1px   wavy  }
+td4_se_08 { text-decoration: spelling-error 1px   wavy  red }
+td4_se_09 { text-decoration: grammar-error  blue        }
+td4_se_10 { text-decoration: grammar-error  dashed      }
+td4_se_11 { text-decoration: grammar-error  dashed blue }
+td4_se_12 { text-decoration: grammar-error  2px         }
+td4_se_13 { text-decoration: grammar-error  2px   dashed }
+td4_se_14 { text-decoration: grammar-error  2px   dashed blue }

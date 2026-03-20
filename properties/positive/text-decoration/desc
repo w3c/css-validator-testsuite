@@ -1,7 +1,7 @@
 /* spec information about this property
 name= text-decoration
-css1= http://www.w3.org/TR/2008/REC-CSS1-20080411/#text-decoration
-css2= http://www.w3.org/TR/2008/REC-CSS2-20080411/text.html#propdef-text-decoration
-css21= http://www.w3.org/TR/2011/REC-CSS2-20110607/text.html#propdef-text-decoration
-css3= http://www.w3.org/TR/2012/WD-css3-text-20120814/#text-decoration0
+css1= https://www.w3.org/TR/2008/REC-CSS1-20080411/#text-decoration
+css2= https://www.w3.org/TR/2008/REC-CSS2-20080411/text.html#propdef-text-decoration
+css21= https://www.w3.org/TR/2011/REC-CSS2-20110607/text.html#propdef-text-decoration
+css3= https://www.w3.org/TR/2022/WD-css-text-decor-4-20220504/#propdef-text-decoration
 */
