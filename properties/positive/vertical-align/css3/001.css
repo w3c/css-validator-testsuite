@@ -1,27 +1,67 @@
-bs1 { vertical-align: sub  }
-bs2 { vertical-align: super  }
-bs3 { vertical-align: 150%  }
-bs4 { vertical-align: -100%  }
-bs5 { vertical-align: 0%  }
-bs6 { vertical-align: 0  }
+/* <baseline-source> */
+source1 { vertical-align: first }
+source2 { vertical-align: last }
+
+/* <baseline-shift> */
+bs1 { vertical-align: sub }
+bs2 { vertical-align: super }
+bs3 { vertical-align: 150% }
+bs4 { vertical-align: -100% }
+bs5 { vertical-align: 0% }
+bs6 { vertical-align: 0 }
 bs7 { vertical-align: 1cm }
 bs8 { vertical-align: -1cm }
-ab1  { vertical-align: baseline }
-ab2  { vertical-align: text-bottom }
-ab3  { vertical-align: alphabetic }
-ab4  { vertical-align: ideographic }
-ab5  { vertical-align: middle }
-ab6  { vertical-align: central }
-ab7  { vertical-align: mathematical }
-ab8  { vertical-align: text-top }
-ab9  { vertical-align: bottom }
-ab10 { vertical-align: center }
-ab11 { vertical-align: top }
-c1 { vertical-align: 0 bottom }
-c2 { vertical-align: text-top 0 }
-c3 { vertical-align: 150% alphabetic }
-c4 { vertical-align: baseline 100% }
-c5 { vertical-align: sub center }
-c6 { vertical-align: middle super }
-c7 { vertical-align: inherit }
-c8 { vertical-align: unset }
+bs9 { vertical-align: bottom }
+bs10 { vertical-align: center }
+bs11 { vertical-align: top }
+
+/* <alignment-baseline> */
+ab1 { vertical-align: baseline }
+ab2 { vertical-align: text-bottom }
+ab3 { vertical-align: alphabetic }
+ab4 { vertical-align: ideographic }
+ab5 { vertical-align: middle }
+ab6 { vertical-align: central }
+ab7 { vertical-align: mathematical }
+ab8 { vertical-align: text-top }
+
+/* ======================================================================
+   Two-Value Combinations (||)
+====================================================================== */
+
+/* <alignment-baseline> || <baseline-shift> */
+c1 { vertical-align: text-top 0 }
+c2 { vertical-align: 150% alphabetic }
+c3 { vertical-align: baseline 100% }
+c4 { vertical-align: middle super }
+c5 { vertical-align: top central } /* Replacing invalid 0 bottom */
+c6 { vertical-align: mathematical center } /* Replacing invalid sub center */
+
+/* [ first | last ] || <baseline-shift> */
+c7 { vertical-align: first sub }
+c8 { vertical-align: last top }
+c9 { vertical-align: 2em first }
+c10 { vertical-align: bottom last }
+
+/* [ first | last ] || <alignment-baseline> */
+c11 { vertical-align: first ideographic }
+c12 { vertical-align: last mathematical }
+c13 { vertical-align: text-bottom first }
+
+/* ======================================================================
+   Three-Value Combinations (||)
+====================================================================== */
+
+t1 { vertical-align: first middle super }
+t2 { vertical-align: last 10px baseline }
+t3 { vertical-align: text-top first bottom }
+t4 { vertical-align: 50% central last }
+t5 { vertical-align: ideographic center first }
+
+/* ======================================================================
+   CSS-wide keywords
+====================================================================== */
+kw1 { vertical-align: inherit }
+kw2 { vertical-align: unset }
+kw3 { vertical-align: initial }
+kw4 { vertical-align: revert }
