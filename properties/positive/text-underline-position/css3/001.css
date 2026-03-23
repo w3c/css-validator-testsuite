@@ -1,11 +1,34 @@
-tup1    { text-underline-position: auto }
-tup2    { text-underline-position: alphabetic }
-tup3    { text-underline-position: under }
-tup4    { text-underline-position: under left }
-tup5    { text-underline-position: under right }
-tup6    { text-underline-position: left under }
-tup7    { text-underline-position: right under }
-tup8    { text-underline-position: right }
-tup9    { text-underline-position: left }
-y    { text-underline-position: initial }
-z    { text-underline-position: inherit }
+/*
+ * CSS Validator Test Suite — text-underline-position (positive tests)
+ *
+ * Source grammar:
+ *   text-underline-position = auto | [ from-font | under ] || [ left | right ]
+ *
+ * Reference specification:
+ *   https://www.w3.org/TR/2022/WD-css-text-decor-4-20220504/#text-underline-position-property
+ *
+ */
+
+/* ── Single keywords ─────────────────────────────────────────────────────── */
+tup1 { text-underline-position: auto }
+tup2 { text-underline-position: from-font }
+tup3 { text-underline-position: under }
+tup4 { text-underline-position: left }
+tup5 { text-underline-position: right }
+
+/* ── Combinations: [ from-font | under ] || [ left | right ] ────────────── */
+/* The || combinator allows each operand to appear at most once, in any order */
+tup6  { text-underline-position: under left }
+tup7  { text-underline-position: under right }
+tup8  { text-underline-position: from-font left }
+tup9  { text-underline-position: from-font right }
+
+/* ── Side keyword written first (order is free with ||) ─────────────────── */
+tup10 { text-underline-position: left under }
+tup11 { text-underline-position: right under }
+tup12 { text-underline-position: left from-font }
+tup13 { text-underline-position: right from-font }
+
+/* ── CSS-wide keywords ───────────────────────────────────────────────────── */
+y { text-underline-position: initial }
+z { text-underline-position: inherit }
