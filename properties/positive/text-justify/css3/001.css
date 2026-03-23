@@ -1,9 +1,47 @@
+/*
+ * CSS Validator Test Suite — text-justify (positive tests)
+ *
+ * Source grammar:
+ *   text-justify = [ auto | none | inter-word | inter-character | ruby ] || no-compress
+ *
+ * Reference specification:
+ *   https://www.w3.org/TR/2024/WD-css-text-4-20240529/#propdef-text-justify
+ *
+ * Each rule below exercises one valid value or combination.
+ * Old CSS3 keywords (inter-ideograph, inter-cluster, distribute, kashida)
+ * are no longer valid and must not appear here; they belong in the negative suite.
+ */
+
+/* ── Single keyword from the main group ─────────────────────────────────── */
+
 a { text-justify: auto }
 b { text-justify: none }
 c { text-justify: inter-word }
-d { text-justify: inter-ideograph }
-e { text-justify: inter-cluster }
-f { text-justify: distribute }
-g { text-justify: kashida }
+d { text-justify: inter-character }
+e { text-justify: ruby }
+
+/* ── no-compress alone ───────────────────────────────────────────────────── */
+
+f { text-justify: no-compress }
+
+/* ── Combinations: main-group keyword || no-compress ────────────────────── */
+/* The || combinator allows each operand to appear at most once, in any order */
+
+g { text-justify: auto no-compress }
+h { text-justify: none no-compress }
+i { text-justify: inter-word no-compress }
+j { text-justify: inter-character no-compress }
+k { text-justify: ruby no-compress }
+
+/* ── no-compress written first (order is free with ||) ──────────────────── */
+
+l { text-justify: no-compress auto }
+m { text-justify: no-compress none }
+n { text-justify: no-compress inter-word }
+o { text-justify: no-compress inter-character }
+p { text-justify: no-compress ruby }
+
+/* ── CSS-wide keywords ───────────────────────────────────────────────────── */
+
 y { text-justify: initial }
 z { text-justify: inherit }
