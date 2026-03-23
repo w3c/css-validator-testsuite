@@ -1,16 +1,36 @@
-a { word-spacing: normal }
-b { word-spacing: 1em  }
-b1 { word-spacing: -1em  }
-c { word-spacing: 50%  }
-c1 { word-spacing: -50%  }
-d { word-spacing: normal 10%  }
-e { word-spacing: normal 10% 10% }
-f { word-spacing: normal 1em }
-g { word-spacing: normal 1em 1px }
-h { word-spacing: normal normal normal }
-i { word-spacing: 1em normal normal }
-j { word-spacing: 10% normal normal }
-k { word-spacing: 0em -1em 1em }
-k1 { word-spacing: 0 -1em 1em }
-y { word-spacing: initial }
-z { word-spacing: inherit }
+/* keyword */
+a  { word-spacing: normal }
+
+/* positive <length> */
+b  { word-spacing: 1em }
+
+/* negative <length> */
+b1 { word-spacing: -1em }
+
+/* positive <percentage> */
+c  { word-spacing: 50% }
+
+/* negative <percentage> */
+c1 { word-spacing: -50% }
+
+/* CSS-wide keywords */
+y  { word-spacing: initial }
+z  { word-spacing: inherit }
+
+/* unitless zero (valid <length>) */
+d  { word-spacing: 0 }
+
+/* additional <length> units */
+e1 { word-spacing: 3px }
+e2 { word-spacing: -3px }
+e3 { word-spacing: 1ex }
+e4 { word-spacing: 1ch }
+e5 { word-spacing: 1rem }
+e6 { word-spacing: 0.5em }
+
+/* additional <percentage> values */
+f1 { word-spacing: 100% }
+f2 { word-spacing: 1% }
+
+/* CSS-wide keyword: unset */
+z1 { word-spacing: unset }
