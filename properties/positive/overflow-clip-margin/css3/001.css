@@ -1,0 +1,82 @@
+/*
+ * CSS Validator Test Suite — overflow-clip-margin (positive tests)
+ *
+ * Source grammar (CSS Overflow Module Level 3, WD 7 October 2025):
+ *
+ *   overflow-clip-margin = <visual-box> || <length [0,∞]>
+ *   <visual-box>         = content-box | padding-box | border-box
+ *
+ * Reference specification:
+ *   https://www.w3.org/TR/2025/WD-css-overflow-3-20251007/#propdef-overflow-clip-margin
+ *
+ */
+
+
+/* ── 1. <visual-box> ALONE ───────────────────────────────────────────────── */
+/* Offset defaults to 0; the keyword names the box edge for the clip origin. */
+
+a { overflow-clip-margin: content-box }
+b { overflow-clip-margin: padding-box }
+c { overflow-clip-margin: border-box }
+
+
+/* ── 2. <length> ALONE ───────────────────────────────────────────────────── */
+/* Box defaults to padding-box; the length extends the clip edge outward.   */
+
+d { overflow-clip-margin: 0px }
+e { overflow-clip-margin: 1px }
+f { overflow-clip-margin: 20px }
+g { overflow-clip-margin: 1em }
+h { overflow-clip-margin: 2.5em }
+i { overflow-clip-margin: 1rem }
+j { overflow-clip-margin: 0.5rem }
+k { overflow-clip-margin: 10vw }
+l { overflow-clip-margin: 5vh }
+m { overflow-clip-margin: 3ch }
+n { overflow-clip-margin: 2ex }
+o { overflow-clip-margin: 15pt }
+p { overflow-clip-margin: 1cm }
+q { overflow-clip-margin: 10mm }
+
+
+/* ── 3. <visual-box> THEN <length> ──────────────────────────────────────── */
+/* Box edge named first, then the non-negative offset.                      */
+
+r  { overflow-clip-margin: content-box 0px }
+s  { overflow-clip-margin: content-box 10px }
+t  { overflow-clip-margin: content-box 1em }
+u  { overflow-clip-margin: content-box 1rem }
+
+v  { overflow-clip-margin: padding-box 0px }
+w  { overflow-clip-margin: padding-box 10px }
+x  { overflow-clip-margin: padding-box 1em }
+y  { overflow-clip-margin: padding-box 1rem }
+
+z  { overflow-clip-margin: border-box 0px }
+aa { overflow-clip-margin: border-box 10px }
+ab { overflow-clip-margin: border-box 1em }
+ac { overflow-clip-margin: border-box 1rem }
+
+
+/* ── 4. <length> THEN <visual-box> ──────────────────────────────────────── */
+/* Order is free with ||; offset first, then box edge.                      */
+
+ad { overflow-clip-margin: 0px content-box }
+ae { overflow-clip-margin: 10px content-box }
+af { overflow-clip-margin: 1em content-box }
+
+ag { overflow-clip-margin: 0px padding-box }
+ah { overflow-clip-margin: 10px padding-box }
+ai { overflow-clip-margin: 1em padding-box }
+
+aj { overflow-clip-margin: 0px border-box }
+ak { overflow-clip-margin: 10px border-box }
+al { overflow-clip-margin: 1em border-box }
+
+
+/* ── 5. CSS-WIDE KEYWORDS ────────────────────────────────────────────────── */
+
+am { overflow-clip-margin: initial }
+an { overflow-clip-margin: inherit }
+ao { overflow-clip-margin: unset }
+ap { overflow-clip-margin: revert }
