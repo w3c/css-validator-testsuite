@@ -1,0 +1,164 @@
+/*
+ * CSS Validator Test Suite — color-mix() function (positive tests)
+ *
+ *   https://www.w3.org/TR/2026/WD-css-color-5-20260410/#funcdef-color-mix
+ *
+ */
+
+
+/* ── 1. NO INTERPOLATION METHOD (defaults to oklab) ─────────────────────── */
+/* When <color-interpolation-method>? is absent, the leading comma is absent  */
+/* too, and the color space defaults to oklab per the spec.                  */
+
+/* 1a. Two named colors, no percentages */
+a  { color: color-mix(red, blue) }
+
+/* 1b. Three named colors */
+b  { color: color-mix(red, blue, green) }
+
+/* 1c. Percentages on one operand */
+c  { color: color-mix(red 30%, blue) }
+d  { color: color-mix(red, blue 70%) }
+
+/* 1d. Percentages on both operands */
+e  { color: color-mix(red 40%, blue 60%) }
+
+/* 1e. Both percentages equal (sum > 100 → normalised, alpha < 1) */
+f  { color: color-mix(red 80%, blue 80%) }
+
+/* 1f. Single color (degenerate but valid; returns that color at alpha 1) */
+g  { color: color-mix(red) }
+
+
+/* ── 2. RECTANGULAR COLOR SPACES ─────────────────────────────────────────── */
+/* All 11 rectangular keywords, each without a hue method (not applicable). */
+
+h  { color: color-mix(in srgb,            red, blue) }
+i  { color: color-mix(in srgb-linear,     red, blue) }
+j  { color: color-mix(in display-p3,      red, blue) }
+k  { color: color-mix(in display-p3-linear, red, blue) }  /* CSS Color 5 addition */
+l  { color: color-mix(in a98-rgb,         red, blue) }
+m  { color: color-mix(in prophoto-rgb,    red, blue) }
+n  { color: color-mix(in rec2020,         red, blue) }
+o  { color: color-mix(in lab,             red, blue) }
+p  { color: color-mix(in oklab,           red, blue) }
+q  { color: color-mix(in xyz,             red, blue) }  /* alias for xyz-d65 */
+r  { color: color-mix(in xyz-d50,         red, blue) }
+s  { color: color-mix(in xyz-d65,         red, blue) }
+
+
+/* ── 3. POLAR COLOR SPACES — no explicit hue-interpolation-method ─────────── */
+/* When omitted, the hue interpolation method defaults to 'shorter'.         */
+
+t  { color: color-mix(in hsl,   red, blue) }
+u  { color: color-mix(in hwb,   red, blue) }
+v  { color: color-mix(in lch,   red, blue) }
+w  { color: color-mix(in oklch, red, blue) }
+
+
+/* ── 4. POLAR COLOR SPACES — all four hue-interpolation-method values ──────── */
+/* Each keyword must be followed by the literal token 'hue'.                 */
+
+/* 4a. shorter hue */
+aa { color: color-mix(in hsl   shorter hue,    red, blue) }
+ab { color: color-mix(in hwb   shorter hue,    red, blue) }
+ac { color: color-mix(in lch   shorter hue,    red, blue) }
+ad { color: color-mix(in oklch shorter hue,    red, blue) }
+
+/* 4b. longer hue */
+ae { color: color-mix(in hsl   longer hue,     red, blue) }
+af { color: color-mix(in hwb   longer hue,     red, blue) }
+ag { color: color-mix(in lch   longer hue,     red, blue) }
+ah { color: color-mix(in oklch longer hue,     red, blue) }
+
+/* 4c. increasing hue */
+ai { color: color-mix(in hsl   increasing hue, red, blue) }
+aj { color: color-mix(in hwb   increasing hue, red, blue) }
+ak { color: color-mix(in lch   increasing hue, red, blue) }
+al { color: color-mix(in oklch increasing hue, red, blue) }
+
+/* 4d. decreasing hue */
+am { color: color-mix(in hsl   decreasing hue, red, blue) }
+an { color: color-mix(in hwb   decreasing hue, red, blue) }
+ao { color: color-mix(in lch   decreasing hue, red, blue) }
+ap { color: color-mix(in oklch decreasing hue, red, blue) }
+
+
+/* ── 5. PERCENTAGE VARIATIONS ────────────────────────────────────────────── */
+
+/* 5a. Edge: 0% and 100% */
+aq { color: color-mix(in srgb, red 0%,   blue) }
+ar { color: color-mix(in srgb, red 100%, blue) }
+as { color: color-mix(in srgb, red,      blue 0%) }
+at { color: color-mix(in srgb, red,      blue 100%) }
+
+/* 5b. Sum less than 100 → result has alpha < 1 */
+au { color: color-mix(in srgb, red 30%, blue 30%) }
+
+/* 5c. Fractional percentages */
+av { color: color-mix(in srgb, red 33.3%, blue 66.7%) }
+
+/* 5d. Percentage on first color only, in method present */
+aw { color: color-mix(in oklab, red 25%, blue) }
+
+/* 5e. Percentage on second color only, in method present */
+ax { color: color-mix(in oklab, red, blue 25%) }
+
+/* 5f. Percentage first, then color (&&  allows either order) */
+ay { color: color-mix(in srgb, 40% red, blue) }
+az { color: color-mix(in srgb, red, 60% blue) }
+
+
+/* ── 6. THREE OR MORE COLORS ─────────────────────────────────────────────── */
+
+/* 6a. Three colors, no percentages */
+ba { color: color-mix(in srgb,  red, blue, green) }
+bb { color: color-mix(in oklch, red, blue, green) }
+
+/* 6b. Three colors with percentages on each */
+bc { color: color-mix(in oklab, red 50%, blue 25%, green 25%) }
+
+/* 6c. Four colors */
+bd { color: color-mix(in lab, red, yellow, green, blue) }
+
+
+/* ── 7. VARIOUS <color> SYNTAX TYPES AS ARGUMENTS ────────────────────────── */
+/* color-mix() accepts any valid <color> as each mix operand.                */
+
+/* 7a. Named colors */
+be { color: color-mix(in srgb, coral, teal) }
+
+/* 7b. Hex colors */
+bf { color: color-mix(in srgb, #ff0000, #0000ff) }
+bg { color: color-mix(in srgb, #f00, #00f) }
+
+/* 7c. rgb() */
+bh { color: color-mix(in srgb, rgb(255 0 0), rgb(0 0 255)) }
+
+/* 7d. hsl() */
+bi { color: color-mix(in oklch, hsl(0 100% 50%), hsl(240 100% 50%)) }
+
+/* 7e. oklch() */
+bj { color: color-mix(in oklch, oklch(0.5 0.2 30), oklch(0.7 0.1 180)) }
+
+/* 7f. transparent (a named color with alpha=0) */
+bk { color: color-mix(in srgb, red, transparent) }
+
+/* 7g. currentColor (a non-absolute color; valid in color-mix input) */
+bl { color: color-mix(in srgb, currentColor, blue) }
+
+/* 7h. Nested color-mix() as an argument */
+bm { color: color-mix(in srgb, color-mix(in oklch, red, yellow), blue) }
+
+/* 7i. color() function */
+/* uncomment when implemented
+bn { color: color-mix(in srgb, color(srgb 1 0 0), color(srgb 0 0 1)) }
+*/
+
+
+/* ── 8. CUSTOM COLOR SPACE (<dashed-ident>) ──────────────────────────────── */
+/* A <dashed-ident> is syntactically valid; semantic validity also requires  */
+/* a matching @color-profile rule, which validators may or may not enforce.  */
+
+bo { color: color-mix(in --my-profile, red, blue) }
+bp { color: color-mix(in --custom-space, red 40%, blue) }
