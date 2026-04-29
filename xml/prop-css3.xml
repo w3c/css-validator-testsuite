@@ -1518,6 +1518,11 @@ where warning means warninglevel in use (0 => normal, no => none).
       <description>Valid display level css3</description>
       <result valid="true" />
     </test>
+    <test profile="css3" warning="no">
+      <file>testsuite/properties/positive/display/css3/004.css</file>
+      <description>Valid display level css3</description>
+      <result valid="true" />
+    </test>
   </type>
   <type title="Valid_flex">
     <test profile="css3" warning="no">
@@ -1703,6 +1708,104 @@ where warning means warninglevel in use (0 => normal, no => none).
     <test profile="css3" warning="no">
       <file>testsuite/properties/positive/font-weight/css3/001.css</file>
       <description>Valid font-weight level css3</description>
+      <result valid="true" />
+    </test>
+  </type>
+  <type title="Valid_grid">
+    <test profile="css3" warning="no">
+      <file>testsuite/properties/positive/grid/css3/001.css</file>
+      <description>Valid grid level css3</description>
+      <result valid="true" />
+    </test>
+  </type>
+  <type title="Valid_grid-area">
+    <test profile="css3" warning="no">
+      <file>testsuite/properties/positive/grid-area/css3/001.css</file>
+      <description>Valid grid-area level css3</description>
+      <result valid="true" />
+    </test>
+  </type>
+  <type title="Valid_grid-auto-columns">
+    <test profile="css3" warning="no">
+      <file>testsuite/properties/positive/grid-auto-columns/css3/001.css</file>
+      <description>Valid grid-auto-columns level css3</description>
+      <result valid="true" />
+    </test>
+  </type>
+  <type title="Valid_grid-auto-flow">
+    <test profile="css3" warning="no">
+      <file>testsuite/properties/positive/grid-auto-flow/css3/001.css</file>
+      <description>Valid grid-auto-flow level css3</description>
+      <result valid="true" />
+    </test>
+  </type>
+  <type title="Valid_grid-column">
+    <test profile="css3" warning="no">
+      <file>testsuite/properties/positive/grid-column/css3/001.css</file>
+      <description>Valid grid-column level css3</description>
+      <result valid="true" />
+    </test>
+  </type>
+  <type title="Valid_grid-column-end">
+    <test profile="css3" warning="no">
+      <file>testsuite/properties/positive/grid-column-end/css3/001.css</file>
+      <description>Valid grid-column-end level css3</description>
+      <result valid="true" />
+    </test>
+  </type>
+  <type title="Valid_grid-column-start">
+    <test profile="css3" warning="no">
+      <file>testsuite/properties/positive/grid-column-start/css3/001.css</file>
+      <description>Valid grid-column-start level css3</description>
+      <result valid="true" />
+    </test>
+  </type>
+  <type title="Valid_grid-row">
+    <test profile="css3" warning="no">
+      <file>testsuite/properties/positive/grid-row/css3/001.css</file>
+      <description>Valid grid-row level css3</description>
+      <result valid="true" />
+    </test>
+  </type>
+  <type title="Valid_grid-row-end">
+    <test profile="css3" warning="no">
+      <file>testsuite/properties/positive/grid-row-end/css3/001.css</file>
+      <description>Valid grid-row-end level css3</description>
+      <result valid="true" />
+    </test>
+  </type>
+  <type title="Valid_grid-row-start">
+    <test profile="css3" warning="no">
+      <file>testsuite/properties/positive/grid-row-start/css3/001.css</file>
+      <description>Valid grid-row-start level css3</description>
+      <result valid="true" />
+    </test>
+  </type>
+  <type title="Valid_grid-template">
+    <test profile="css3" warning="no">
+      <file>testsuite/properties/positive/grid-template/css3/001.css</file>
+      <description>Valid grid-template level css3</description>
+      <result valid="true" />
+    </test>
+  </type>
+  <type title="Valid_grid-template-areas">
+    <test profile="css3" warning="no">
+      <file>testsuite/properties/positive/grid-template-areas/css3/001.css</file>
+      <description>Valid grid-template-areas level css3</description>
+      <result valid="true" />
+    </test>
+  </type>
+  <type title="Valid_grid-template-columns">
+    <test profile="css3" warning="no">
+      <file>testsuite/properties/positive/grid-template-columns/css3/001.css</file>
+      <description>Valid grid-template-columns level css3</description>
+      <result valid="true" />
+    </test>
+  </type>
+  <type title="Valid_grid-template-rows">
+    <test profile="css3" warning="no">
+      <file>testsuite/properties/positive/grid-template-rows/css3/001.css</file>
+      <description>Valid grid-template-rows level css3</description>
       <result valid="true" />
     </test>
   </type>
