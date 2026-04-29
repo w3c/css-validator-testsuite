@@ -1,0 +1,72 @@
+/* ── 1. auto ─────────────────────────────────────────────────────────────── */
+ 
+a { will-change: auto }
+ 
+ 
+/* ── 2. scroll-position ──────────────────────────────────────────────────── */
+ 
+b { will-change: scroll-position }
+ 
+ 
+/* ── 3. contents ─────────────────────────────────────────────────────────── */
+ 
+c { will-change: contents }
+ 
+ 
+/* ── 4. <custom-ident> — individual CSS property names ───────────────────── */
+/* Any CSS property name is a valid <custom-ident> in this context.          */
+/* Shorthands are accepted too; they expand to all their longhands.          */
+ 
+/* commonly animated longhands */
+d  { will-change: transform }
+e  { will-change: opacity }
+f  { will-change: top }
+g  { will-change: left }
+h  { will-change: width }
+i  { will-change: height }
+j  { will-change: color }
+k  { will-change: background-color }
+l  { will-change: font-size }
+m  { will-change: visibility }
+n  { will-change: clip-path }
+o  { will-change: filter }
+p  { will-change: border-radius }
+ 
+/* shorthand property names */
+q  { will-change: background }
+r  { will-change: margin }
+s  { will-change: padding }
+t  { will-change: border }
+ 
+ 
+/* ── 5. <animateable-feature># — comma-separated lists ───────────────────── */
+/* The # multiplier requires at least one item; two or more are valid too.   */
+ 
+/* two named keywords */
+u  { will-change: scroll-position, contents }
+v  { will-change: contents, scroll-position }
+ 
+/* named keyword + property name */
+w  { will-change: scroll-position, transform }
+x  { will-change: contents, opacity }
+aa { will-change: transform, scroll-position }
+ 
+/* two property names */
+ab { will-change: transform, opacity }
+ac { will-change: left, top }
+ad { will-change: width, height }
+ 
+/* three values */
+ae { will-change: transform, opacity, filter }
+af { will-change: left, top, opacity }
+ag { will-change: scroll-position, transform, opacity }
+ 
+/* named keyword + two property names */
+ah { will-change: contents, left, top }
+ 
+ 
+/* ── 6. CSS-wide keywords ────────────────────────────────────────────────── */
+ 
+y { will-change: inherit }
+z { will-change: initial }
+ 
