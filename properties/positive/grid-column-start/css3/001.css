@@ -1,0 +1,10 @@
+/* ══ grid-column-start ═════════════════════════════════════════════════════ */
+
+p  { grid-column-start: auto }
+q  { grid-column-start: col-start }
+r  { grid-column-start: 1 }
+s  { grid-column-start: -1 }
+t  { grid-column-start: 2 col-start }
+u  { grid-column-start: span 3 }
+v  { grid-column-start: span col-start }
+w  { grid-column-start: span 2 col-start }

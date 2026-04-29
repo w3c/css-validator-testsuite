@@ -1,0 +1,76 @@
+/* ── 1. none (maps to grid-template: none) ───────────────────────────────── */
+
+a  { grid: none }
+
+
+/* ── 2. <grid-template> forms (rows / columns) ───────────────────────────── */
+
+b  { grid: 100px / 200px }
+c  { grid: 1fr / 1fr }
+d  { grid: auto 1fr auto / auto 1fr }
+e  { grid: repeat(3, 1fr) / repeat(4, 1fr) }
+f  { grid: 100px 1fr / minmax(100px, 1fr) auto }
+g  { grid: minmax(400px, min-content) / repeat(auto-fill, 50px) }
+
+/* 2a. One or both axes as subgrid */
+h  { grid: subgrid / 1fr 1fr }
+i  { grid: 100px / subgrid }
+j  { grid: subgrid / subgrid }
+k  { grid: subgrid [a] [b] / subgrid [c] [d] [e] }
+
+
+/* ── 3. ASCII-art form (from grid-template) ──────────────────────────────── */
+
+l  { grid: "a"     100px
+           "b"     200px }
+
+m  { grid: "hd hd" auto
+           "sd mn" 1fr
+           "ft ft" auto
+           / auto 1fr }
+
+n  { grid: [r1] "a b" 100px [r1e]
+           [r2] "c d" 1fr
+           / 1fr 1fr }
+
+
+/* ── 4. Explicit rows / auto-flow columns ────────────────────────────────── */
+/* Syntax: <'grid-template-rows'> / [ auto-flow && dense? ] <'grid-auto-columns'>? */
+
+o  { grid: 200px / auto-flow }
+p  { grid: 100px / auto-flow 200px }
+q  { grid: repeat(3, 200px) / auto-flow 300px }
+r  { grid: auto / auto-flow 1fr }
+
+/* with dense */
+s  { grid: 30% / auto-flow dense }
+t  { grid: repeat(3, 200px) / auto-flow dense 300px }
+u  { grid: 100px / dense auto-flow }          /* dense before auto-flow (&&) */
+v  { grid: 100px / dense auto-flow 200px }
+
+/* with named lines on rows */
+w  { grid: [line1] minmax(20em, max-content) / auto-flow dense 40% }
+
+
+/* ── 5. Auto-flow rows / explicit columns ────────────────────────────────── */
+/* Syntax: [ auto-flow && dense? ] <'grid-auto-rows'>? / <'grid-template-columns'> */
+
+x  { grid: auto-flow / 200px }
+aa { grid: auto-flow 300px / repeat(3, 200px) }
+ab { grid: auto-flow / repeat(auto-fill, 50px) }
+
+/* with dense */
+ac { grid: auto-flow dense / 30% }
+ad { grid: auto-flow dense 40% / [line1] minmax(20em, max-content) }
+ae { grid: dense auto-flow / 1fr 1fr }       /* dense before auto-flow (&&) */
+af { grid: dense auto-flow 100px / 1fr }
+
+/* with subgrid on columns */
+ag { grid: auto-flow / subgrid }
+ah { grid: auto-flow 100px / subgrid [a] [b] [c] }
+
+
+/* ── 6. CSS-wide keywords ────────────────────────────────────────────────── */
+
+y  { grid: inherit }
+z  { grid: initial }

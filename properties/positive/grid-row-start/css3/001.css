@@ -1,0 +1,31 @@
+/* ══ grid-row-start ════════════════════════════════════════════════════════ */
+
+/* auto */
+a  { grid-row-start: auto }
+
+/* named line */
+b  { grid-row-start: header }
+c  { grid-row-start: row-start }
+
+/* numeric index (non-zero integers only) */
+d  { grid-row-start: 1 }
+e  { grid-row-start: 3 }
+f  { grid-row-start: -1 }
+g  { grid-row-start: -3 }
+
+/* numeric + named: <integer> && <custom-ident>? */
+h  { grid-row-start: 1 header }
+i  { grid-row-start: -2 row-start }
+
+/* span with integer */
+j  { grid-row-start: span 2 }
+k  { grid-row-start: span 1 }
+
+/* span with named line */
+l  { grid-row-start: span header }
+m  { grid-row-start: span row-end }
+
+/* span with both (|| inside span) */
+n  { grid-row-start: span 2 header }
+o  { grid-row-start: span header 2 }   /* either order */
+

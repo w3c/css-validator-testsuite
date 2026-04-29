@@ -1,0 +1,27 @@
+/* Single track sizes */
+a  { grid-auto-columns: auto }
+b  { grid-auto-columns: 100px }
+c  { grid-auto-columns: 1fr }
+d  { grid-auto-columns: 50% }
+e  { grid-auto-columns: min-content }
+f  { grid-auto-columns: max-content }
+
+/* minmax() */
+g  { grid-auto-columns: minmax(100px, 1fr) }
+h  { grid-auto-columns: minmax(min-content, auto) }
+i  { grid-auto-columns: minmax(0px, max-content) }
+
+/* fit-content() */
+j  { grid-auto-columns: fit-content(200px) }
+k  { grid-auto-columns: fit-content(30%) }
+
+/* Multiple track sizes (+ multiplier) */
+l  { grid-auto-columns: 100px 200px }
+m  { grid-auto-columns: 1fr auto }
+n  { grid-auto-columns: minmax(100px, 1fr) auto }
+o  { grid-auto-columns: 100px auto 1fr }
+
+/* ── CSS-wide keywords ────────────────────────────────────────────────────── */
+
+y  { grid-auto-columns: inherit }
+z  { grid-auto-columns:    initial }

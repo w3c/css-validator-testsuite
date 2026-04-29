@@ -1,0 +1,72 @@
+/* ── 1. none ─────────────────────────────────────────────────────────────── */
+
+a { grid-template: none }
+
+
+/* ── 2. rows / columns ────────────────────────────────────────────────────── */
+
+b  { grid-template: 100px / 200px }
+c  { grid-template: 1fr / 1fr }
+d  { grid-template: auto / auto }
+e  { grid-template: auto 1fr auto / auto 1fr }
+f  { grid-template: repeat(3, 1fr) / repeat(3, 1fr) }
+g  { grid-template: 100px 1fr / minmax(100px, 1fr) auto }
+h  { grid-template: [row-start] 100px [row-end] / [col-start] 1fr [col-end] }
+i  { grid-template: minmax(100px, 1fr) / repeat(3, 200px) }
+
+/* 2a. rows = subgrid (Level 2 addition on one axis) */
+j  { grid-template: subgrid / 1fr 1fr }
+k  { grid-template: subgrid [a] [b] [c] / 1fr 1fr }
+
+/* 2b. columns = subgrid */
+l  { grid-template: 100px 200px / subgrid }
+m  { grid-template: auto 1fr / subgrid [col] [col] [col] }
+
+/* 2c. both axes subgrid */
+n  { grid-template: subgrid / subgrid }
+o  { grid-template: subgrid [r1] [r2] / subgrid [c1] [c2] [c3] }
+
+
+/* ── 3. ASCII-art / named-area form ───────────────────────────────────────── */
+/* [ <line-names>? <string> <track-size>? <line-names>? ]+ [ / <explicit-track-list> ]? */
+
+/* 3a. Strings only (no column definition) */
+p  { grid-template: "a" }
+q  { grid-template: "a" "b" }
+
+/* 3b. Strings with row track sizes */
+r  { grid-template: "a" 100px
+                    "b" 200px }
+
+s  { grid-template: "header" auto
+                    "main"   1fr
+                    "footer" auto }
+
+t  { grid-template: "a" minmax(100px, 1fr)
+                    "b" auto }
+
+/* 3c. Strings with row track sizes and column definitions */
+u  { grid-template: "a b" 100px / 1fr 1fr }
+
+v  { grid-template: "header header" auto
+                    "nav    main"   1fr
+                    "footer footer" auto
+                    / auto 1fr }
+
+w  { grid-template: "a b c" 100px
+                    "d e f" 1fr
+                    / 1fr fit-content(10%) }
+
+/* 3d. Strings with row line names */
+x  { grid-template: [row1-start] "header" 100px [row1-end]
+                    [row2-start] "main"   1fr   [row2-end] }
+
+aa { grid-template: [row1-start] "a b" auto [row1-end]
+                    [row2-start] "c d" 1fr  [row2-end]
+                    / 1fr 1fr }
+
+
+/* ── 4. CSS-wide keywords ────────────────────────────────────────────────── */
+
+y  { grid-template: inherit }
+z  { grid-template: initial }

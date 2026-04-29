@@ -1,0 +1,9 @@
+/* ══ grid-column-end ═══════════════════════════════════════════════════════ */
+
+ag { grid-column-end: auto }
+ah { grid-column-end: col-end }
+ai { grid-column-end: 4 }
+aj { grid-column-end: -2 }
+ak { grid-column-end: span 2 }
+al { grid-column-end: span col-end }
+am { grid-column-end: span 3 col-end }

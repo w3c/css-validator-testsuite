@@ -1,0 +1,48 @@
+/* ── 1. none ─────────────────────────────────────────────────────────────── */
+
+a { grid-template-areas: none }
+
+
+/* ── 2. Single-row templates ──────────────────────────────────────────────── */
+
+b { grid-template-areas: "a" }
+c { grid-template-areas: "a b" }
+d { grid-template-areas: "a b c" }
+e { grid-template-areas: "header header header" }
+
+
+/* ── 3. Multi-row templates ───────────────────────────────────────────────── */
+
+f { grid-template-areas: "header header"
+                         "sidebar main" }
+
+g { grid-template-areas: "header header header"
+                         "nav    main   main"
+                         "footer footer footer" }
+
+h { grid-template-areas: "title  title"
+                         "stats  board"
+                         "score  ctrls" }
+
+
+/* ── 4. Null cells (.) ────────────────────────────────────────────────────── */
+
+i { grid-template-areas: "a . b" }
+j { grid-template-areas: ". header ."
+                         "nav main sidebar"
+                         ". footer ." }
+
+/* ── 5. Spanning areas (same name in adjacent cells) ─────────────────────── */
+
+k { grid-template-areas: "a a"
+                         "b c" }
+
+l { grid-template-areas: "hd hd hd"
+                         "sd ct ct"
+                         "ft ft ft" }
+
+
+/* ── 6. CSS-wide keywords ────────────────────────────────────────────────── */
+
+y { grid-template-areas: inherit }
+z { grid-template-areas: initial }

@@ -1,0 +1,10 @@
+/* ══ grid-row-end ══════════════════════════════════════════════════════════ */
+
+x  { grid-row-end: auto }
+aa { grid-row-end: footer }
+ab { grid-row-end: 4 }
+ac { grid-row-end: -1 }
+ad { grid-row-end: span 3 }
+ae { grid-row-end: span footer }
+af { grid-row-end: span 2 footer }
+

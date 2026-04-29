@@ -1,0 +1,94 @@
+/*
+ * CSS Validator Test Suite — grid-template-rows (positive tests)
+ *
+ * Source grammar: identical to grid-template-columns.
+ *   grid-template-rows = none | <track-list> | <auto-track-list>
+ *                      | subgrid <line-name-list>?
+ *
+ * Reference specification:
+ *   https://www.w3.org/TR/2025/CRD-css-grid-2-20250326/#track-sizing
+ *
+ * All syntactic forms from grid-template-columns apply equally here.
+ * This file duplicates the structure of grid-template-columns.css
+ * with the property name changed, as both properties must be tested
+ * independently.
+ */
+
+
+/* ── 1. none ─────────────────────────────────────────────────────────────── */
+
+a  { grid-template-rows: none }
+
+
+/* ── 2. <track-list> — track breadths ────────────────────────────────────── */
+
+b  { grid-template-rows: 100px }
+c  { grid-template-rows: auto 1fr auto }
+d  { grid-template-rows: min-content 1fr max-content }
+e  { grid-template-rows: 50% 50% }
+f  { grid-template-rows: 2em 4em }
+g  { grid-template-rows: 0px }
+
+
+/* ── 3. <track-list> — minmax() ─────────────────────────────────────────── */
+
+h  { grid-template-rows: minmax(100px, 1fr) }
+i  { grid-template-rows: minmax(min-content, auto) }
+j  { grid-template-rows: auto minmax(100px, 1fr) auto }
+k  { grid-template-rows: minmax(0px, max-content) }
+
+
+/* ── 4. <track-list> — fit-content() ────────────────────────────────────── */
+
+l  { grid-template-rows: fit-content(200px) }
+m  { grid-template-rows: fit-content(50%) }
+n  { grid-template-rows: auto fit-content(300px) auto }
+
+
+/* ── 5. <track-list> — named grid lines ──────────────────────────────────── */
+
+o  { grid-template-rows: [top] 100px [middle] 1fr [bottom] }
+p  { grid-template-rows: [row-start] auto [row-end] }
+q  { grid-template-rows: [a b] 100px [c] }
+r  { grid-template-rows: [] 100px [] }
+
+
+/* ── 6. <track-list> — <track-repeat> ────────────────────────────────────── */
+
+s  { grid-template-rows: repeat(3, 100px) }
+t  { grid-template-rows: repeat(3, auto) }
+u  { grid-template-rows: repeat(2, minmax(100px, 1fr)) }
+v  { grid-template-rows: repeat(3, [row-start] 1fr [row-end]) }
+w  { grid-template-rows: auto repeat(3, 1fr) auto }
+
+
+/* ── 7. <auto-track-list> — auto-fill / auto-fit ────────────────────────── */
+
+x  { grid-template-rows: repeat(auto-fill, 100px) }
+aa { grid-template-rows: repeat(auto-fit, minmax(100px, 1fr)) }
+ab { grid-template-rows: 50px repeat(auto-fill, 100px) 50px }
+
+
+/* ── 8. subgrid — Level 2 addition ───────────────────────────────────────── */
+
+/* 8a. subgrid alone */
+ac { grid-template-rows: subgrid }
+
+/* 8b. subgrid with named lines */
+ad { grid-template-rows: subgrid [top] [middle] [bottom] }
+ae { grid-template-rows: subgrid [row-start] [row-end] }
+af { grid-template-rows: subgrid [] [] [] }
+
+/* 8c. subgrid with <name-repeat>: integer */
+ag { grid-template-rows: subgrid repeat(3, [row]) }
+ah { grid-template-rows: subgrid [start] repeat(2, [row]) [end] }
+
+/* 8d. subgrid with <name-repeat>: auto-fill */
+ai { grid-template-rows: subgrid repeat(auto-fill, [row]) }
+aj { grid-template-rows: subgrid [first] repeat(auto-fill, [row]) [last] }
+
+
+/* ── 9. CSS-wide keywords ────────────────────────────────────────────────── */
+
+y  { grid-template-rows: inherit }
+z  { grid-template-rows: initial }

@@ -1,0 +1,19 @@
+/* ══ grid-column ═══════════════════════════════════════════════════════════ */
+/* grid-column = <grid-line> [ / <grid-line> ]? */
+
+/* single value */
+an { grid-column: auto }
+ao { grid-column: 1 }
+ap { grid-column: col-start }
+aq { grid-column: span 2 }
+
+/* two-value (start / end) */
+ar { grid-column: 1 / 3 }
+as { grid-column: 1 / auto }
+at { grid-column: auto / 3 }
+au { grid-column: col-start / col-end }
+av { grid-column: 1 / span 2 }
+aw { grid-column: span 1 / span 2 }
+ax { grid-column: 2 / -1 }
+ay { grid-column: col-start / 4 }
+

@@ -1,0 +1,120 @@
+/* ── 1. none ─────────────────────────────────────────────────────────────── */
+
+a { grid-template-columns: none }
+
+
+/* ── 2. <track-list> — <track-breadth> forms ─────────────────────────────── */
+
+/* 2a. lengths */
+b  { grid-template-columns: 100px }
+c  { grid-template-columns: 100px 200px 300px }
+d  { grid-template-columns: 0px }
+e  { grid-template-columns: 10em 20rem }
+
+/* 2b. percentages */
+f  { grid-template-columns: 33% }
+g  { grid-template-columns: 25% 25% 25% 25% }
+
+/* 2c. flex (fr) units */
+h  { grid-template-columns: 1fr }
+i  { grid-template-columns: 1fr 2fr }
+j  { grid-template-columns: 1fr 1fr 1fr }
+k  { grid-template-columns: 0fr }
+
+/* 2d. keywords */
+l  { grid-template-columns: min-content }
+m  { grid-template-columns: max-content }
+n  { grid-template-columns: auto }
+o  { grid-template-columns: auto auto auto }
+
+/* 2e. mixed track breadths */
+p  { grid-template-columns: 100px 1fr auto }
+q  { grid-template-columns: auto 1fr min-content }
+r  { grid-template-columns: 100px auto 1fr 200px }
+
+
+/* ── 3. <track-list> — minmax() ─────────────────────────────────────────── */
+
+s  { grid-template-columns: minmax(100px, 1fr) }
+t  { grid-template-columns: minmax(min-content, 1fr) }
+u  { grid-template-columns: minmax(100px, max-content) }
+v  { grid-template-columns: minmax(auto, 1fr) }
+w  { grid-template-columns: minmax(0px, 1fr) }
+x  { grid-template-columns: minmax(100px, auto) }
+aa { grid-template-columns: minmax(min-content, max-content) }
+ab { grid-template-columns: 1fr minmax(100px, 200px) 1fr }
+
+
+/* ── 4. <track-list> — fit-content() ────────────────────────────────────── */
+
+ac { grid-template-columns: fit-content(200px) }
+ad { grid-template-columns: fit-content(30%) }
+ae { grid-template-columns: 1fr fit-content(200px) 1fr }
+
+
+/* ── 5. <track-list> — named grid lines ──────────────────────────────────── */
+
+af { grid-template-columns: [start] 100px [end] }
+ag { grid-template-columns: [a] 1fr [b] 1fr [c] }
+ah { grid-template-columns: [col-start] 100px [col-end col2-start] 200px [col2-end] }
+ai { grid-template-columns: [] 100px [] }   /* empty line-names are valid */
+aj { grid-template-columns: [a b] 100px [c d] 200px [e] }
+
+
+/* ── 6. <track-list> — <track-repeat>: fixed integer repeat() ────────────── */
+
+ak { grid-template-columns: repeat(3, 100px) }
+al { grid-template-columns: repeat(3, 1fr) }
+am { grid-template-columns: repeat(4, minmax(100px, 1fr)) }
+an { grid-template-columns: repeat(2, 100px 200px) }
+ao { grid-template-columns: 100px repeat(3, 1fr) 100px }
+ap { grid-template-columns: repeat(3, [col-start] 1fr [col-end]) }
+aq { grid-template-columns: repeat(2, [a] 100px [b] 200px [c]) }
+
+
+/* ── 7. <auto-track-list> — auto-fill / auto-fit repeat() ───────────────── */
+
+ar { grid-template-columns: repeat(auto-fill, 100px) }
+as { grid-template-columns: repeat(auto-fit,  100px) }
+at { grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)) }
+au { grid-template-columns: repeat(auto-fit,  minmax(200px, 1fr)) }
+av { grid-template-columns: 100px repeat(auto-fill, 100px) 100px }
+aw { grid-template-columns: repeat(auto-fill, minmax(100px, max-content)) }
+
+
+/* ── 8. subgrid — Level 2 addition ───────────────────────────────────────── */
+
+/* 8a. subgrid alone (no line-name-list) */
+ay { grid-template-columns: subgrid }
+
+/* 8b. subgrid with a simple line-name-list */
+az { grid-template-columns: subgrid [a] }
+ba { grid-template-columns: subgrid [a] [b] [c] }
+bb { grid-template-columns: subgrid [col-start] [col-mid] [col-end] }
+
+/* 8c. subgrid with multiple names on a single line */
+bc { grid-template-columns: subgrid [a b] [c d] [e f] }
+
+/* 8d. subgrid with empty brackets (unnamed line slots) */
+bd { grid-template-columns: subgrid [] [] [] }
+be { grid-template-columns: subgrid [] [named] [] }
+
+/* 8e. subgrid with <name-repeat>: fixed integer form */
+/*     <name-repeat> = repeat( <integer [1,∞]> | auto-fill, <line-names>+ ) */
+bf { grid-template-columns: subgrid repeat(3, [col]) }
+bg { grid-template-columns: subgrid repeat(4, [a] [b]) }
+bh { grid-template-columns: subgrid [start] repeat(3, [col]) [end] }
+
+/* 8f. subgrid with <name-repeat>: auto-fill form */
+bi { grid-template-columns: subgrid repeat(auto-fill, [col]) }
+bj { grid-template-columns: subgrid repeat(auto-fill, [a] [b]) }
+bk { grid-template-columns: subgrid [first] repeat(auto-fill, [col]) [last] }
+
+/* 8g. subgrid mixing plain line-names and name-repeat */
+bl { grid-template-columns: subgrid [start] repeat(2, [col]) [mid] repeat(2, [col]) [end] }
+
+
+/* ── 9. CSS-wide keywords ────────────────────────────────────────────────── */
+
+y  { grid-template-columns: inherit }
+z  { grid-template-columns: initial }

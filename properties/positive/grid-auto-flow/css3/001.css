@@ -1,0 +1,24 @@
+/* ── 1. Single keywords ───────────────────────────────────────────────────── */
+
+a { grid-auto-flow: row }
+b { grid-auto-flow: column }
+c { grid-auto-flow: dense }
+
+
+/* ── 2. row/column combined with dense ───────────────────────────────────── */
+
+d { grid-auto-flow: row dense }
+e { grid-auto-flow: column dense }
+
+
+/* ── 3. dense written first (|| allows either order) ─────────────────────── */
+
+f { grid-auto-flow: dense row }
+g { grid-auto-flow: dense column }
+
+
+/* ── 4. CSS-wide keywords ────────────────────────────────────────────────── */
+
+y { grid-auto-flow: inherit }
+z { grid-auto-flow: initial }
+

@@ -1,0 +1,23 @@
+/* ══ grid-area ═════════════════════════════════════════════════════════════ */
+/* grid-area = <grid-line> [ / <grid-line> ]{0,3} */
+
+/* Named area (single custom-ident resolves to all four sides) */
+bh { grid-area: header }
+bi { grid-area: main }
+bj { grid-area: footer }
+
+/* Two values (row-start / column-start) */
+bk { grid-area: 1 / 1 }
+bl { grid-area: auto / auto }
+bm { grid-area: row-start / col-start }
+
+/* Three values (row-start / column-start / row-end) */
+bn { grid-area: 1 / 1 / 3 }
+bo { grid-area: auto / 1 / auto }
+
+/* Four values (row-start / column-start / row-end / column-end) */
+bp { grid-area: 1 / 1 / 3 / 4 }
+bq { grid-area: 1 / col-start / span 2 / col-end }
+br { grid-area: auto / auto / auto / auto }
+bs { grid-area: 2 / 2 / -1 / -1 }
+bt { grid-area: row-start / col-start / row-end / col-end }
