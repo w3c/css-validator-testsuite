@@ -6,7 +6,6 @@ for the CSS Validator are located.
 
 Missing tests:
 
- * css-will-change-1
  * compositing-1
  * css-writing-modes-3
  * css-inline-3

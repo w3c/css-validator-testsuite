@@ -2388,6 +2388,13 @@ where warning means warninglevel in use (0 => normal, no => none).
       <result valid="true" />
     </test>
   </type>
+  <type title="Valid_will-change">
+    <test profile="css3" warning="no">
+      <file>testsuite/properties/positive/will-change/css3/001.css</file>
+      <description>Valid will-change level css3</description>
+      <result valid="true" />
+    </test>
+  </type>
   <type title="Valid_word-break">
     <test profile="css3" warning="no">
       <file>testsuite/properties/positive/word-break/css3/001.css</file>
