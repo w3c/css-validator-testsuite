@@ -8,7 +8,6 @@ Missing tests:
 
  * css-will-change-1
  * compositing-1
- * css-grid-1
  * css-writing-modes-3
  * css-inline-3
  * css-sizing-3
