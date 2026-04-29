@@ -2089,6 +2089,20 @@ where warning means warninglevel in use (0 => normal, no => none).
       <result valid="true" />
     </test>
   </type>
+  <type title="Valid_scrollbar-color">
+    <test profile="css3" warning="no">
+      <file>testsuite/properties/positive/scrollbar-color/css3/001.css</file>
+      <description>Valid scrollbar-color level css3</description>
+      <result valid="true" />
+    </test>
+  </type>
+  <type title="Valid_scrollbar-width">
+    <test profile="css3" warning="no">
+      <file>testsuite/properties/positive/scrollbar-width/css3/001.css</file>
+      <description>Valid scrollbar-width level css3</description>
+      <result valid="true" />
+    </test>
+  </type>
   <type title="Valid_speak">
     <test profile="css3" warning="no">
       <file>testsuite/properties/positive/speak/css3/001.css</file>
