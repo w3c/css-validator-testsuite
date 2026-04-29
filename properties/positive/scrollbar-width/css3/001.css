@@ -1,0 +1,27 @@
+/*
+ * CSS Validator Test Suite — scrollbar-width (positive tests)
+ *
+ *   https://www.w3.org/TR/2021/CR-css-scrollbars-1-20211209/#propdef-scrollbar-width
+ *
+ */
+
+
+/* ── 1. auto ─────────────────────────────────────────────────────────────── */
+
+a { scrollbar-width: auto }
+
+
+/* ── 2. thin ─────────────────────────────────────────────────────────────── */
+
+b { scrollbar-width: thin }
+
+
+/* ── 3. none ─────────────────────────────────────────────────────────────── */
+
+c { scrollbar-width: none }
+
+
+/* ── 4. CSS-wide keywords ────────────────────────────────────────────────── */
+
+y { scrollbar-width: inherit }
+z { scrollbar-width: initial }

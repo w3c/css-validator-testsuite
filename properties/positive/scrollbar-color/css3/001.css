@@ -1,0 +1,105 @@
+/*
+ * CSS Validator Test Suite — scrollbar-color (positive tests)
+ *
+ *   https://www.w3.org/TR/2021/CR-css-scrollbars-1-20211209/#propdef-scrollbar-color
+ *
+ */
+ 
+ 
+/* ── 1. auto ─────────────────────────────────────────────────────────────── */
+ 
+a { scrollbar-color: auto }
+ 
+ 
+/* ── 2. <color>{2} — named color keywords ────────────────────────────────── */
+ 
+b  { scrollbar-color: black white }
+c  { scrollbar-color: white black }
+d  { scrollbar-color: red blue }
+e  { scrollbar-color: darkblue lightblue }
+f  { scrollbar-color: rebeccapurple lavender }
+g  { scrollbar-color: coral teal }
+ 
+ 
+/* ── 3. <color>{2} — transparent ─────────────────────────────────────────── */
+/* transparent is a valid <color> (rgba(0,0,0,0)), usable in either slot.   */
+ 
+h  { scrollbar-color: black transparent }
+i  { scrollbar-color: transparent black }
+j  { scrollbar-color: transparent transparent }
+ 
+ 
+/* ── 4. <color>{2} — currentColor ───────────────────────────────────────── */
+ 
+k  { scrollbar-color: currentColor white }
+l  { scrollbar-color: black currentColor }
+m  { scrollbar-color: currentColor currentColor }
+ 
+ 
+/* ── 5. <color>{2} — hex colors ──────────────────────────────────────────── */
+ 
+n  { scrollbar-color: #000000 #ffffff }
+o  { scrollbar-color: #ff0000 #0000ff }
+p  { scrollbar-color: #000 #fff }
+q  { scrollbar-color: #f00 #00f }
+ 
+/* with alpha channel */
+r  { scrollbar-color: #000000ff #ffffffff }
+s  { scrollbar-color: #0000007f #ffffff7f }
+t  { scrollbar-color: #0007 #ffff }
+ 
+ 
+/* ── 6. <color>{2} — rgb() / rgba() ──────────────────────────────────────── */
+ 
+u  { scrollbar-color: rgb(0 0 0) rgb(255 255 255) }
+v  { scrollbar-color: rgb(255 0 0) rgb(0 0 255) }
+w  { scrollbar-color: rgb(0 0 0 / 50%) rgb(255 255 255 / 80%) }
+x  { scrollbar-color: rgb(100 100 100) rgb(200 200 200) }
+ 
+ 
+/* ── 7. <color>{2} — hsl() / hsla() ──────────────────────────────────────── */
+ 
+aa { scrollbar-color: hsl(0 100% 50%) hsl(240 100% 50%) }
+ab { scrollbar-color: hsl(0 0% 0%) hsl(0 0% 100%) }
+ac { scrollbar-color: hsl(270 60% 50% / 0.8) hsl(120 40% 80% / 0.5) }
+ 
+ 
+/* ── 8. <color>{2} — oklch() ─────────────────────────────────────────────── */
+ 
+ad { scrollbar-color: oklch(0.5 0.2 30) oklch(0.9 0.05 200) }
+ae { scrollbar-color: oklch(0 0 0) oklch(1 0 0) }
+af { scrollbar-color: oklch(0.4 0.15 270 / 0.9) oklch(0.85 0.02 100) }
+ 
+ 
+/* ── 9. <color>{2} — color() function ────────────────────────────────────── */
+
+/* uncomment when implemented 
+ag { scrollbar-color: color(srgb 0 0 0) color(srgb 1 1 1) }
+ah { scrollbar-color: color(display-p3 1 0 0) color(display-p3 0 0 1) }
+ai { scrollbar-color: color(srgb 0.2 0.2 0.8) color(srgb 0.9 0.9 0.9) }
+*/
+ 
+ 
+/* ── 10. <color>{2} — CSS system color keywords ──────────────────────────── */
+/* System colors are valid <color> values per CSS Color Level 4.            */
+/* They reflect the user's OS/platform color scheme.                        */
+ 
+aj { scrollbar-color: ButtonText ButtonFace }
+ak { scrollbar-color: HighlightText Highlight }
+al { scrollbar-color: GrayText Canvas }
+am { scrollbar-color: AccentColor AccentColorText }
+ 
+ 
+/* ── 11. Mixed color syntax ──────────────────────────────────────────────── */
+ 
+an { scrollbar-color: #ff0000 rgb(0 0 255) }
+ao { scrollbar-color: oklch(0.5 0.2 30) transparent }
+ap { scrollbar-color: currentColor rgb(200 200 200) }
+aq { scrollbar-color: hsl(0 100% 50%) #0000ff }
+ 
+ 
+/* ── 12. CSS-wide keywords ────────────────────────────────────────────────── */
+ 
+y  { scrollbar-color: inherit }
+z  { scrollbar-color: initial }
+ 
