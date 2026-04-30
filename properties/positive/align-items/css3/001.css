@@ -1,7 +1,60 @@
-a { align-items: flex-start }
-b { align-items: flex-end }
-c { align-items: center }
-d { align-items: baseline }
-e { align-items: stretch }
-y { align-items: initial }
-z { align-items: inherit }
+/*
+ * Reference specification:
+ *   https://www.w3.org/TR/2026/WD-css-align-3-20260130/#propdef-align-items
+ */
+
+
+/* ── 1. normal ────────────────────────────────────────────────────────────── */
+
+a { align-items: normal }
+
+
+/* ── 2. stretch ──────────────────────────────────────────────────────────── */
+
+b { align-items: stretch }
+
+
+/* ── 3. <baseline-position> ──────────────────────────────────────────────── */
+
+c { align-items: baseline }
+d { align-items: first baseline }
+e { align-items: last baseline }
+
+
+/* ── 4. <self-position> (no overflow keyword) ─────────────────────────────── */
+
+f { align-items: center }
+g { align-items: start }
+h { align-items: end }
+i { align-items: self-start }
+j { align-items: self-end }
+k { align-items: flex-start }
+l { align-items: flex-end }
+
+
+/* ── 5. safe <self-position> ─────────────────────────────────────────────── */
+
+m { align-items: safe center }
+n { align-items: safe start }
+o { align-items: safe end }
+p { align-items: safe self-start }
+q { align-items: safe self-end }
+r { align-items: safe flex-start }
+s { align-items: safe flex-end }
+
+
+/* ── 6. unsafe <self-position> ───────────────────────────────────────────── */
+
+t  { align-items: unsafe center }
+u  { align-items: unsafe start }
+v  { align-items: unsafe end }
+w  { align-items: unsafe self-start }
+x  { align-items: unsafe self-end }
+aa { align-items: unsafe flex-start }
+ab { align-items: unsafe flex-end }
+
+
+/* ── 7. CSS-wide keywords ────────────────────────────────────────────────── */
+
+y  { align-items: inherit }
+z  { align-items: initial }

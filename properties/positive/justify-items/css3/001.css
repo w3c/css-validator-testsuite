@@ -1,0 +1,87 @@
+/*
+ * Reference specification:
+ *   https://www.w3.org/TR/2026/WD-css-align-3-20260130/#propdef-justify-items
+ */
+
+
+/* ── 1. normal ────────────────────────────────────────────────────────────── */
+
+a { justify-items: normal }
+
+
+/* ── 2. stretch ──────────────────────────────────────────────────────────── */
+
+b { justify-items: stretch }
+
+
+/* ── 3. <baseline-position> ──────────────────────────────────────────────── */
+
+c { justify-items: baseline }
+d { justify-items: first baseline }
+e { justify-items: last baseline }
+
+
+/* ── 4. <self-position> (no overflow keyword) ─────────────────────────────── */
+
+f  { justify-items: center }
+g  { justify-items: start }
+h  { justify-items: end }
+i  { justify-items: self-start }
+j  { justify-items: self-end }
+k  { justify-items: flex-start }
+l  { justify-items: flex-end }
+
+
+/* ── 5. left and right (no overflow keyword) ─────────────────────────────── */
+
+m  { justify-items: left }
+n  { justify-items: right }
+
+
+/* ── 6. safe / unsafe with <self-position>, left, right ──────────────────── */
+
+o  { justify-items: safe center }
+p  { justify-items: safe start }
+q  { justify-items: safe end }
+r  { justify-items: safe self-start }
+s  { justify-items: safe self-end }
+t  { justify-items: safe flex-start }
+u  { justify-items: safe flex-end }
+v  { justify-items: safe left }
+w  { justify-items: safe right }
+
+x  { justify-items: unsafe center }
+aa { justify-items: unsafe start }
+ab { justify-items: unsafe end }
+ac { justify-items: unsafe self-start }
+ad { justify-items: unsafe self-end }
+ae { justify-items: unsafe flex-start }
+af { justify-items: unsafe flex-end }
+ag { justify-items: unsafe left }
+ah { justify-items: unsafe right }
+
+
+/* ── 7. legacy alone ─────────────────────────────────────────────────────── */
+
+ai { justify-items: legacy }
+
+
+/* ── 8. legacy && [ left | right | center ] — legacy first ──────────────── */
+
+aj { justify-items: legacy left }
+ak { justify-items: legacy right }
+al { justify-items: legacy center }
+
+
+/* ── 9. legacy && [ left | right | center ] — positional keyword first ────── */
+/* The && combinator permits either order.                                   */
+
+am { justify-items: left legacy }
+an { justify-items: right legacy }
+ao { justify-items: center legacy }
+
+
+/* ── 10. CSS-wide keywords ───────────────────────────────────────────────── */
+
+y  { justify-items: inherit }
+z  { justify-items: initial }

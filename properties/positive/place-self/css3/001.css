@@ -1,0 +1,72 @@
+/*
+ * Reference specification:
+ *   https://www.w3.org/TR/2026/WD-css-align-3-20260130/#place-self-property
+ */
+
+
+/* ── 1. Single value — copies to both longhands ───────────────────────────── */
+
+a  { place-self: auto }
+b  { place-self: normal }
+c  { place-self: stretch }
+d  { place-self: baseline }
+e  { place-self: first baseline }
+f  { place-self: last baseline }
+g  { place-self: center }
+h  { place-self: start }
+i  { place-self: end }
+j  { place-self: self-start }
+k  { place-self: self-end }
+l  { place-self: flex-start }
+m  { place-self: flex-end }
+
+
+/* ── 2. Single value — with overflow keyword ──────────────────────────────── */
+
+n  { place-self: safe center }
+o  { place-self: unsafe end }
+
+
+/* ── 3. Two values — <self-position> pairs ────────────────────────────────── */
+
+p  { place-self: center start }
+q  { place-self: center end }
+r  { place-self: start center }
+s  { place-self: end center }
+t  { place-self: flex-start flex-end }
+u  { place-self: self-start self-end }
+v  { place-self: self-end flex-start }
+
+
+/* ── 4. Two values — left/right in second slot (justify-self only) ─────────── */
+
+w  { place-self: center left }
+x  { place-self: center right }
+aa { place-self: start left }
+ab { place-self: end right }
+ac { place-self: stretch left }
+ad { place-self: baseline right }
+
+
+/* ── 5. Two values — auto, stretch, baseline in both slots ───────────────── */
+
+ae { place-self: auto auto }
+af { place-self: auto center }
+ag { place-self: stretch stretch }
+ah { place-self: stretch start }
+ai { place-self: baseline baseline }
+aj { place-self: first baseline last baseline }
+
+
+/* ── 6. Two values — overflow keyword in one or both slots ───────────────── */
+
+ak { place-self: safe center unsafe start }
+al { place-self: center safe end }
+am { place-self: safe start safe left }
+an { place-self: unsafe end unsafe right }
+
+
+/* ── 7. CSS-wide keywords ────────────────────────────────────────────────── */
+
+y  { place-self: inherit }
+z  { place-self: initial }

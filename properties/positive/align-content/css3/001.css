@@ -1,8 +1,57 @@
-a { align-content: flex-start }
-b { align-content: flex-end }
-c { align-content: center }
-d { align-content: space-between }
-e { align-content: space-around }
-f { align-content: stretch }
-y { align-content: initial }
-z { align-content: inherit }
+/*
+ * Reference specification:
+ *   https://www.w3.org/TR/2026/WD-css-align-3-20260130/#propdef-align-content
+ */
+
+
+/* ── 1. normal ────────────────────────────────────────────────────────────── */
+
+a { align-content: normal }
+
+
+/* ── 2. <baseline-position> ──────────────────────────────────────────────── */
+
+b { align-content: baseline }
+c { align-content: first baseline }
+d { align-content: last baseline }
+
+
+/* ── 3. <content-distribution> ───────────────────────────────────────────── */
+
+e { align-content: space-between }
+f { align-content: space-around }
+g { align-content: space-evenly }
+h { align-content: stretch }
+
+
+/* ── 4. <content-position> (no overflow keyword) ─────────────────────────── */
+
+i { align-content: center }
+j { align-content: start }
+k { align-content: end }
+l { align-content: flex-start }
+m { align-content: flex-end }
+
+
+/* ── 5. safe <content-position> ──────────────────────────────────────────── */
+
+n { align-content: safe center }
+o { align-content: safe start }
+p { align-content: safe end }
+q { align-content: safe flex-start }
+r { align-content: safe flex-end }
+
+
+/* ── 6. unsafe <content-position> ────────────────────────────────────────── */
+
+s { align-content: unsafe center }
+t { align-content: unsafe start }
+u { align-content: unsafe end }
+v { align-content: unsafe flex-start }
+w { align-content: unsafe flex-end }
+
+
+/* ── 7. CSS-wide keywords ────────────────────────────────────────────────── */
+
+y { align-content: inherit }
+z { align-content: initial }

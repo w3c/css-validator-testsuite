@@ -1,0 +1,73 @@
+/*
+ * CSS Validator Test Suite — gap (positive tests)
+ *
+ * Source grammar (CSS Box Alignment Module Level 3, WD 30 January 2026):
+ *
+ *   gap = <'row-gap'> <'column-gap'>?
+ *
+ * Reference specification:
+ *   https://www.w3.org/TR/2026/WD-css-align-3-20260130/#propdef-gap
+ *
+ * Shorthand notes:
+ *   - First value → row-gap.
+ *   - Second value → column-gap; if omitted, it is copied from the first value.
+ *   - Both slots accept: normal | <length-percentage [0,∞]>.
+ *   - The legacy alias is grid-gap (see gap-legacy.css).
+ */
+
+
+/* ── 1. Single value (row-gap and column-gap both set to same value) ──────── */
+
+a  { gap: normal }
+b  { gap: 0px }
+c  { gap: 10px }
+d  { gap: 1em }
+e  { gap: 1rem }
+f  { gap: 5% }
+g  { gap: 20px }
+h  { gap: 1ch }
+i  { gap: 10vw }
+
+
+/* ── 2. Two values — normal / normal ─────────────────────────────────────── */
+
+j  { gap: normal normal }
+
+
+/* ── 3. Two values — <length> / <length> ────────────────────────────────── */
+
+k  { gap: 10px 20px }
+l  { gap: 0px 0px }
+m  { gap: 1em 2em }
+n  { gap: 1rem 0.5rem }
+o  { gap: 5px 10px }
+p  { gap: 20px 10px }
+
+
+/* ── 4. Two values — <percentage> / <percentage> ─────────────────────────── */
+
+q  { gap: 5% 10% }
+r  { gap: 0% 0% }
+s  { gap: 50% 25% }
+
+
+/* ── 5. Two values — mixed <length> and <percentage> ─────────────────────── */
+
+t  { gap: 10px 5% }
+u  { gap: 5% 10px }
+v  { gap: 1em 50% }
+w  { gap: 50% 2rem }
+
+
+/* ── 6. Two values — normal with <length> or <percentage> ───────────────── */
+
+x  { gap: normal 10px }
+aa { gap: 10px normal }
+ab { gap: normal 5% }
+ac { gap: 5% normal }
+
+
+/* ── 7. CSS-wide keywords ────────────────────────────────────────────────── */
+
+y  { gap: inherit }
+z  { gap: initial }

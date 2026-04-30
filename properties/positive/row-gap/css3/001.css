@@ -1,43 +1,43 @@
 /*
  * Reference specification:
- *   https://www.w3.org/TR/2026/WD-css-align-3-20260130/#propdef-column-gap
+ *   https://www.w3.org/TR/2026/WD-css-align-3-20260130/#propdef-row-gap
  */
 
 
 /* ── 1. normal ────────────────────────────────────────────────────────────── */
 
-a { column-gap: normal }
+a { row-gap: normal }
 
 
 /* ── 2. <length> values ──────────────────────────────────────────────────── */
 
-b  { column-gap: 0px }
-c  { column-gap: 1px }
-d  { column-gap: 10px }
-e  { column-gap: 20px }
-f  { column-gap: 1em }
-g  { column-gap: 2em }
-h  { column-gap: 1rem }
-i  { column-gap: 0.5rem }
-j  { column-gap: 1ch }
-k  { column-gap: 1ex }
-l  { column-gap: 10vw }
-m  { column-gap: 5vh }
-n  { column-gap: 1cm }
-o  { column-gap: 5mm }
-p  { column-gap: 12pt }
+b  { row-gap: 0px }
+c  { row-gap: 1px }
+d  { row-gap: 10px }
+e  { row-gap: 20px }
+f  { row-gap: 1em }
+g  { row-gap: 2em }
+h  { row-gap: 1rem }
+i  { row-gap: 0.5rem }
+j  { row-gap: 1ch }
+k  { row-gap: 1ex }
+l  { row-gap: 10vw }
+m  { row-gap: 5vh }
+n  { row-gap: 1cm }
+o  { row-gap: 5mm }
+p  { row-gap: 12pt }
 
 
 /* ── 3. <percentage> values ──────────────────────────────────────────────── */
 
-q  { column-gap: 0% }
-r  { column-gap: 5% }
-s  { column-gap: 10% }
-t  { column-gap: 50% }
-u  { column-gap: 100% }
+q  { row-gap: 0% }
+r  { row-gap: 5% }
+s  { row-gap: 10% }
+t  { row-gap: 50% }
+u  { row-gap: 100% }
 
 
 /* ── 4. CSS-wide keywords ────────────────────────────────────────────────── */
 
-y  { column-gap: inherit }
-z  { column-gap: initial }
+y  { row-gap: inherit }
+z  { row-gap: initial }

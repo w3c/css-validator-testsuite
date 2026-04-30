@@ -1,8 +1,71 @@
-a { align-self: flex-start }
-b { align-self: flex-end }
-c { align-self: center }
+/*
+ * Reference specification:
+ *   https://www.w3.org/TR/2026/WD-css-align-3-20260130/#propdef-align-self
+ */
+
+
+/* ── 1. auto ─────────────────────────────────────────────────────────────── */
+
+a { align-self: auto }
+
+
+/* ── 2. stretch ──────────────────────────────────────────────────────────── */
+
+b { align-self: stretch }
+
+
+/* ── 3. normal (no overflow keyword) ────────────────────────────────────── */
+
+c { align-self: normal }
+
+
+/* ── 4. <baseline-position> ──────────────────────────────────────────────── */
+
 d { align-self: baseline }
-e { align-self: stretch }
-f { align-self: auto }
-y { align-self: initial }
-z { align-self: inherit }
+e { align-self: first baseline }
+f { align-self: last baseline }
+
+
+/* ── 5. <self-position> (no overflow keyword) ─────────────────────────────── */
+
+g { align-self: center }
+h { align-self: start }
+i { align-self: end }
+j { align-self: self-start }
+k { align-self: self-end }
+l { align-self: flex-start }
+m { align-self: flex-end }
+
+
+/* ── 6. safe <self-position> ─────────────────────────────────────────────── */
+
+n { align-self: safe center }
+o { align-self: safe start }
+p { align-self: safe end }
+q { align-self: safe self-start }
+r { align-self: safe self-end }
+s { align-self: safe flex-start }
+t { align-self: safe flex-end }
+
+
+/* ── 7. unsafe <self-position> ───────────────────────────────────────────── */
+
+u  { align-self: unsafe center }
+v  { align-self: unsafe start }
+w  { align-self: unsafe end }
+x  { align-self: unsafe self-start }
+aa { align-self: unsafe self-end }
+ab { align-self: unsafe flex-start }
+ac { align-self: unsafe flex-end }
+
+
+/* ── 8. safe/unsafe with normal ──────────────────────────────────────────── */
+
+ad { align-self: safe normal }
+ae { align-self: unsafe normal }
+
+
+/* ── 9. CSS-wide keywords ────────────────────────────────────────────────── */
+
+y  { align-self: inherit }
+z  { align-self: initial }

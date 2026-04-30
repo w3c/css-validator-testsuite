@@ -1,0 +1,92 @@
+/*
+ * Reference specification:
+ *   https://www.w3.org/TR/2026/WD-css-align-3-20260130/#place-content
+ */
+
+
+/* ── 1. Single value — copies to both longhands ───────────────────────────── */
+/* Must be valid for both align-content and justify-content.                 */
+/* Excludes baseline values and left/right (invalid for justify-content).    */
+
+a { place-content: normal }
+b { place-content: center }
+c { place-content: start }
+d { place-content: end }
+e { place-content: flex-start }
+f { place-content: flex-end }
+g { place-content: space-between }
+h { place-content: space-around }
+i { place-content: space-evenly }
+j { place-content: stretch }
+
+
+/* ── 2. Single value — <baseline-position> (justify-content → start) ──────── */
+
+k { place-content: baseline }
+l { place-content: first baseline }
+m { place-content: last baseline }
+
+
+/* ── 3. Two values — <content-position> pairs ────────────────────────────── */
+
+n  { place-content: center start }
+o  { place-content: center end }
+p  { place-content: start center }
+q  { place-content: end center }
+r  { place-content: flex-start flex-end }
+s  { place-content: flex-end flex-start }
+t  { place-content: start flex-start }
+u  { place-content: end flex-end }
+
+
+/* ── 4. Two values — left/right in second slot (justify-content only) ──────── */
+
+v  { place-content: center left }
+w  { place-content: center right }
+x  { place-content: start left }
+aa { place-content: end right }
+
+
+/* ── 5. Two values — baseline first, positional second ───────────────────── */
+
+ab { place-content: baseline center }
+ac { place-content: first baseline start }
+ad { place-content: last baseline end }
+ae { place-content: baseline left }
+af { place-content: last baseline right }
+
+
+/* ── 6. Two values — <content-distribution> pairs ────────────────────────── */
+
+ag { place-content: space-between space-evenly }
+ah { place-content: space-around stretch }
+ai { place-content: stretch space-between }
+aj { place-content: space-evenly space-around }
+
+
+/* ── 7. Two values — mixed distribution / positional ─────────────────────── */
+
+ak { place-content: space-between center }
+al { place-content: center space-evenly }
+am { place-content: stretch start }
+an { place-content: space-evenly left }
+
+
+/* ── 8. Two values — with overflow keywords in second slot ───────────────── */
+
+ao { place-content: center safe center }
+ap { place-content: start unsafe end }
+aq { place-content: end safe left }
+ar { place-content: stretch unsafe right }
+
+
+/* ── 9. Two values — overflow keyword in both slots ──────────────────────── */
+
+as { place-content: safe center safe start }
+at { place-content: unsafe end unsafe left }
+
+
+/* ── 10. CSS-wide keywords ───────────────────────────────────────────────── */
+
+y  { place-content: inherit }
+z  { place-content: initial }

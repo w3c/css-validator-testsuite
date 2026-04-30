@@ -1,0 +1,85 @@
+/*
+ * Reference specification:
+ *   https://www.w3.org/TR/2026/WD-css-align-3-20260130/#propdef-justify-self
+ */
+
+
+/* ── 1. auto ─────────────────────────────────────────────────────────────── */
+
+a { justify-self: auto }
+
+
+/* ── 2. stretch ──────────────────────────────────────────────────────────── */
+
+b { justify-self: stretch }
+
+
+/* ── 3. normal (no overflow keyword) ────────────────────────────────────── */
+
+c { justify-self: normal }
+
+
+/* ── 4. <baseline-position> ──────────────────────────────────────────────── */
+
+d { justify-self: baseline }
+e { justify-self: first baseline }
+f { justify-self: last baseline }
+
+
+/* ── 5. <self-position> (no overflow keyword) ─────────────────────────────── */
+
+g { justify-self: center }
+h { justify-self: start }
+i { justify-self: end }
+j { justify-self: self-start }
+k { justify-self: self-end }
+l { justify-self: flex-start }
+m { justify-self: flex-end }
+
+
+/* ── 6. left and right (no overflow keyword) ─────────────────────────────── */
+
+n { justify-self: left }
+o { justify-self: right }
+
+
+/* ── 7. safe <self-position> ─────────────────────────────────────────────── */
+
+p  { justify-self: safe center }
+q  { justify-self: safe start }
+r  { justify-self: safe end }
+s  { justify-self: safe self-start }
+t  { justify-self: safe self-end }
+u  { justify-self: safe flex-start }
+v  { justify-self: safe flex-end }
+
+
+/* ── 8. unsafe <self-position> ───────────────────────────────────────────── */
+
+w  { justify-self: unsafe center }
+x  { justify-self: unsafe start }
+aa { justify-self: unsafe end }
+ab { justify-self: unsafe self-start }
+ac { justify-self: unsafe self-end }
+ad { justify-self: unsafe flex-start }
+ae { justify-self: unsafe flex-end }
+
+
+/* ── 9. safe/unsafe with normal ──────────────────────────────────────────── */
+
+af { justify-self: safe normal }
+ag { justify-self: unsafe normal }
+
+
+/* ── 10. safe/unsafe with left and right ─────────────────────────────────── */
+
+ah { justify-self: safe left }
+ai { justify-self: safe right }
+aj { justify-self: unsafe left }
+ak { justify-self: unsafe right }
+
+
+/* ── 11. CSS-wide keywords ───────────────────────────────────────────────── */
+
+y  { justify-self: inherit }
+z  { justify-self: initial }

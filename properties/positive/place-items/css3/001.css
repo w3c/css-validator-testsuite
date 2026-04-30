@@ -1,0 +1,79 @@
+/*
+ * Reference specification:
+ *   https://www.w3.org/TR/2026/WD-css-align-3-20260130/#place-items-property
+ */
+
+
+/* ── 1. Single value — copies to both longhands ───────────────────────────── */
+/* Must be valid for both align-items and justify-items.                     */
+/* Excludes: auto (no auto in align-items), left/right, legacy.              */
+
+a  { place-items: normal }
+b  { place-items: stretch }
+c  { place-items: baseline }
+d  { place-items: first baseline }
+e  { place-items: last baseline }
+f  { place-items: center }
+g  { place-items: start }
+h  { place-items: end }
+i  { place-items: self-start }
+j  { place-items: self-end }
+k  { place-items: flex-start }
+l  { place-items: flex-end }
+
+
+/* ── 2. Single value — with overflow keyword ──────────────────────────────── */
+
+m  { place-items: safe center }
+n  { place-items: unsafe end }
+
+
+/* ── 3. Two values — <self-position> pairs ────────────────────────────────── */
+
+o  { place-items: center start }
+p  { place-items: center end }
+q  { place-items: start center }
+r  { place-items: end center }
+s  { place-items: flex-start flex-end }
+t  { place-items: self-start self-end }
+u  { place-items: normal stretch }
+v  { place-items: stretch normal }
+
+
+/* ── 4. Two values — <baseline-position> pairs ────────────────────────────── */
+
+w  { place-items: baseline first baseline }
+x  { place-items: first baseline last baseline }
+aa { place-items: last baseline baseline }
+
+
+/* ── 5. Two values — left/right in second slot (justify-items only) ─────────── */
+
+ab { place-items: center left }
+ac { place-items: center right }
+ad { place-items: start left }
+ae { place-items: end right }
+af { place-items: stretch left }
+ag { place-items: baseline right }
+
+
+/* ── 6. Two values — overflow keyword in one or both slots ───────────────── */
+
+ah { place-items: safe center safe start }
+ai { place-items: unsafe end safe left }
+aj { place-items: center safe end }
+ak { place-items: safe start unsafe right }
+
+
+/* ── 7. Two values — legacy in second slot (justify-items only) ───────────── */
+
+al { place-items: normal legacy }
+am { place-items: center legacy left }
+an { place-items: start legacy right }
+ao { place-items: stretch legacy center }
+
+
+/* ── 8. CSS-wide keywords ────────────────────────────────────────────────── */
+
+y  { place-items: inherit }
+z  { place-items: initial }

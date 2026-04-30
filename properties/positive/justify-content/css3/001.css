@@ -1,7 +1,64 @@
-a { justify-content: flex-start }
-b { justify-content: flex-end }
-c { justify-content: center }
-d { justify-content: space-between }
-e { justify-content: space-around }
-y { justify-content: initial }
-z { justify-content: inherit }
+/*
+ * Reference specification:
+ *   https://www.w3.org/TR/2026/WD-css-align-3-20260130/#propdef-justify-content
+ */
+
+
+/* ── 1. normal ────────────────────────────────────────────────────────────── */
+
+a { justify-content: normal }
+
+
+/* ── 2. <content-distribution> ───────────────────────────────────────────── */
+
+b { justify-content: space-between }
+c { justify-content: space-around }
+d { justify-content: space-evenly }
+e { justify-content: stretch }
+
+
+/* ── 3. <content-position> (no overflow keyword) ─────────────────────────── */
+
+f { justify-content: center }
+g { justify-content: start }
+h { justify-content: end }
+i { justify-content: flex-start }
+j { justify-content: flex-end }
+
+
+/* ── 4. left and right (no overflow keyword) ─────────────────────────────── */
+
+k { justify-content: left }
+l { justify-content: right }
+
+
+/* ── 5. safe <content-position> ──────────────────────────────────────────── */
+
+m { justify-content: safe center }
+n { justify-content: safe start }
+o { justify-content: safe end }
+p { justify-content: safe flex-start }
+q { justify-content: safe flex-end }
+
+
+/* ── 6. unsafe <content-position> ────────────────────────────────────────── */
+
+r  { justify-content: unsafe center }
+s  { justify-content: unsafe start }
+t  { justify-content: unsafe end }
+u  { justify-content: unsafe flex-start }
+v  { justify-content: unsafe flex-end }
+
+
+/* ── 7. safe/unsafe with left and right ──────────────────────────────────── */
+
+w  { justify-content: safe left }
+x  { justify-content: safe right }
+aa { justify-content: unsafe left }
+ab { justify-content: unsafe right }
+
+
+/* ── 8. CSS-wide keywords ────────────────────────────────────────────────── */
+
+y  { justify-content: inherit }
+z  { justify-content: initial }
