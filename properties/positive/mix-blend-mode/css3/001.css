@@ -1,0 +1,57 @@
+/*
+ * Reference specification:
+ *   https://www.w3.org/TR/2024/CRD-compositing-1-20240321/#propdef-mix-blend-mode
+ */
+
+
+/* ── 1. normal ────────────────────────────────────────────────────────────── */
+/* The initial value. Source is composited over backdrop with no blending.   */
+
+a { mix-blend-mode: normal }
+
+
+/* ── 2. Separable blend modes — multiply / screen / overlay ──────────────── */
+/* These compute the final colour channel-by-channel independently.          */
+
+b { mix-blend-mode: multiply }
+c { mix-blend-mode: screen }
+d { mix-blend-mode: overlay }
+
+
+/* ── 3. Separable blend modes — darken / lighten ─────────────────────────── */
+
+e { mix-blend-mode: darken }
+f { mix-blend-mode: lighten }
+
+
+/* ── 4. Separable blend modes — color-dodge / color-burn ─────────────────── */
+
+g { mix-blend-mode: color-dodge }
+h { mix-blend-mode: color-burn }
+
+
+/* ── 5. Separable blend modes — hard-light / soft-light ──────────────────── */
+
+i { mix-blend-mode: hard-light }
+j { mix-blend-mode: soft-light }
+
+
+/* ── 6. Separable blend modes — difference / exclusion ───────────────────── */
+
+k { mix-blend-mode: difference }
+l { mix-blend-mode: exclusion }
+
+
+/* ── 7. Non-separable blend modes ────────────────────────────────────────── */
+/* These operate on the colour as a whole, using HSL-style calculations.    */
+
+m { mix-blend-mode: hue }
+n { mix-blend-mode: saturation }
+o { mix-blend-mode: color }
+p { mix-blend-mode: luminosity }
+
+
+/* ── 8. CSS-wide keywords ────────────────────────────────────────────────── */
+
+y { mix-blend-mode: inherit }
+z { mix-blend-mode: initial }

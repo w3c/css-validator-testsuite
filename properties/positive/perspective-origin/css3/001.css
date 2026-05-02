@@ -1,68 +1,65 @@
-y { perspective-origin: initial }
-z { perspective-origin: inherit }
-peror1   { perspective-origin: 10% }
-peror2   { perspective-origin: 10px }
-peror3   { perspective-origin: 0 }
-peror4   { perspective-origin: 0% }
-peror5   { perspective-origin: -100em }
-peror6   { perspective-origin: -10% }
-peror7   { perspective-origin: left }
-peror8   { perspective-origin: right }
-peror9   { perspective-origin: center }
-peror10  { perspective-origin: top }
-peror11  { perspective-origin: bottom }
-peror189 { perspective-origin:  -10%  -10%  }
-peror190 { perspective-origin:  -10%  0  }
-peror191 { perspective-origin:  -10%  10px  }
-peror192 { perspective-origin:  -10%  bottom  }
-peror193 { perspective-origin:  -10%  center  }
-peror194 { perspective-origin:  -10%  left  }
-peror195 { perspective-origin:  -10%  right  }
-peror196 { perspective-origin:  -10%  top  }
-peror197 { perspective-origin:  0  -10%  }
-peror198 { perspective-origin:  0  0  }
-peror199 { perspective-origin:  0  10px  }
-peror200 { perspective-origin:  0  bottom  }
-peror201 { perspective-origin:  0  center  }
-peror202 { perspective-origin:  0  left  }
-peror203 { perspective-origin:  0  right  }
-peror204 { perspective-origin:  0  top  }
-peror205 { perspective-origin:  10px  -10%  }
-peror206 { perspective-origin:  10px  0  }
-peror207 { perspective-origin:  10px  10px  }
-peror208 { perspective-origin:  10px  bottom  }
-peror209 { perspective-origin:  10px  center  }
-peror210 { perspective-origin:  10px  left  }
-peror211 { perspective-origin:  10px  right  }
-peror212 { perspective-origin:  10px  top  }
-peror213 { perspective-origin:  bottom  -10%  }
-peror214 { perspective-origin:  bottom  0  }
-peror215 { perspective-origin:  bottom  10px  }
-peror216 { perspective-origin:  bottom  center  }
-peror217 { perspective-origin:  bottom  left  }
-peror218 { perspective-origin:  bottom  right  }
-peror220 { perspective-origin:  center  -10%  }
-peror221 { perspective-origin:  center  0  }
-peror222 { perspective-origin:  center  10px  }
-peror223 { perspective-origin:  center  bottom  }
-peror224 { perspective-origin:  center  left  }
-peror225 { perspective-origin:  center  right  }
-peror226 { perspective-origin:  center  top  }
-peror227 { perspective-origin:  left  -10%  }
-peror228 { perspective-origin:  left  0  }
-peror229 { perspective-origin:  left  10px  }
-peror230 { perspective-origin:  left  bottom  }
-peror231 { perspective-origin:  left  center  }
-peror233 { perspective-origin:  left  top  }
-peror234 { perspective-origin:  right  -10%  }
-peror235 { perspective-origin:  right  0  }
-peror236 { perspective-origin:  right  10px  }
-peror237 { perspective-origin:  right  bottom  }
-peror238 { perspective-origin:  right  center  }
-peror240 { perspective-origin:  right  top  }
-peror241 { perspective-origin:  top  -10%  }
-peror242 { perspective-origin:  top  0  }
-peror243 { perspective-origin:  top  10px  }
-peror245 { perspective-origin:  top  center  }
-peror246 { perspective-origin:  top  left  }
-peror247 { perspective-origin:  top  right  }
+/*
+ * Reference specification:
+ *   https://www.w3.org/TR/2021/WD-css-transforms-2-20211109/#propdef-perspective-origin
+ */
+
+
+/* ── 1. One value — keyword ──────────────────────────────────────────────── */
+
+a  { perspective-origin: left }
+b  { perspective-origin: center }
+c  { perspective-origin: right }
+d  { perspective-origin: top }
+e  { perspective-origin: bottom }
+
+
+/* ── 2. One value — <length-percentage> ──────────────────────────────────── */
+
+f  { perspective-origin: 0px }
+g  { perspective-origin: 100px }
+h  { perspective-origin: 50% }
+i  { perspective-origin: 0% }
+j  { perspective-origin: 100% }
+k  { perspective-origin: 1em }
+l  { perspective-origin: -50% }
+
+
+/* ── 3. Two values — keyword keyword ─────────────────────────────────────── */
+
+m  { perspective-origin: left top }
+n  { perspective-origin: left center }
+o  { perspective-origin: left bottom }
+p  { perspective-origin: center top }
+q  { perspective-origin: center center }
+r  { perspective-origin: center bottom }
+s  { perspective-origin: right top }
+t  { perspective-origin: right center }
+u  { perspective-origin: right bottom }
+
+
+/* ── 4. Two values — <length-percentage> <length-percentage> ─────────────── */
+
+v  { perspective-origin: 0px 0px }
+w  { perspective-origin: 100px 200px }
+x  { perspective-origin: 50% 50% }
+aa { perspective-origin: 25% 75% }
+ab { perspective-origin: 100px 50% }
+ac { perspective-origin: 50% 100px }
+ad { perspective-origin: 200% -50% }    /* out-of-box values are valid */
+
+
+/* ── 5. Two values — keyword <length-percentage> ─────────────────────────── */
+
+ae { perspective-origin: left 50% }
+af { perspective-origin: center 100px }
+ag { perspective-origin: right 0% }
+ah { perspective-origin: 50% top }
+ai { perspective-origin: 100px center }
+aj { perspective-origin: 25% bottom }
+
+
+/* ── 6. CSS-wide keywords ────────────────────────────────────────────────── */
+
+y  { perspective-origin: inherit }
+z  { perspective-origin: initial }
+

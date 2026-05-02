@@ -1,4 +1,10 @@
-y { transform-style: initial }
-z { transform-style: inherit }
+/*
+ * Reference specification:
+ *   https://www.w3.org/TR/2021/WD-css-transforms-2-20211109/#propdef-transform-style
+ */
+
 a { transform-style: flat }
 b { transform-style: preserve-3d }
+
+y { transform-style: inherit }
+z { transform-style: initial }

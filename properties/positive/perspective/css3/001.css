@@ -1,4 +1,38 @@
-y { perspective: initial }
-z { perspective: inherit }
+/*
+ * Reference specification:
+ *   https://www.w3.org/TR/2021/WD-css-transforms-2-20211109/#propdef-perspective
+ */
+
+
+/* ── 1. none ─────────────────────────────────────────────────────────────── */
+
 a { perspective: none }
-b { perspective: 10px }
+
+
+/* ── 2. <length> — pixel values ──────────────────────────────────────────── */
+
+b  { perspective: 0px }
+c  { perspective: 1px }
+d  { perspective: 100px }
+e  { perspective: 200px }
+f  { perspective: 500px }
+g  { perspective: 1000px }
+h  { perspective: 2000px }
+i  { perspective: 0.5px }     /* sub-pixel: valid per spec */
+
+
+/* ── 3. <length> — other units ───────────────────────────────────────────── */
+
+j  { perspective: 10em }
+k  { perspective: 20rem }
+l  { perspective: 50vw }
+m  { perspective: 30vh }
+n  { perspective: 15cm }
+o  { perspective: 150mm }
+p  { perspective: 800pt }
+
+
+/* ── 4. CSS-wide keywords ────────────────────────────────────────────────── */
+
+y  { perspective: inherit }
+z  { perspective: initial }

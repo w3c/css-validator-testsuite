@@ -740,6 +740,13 @@ where warning means warninglevel in use (0 => normal, no => none).
       <result valid="true" />
     </test>
   </type>
+  <type title="Valid_background-blend-mode">
+    <test profile="css3" warning="no">
+      <file>testsuite/properties/positive/background-blend-mode/css3/001.css</file>
+      <description>Valid background-blend-mode level css3</description>
+      <result valid="true" />
+    </test>
+  </type>
   <type title="Valid_background-clip">
     <test profile="css3" warning="no">
       <file>testsuite/properties/positive/background-clip/css3/001.css</file>
@@ -1711,6 +1718,13 @@ where warning means warninglevel in use (0 => normal, no => none).
       <result valid="true" />
     </test>
   </type>
+  <type title="Valid_gap">
+    <test profile="css3" warning="no">
+      <file>testsuite/properties/positive/gap/css3/001.css</file>
+      <description>Valid gap level css3</description>
+      <result valid="true" />
+    </test>
+  </type>
   <type title="Valid_grid">
     <test profile="css3" warning="no">
       <file>testsuite/properties/positive/grid/css3/001.css</file>
@@ -1830,10 +1844,31 @@ where warning means warninglevel in use (0 => normal, no => none).
       <result valid="true" />
     </test>
   </type>
+  <type title="Valid_isolation">
+    <test profile="css3" warning="no">
+      <file>testsuite/properties/positive/isolation/css3/001.css</file>
+      <description>Valid isolation level css3</description>
+      <result valid="true" />
+    </test>
+  </type>
   <type title="Valid_justify-content">
     <test profile="css3" warning="no">
       <file>testsuite/properties/positive/justify-content/css3/001.css</file>
       <description>Valid justify-content level css3</description>
+      <result valid="true" />
+    </test>
+  </type>
+  <type title="Valid_justify-items">
+    <test profile="css3" warning="no">
+      <file>testsuite/properties/positive/justify-items/css3/001.css</file>
+      <description>Valid justify-items level css3</description>
+      <result valid="true" />
+    </test>
+  </type>
+  <type title="Valid_justify-self">
+    <test profile="css3" warning="no">
+      <file>testsuite/properties/positive/justify-self/css3/001.css</file>
+      <description>Valid justify-self level css3</description>
       <result valid="true" />
     </test>
   </type>
@@ -1984,6 +2019,13 @@ where warning means warninglevel in use (0 => normal, no => none).
       <result valid="true" />
     </test>
   </type>
+  <type title="Valid_mix-blend-mode">
+    <test profile="css3" warning="no">
+      <file>testsuite/properties/positive/mix-blend-mode/css3/001.css</file>
+      <description>Valid mix-blend-mode level css3</description>
+      <result valid="true" />
+    </test>
+  </type>
   <type title="Valid_order">
     <test profile="css3" warning="no">
       <file>testsuite/properties/positive/order/css3/001.css</file>
@@ -2054,6 +2096,27 @@ where warning means warninglevel in use (0 => normal, no => none).
       <result valid="true" />
     </test>
   </type>
+  <type title="Valid_place-content">
+    <test profile="css3" warning="no">
+      <file>testsuite/properties/positive/place-content/css3/001.css</file>
+      <description>Valid place-content level css3</description>
+      <result valid="true" />
+    </test>
+  </type>
+  <type title="Valid_place-items">
+    <test profile="css3" warning="no">
+      <file>testsuite/properties/positive/place-items/css3/001.css</file>
+      <description>Valid place-items level css3</description>
+      <result valid="true" />
+    </test>
+  </type>
+  <type title="Valid_place-self">
+    <test profile="css3" warning="no">
+      <file>testsuite/properties/positive/place-self/css3/001.css</file>
+      <description>Valid place-self level css3</description>
+      <result valid="true" />
+    </test>
+  </type>
   <type title="Valid_position">
     <test profile="css3" warning="no">
       <file>testsuite/properties/positive/position/css3/001.css</file>
@@ -2086,6 +2149,27 @@ where warning means warninglevel in use (0 => normal, no => none).
     <test profile="css3" warning="no">
       <file>testsuite/properties/positive/right/css3/001.css</file>
       <description>Valid right level css3</description>
+      <result valid="true" />
+    </test>
+  </type>
+  <type title="Valid_rotate">
+    <test profile="css3" warning="no">
+      <file>testsuite/properties/positive/rotate/css3/001.css</file>
+      <description>Valid rotate level css3</description>
+      <result valid="true" />
+    </test>
+  </type>
+  <type title="Valid_row-gap">
+    <test profile="css3" warning="no">
+      <file>testsuite/properties/positive/row-gap/css3/001.css</file>
+      <description>Valid row-gap level css3</description>
+      <result valid="true" />
+    </test>
+  </type>
+  <type title="Valid_scale">
+    <test profile="css3" warning="no">
+      <file>testsuite/properties/positive/scale/css3/001.css</file>
+      <description>Valid scale level css3</description>
       <result valid="true" />
     </test>
   </type>
@@ -2254,6 +2338,11 @@ where warning means warninglevel in use (0 => normal, no => none).
       <description>Valid transform level css3</description>
       <result valid="true" />
     </test>
+    <test profile="css3" warning="no">
+      <file>testsuite/properties/positive/transform/css3/002.css</file>
+      <description>Valid transform level css3</description>
+      <result valid="true" />
+    </test>
   </type>
   <type title="Valid_transform-origin">
     <test profile="css3" warning="no">
@@ -2301,6 +2390,13 @@ where warning means warninglevel in use (0 => normal, no => none).
     <test profile="css3" warning="no">
       <file>testsuite/properties/positive/transition-timing-function/css3/001.css</file>
       <description>Valid transition-timing-function level css3</description>
+      <result valid="true" />
+    </test>
+  </type>
+  <type title="Valid_translate">
+    <test profile="css3" warning="no">
+      <file>testsuite/properties/positive/translate/css3/001.css</file>
+      <description>Valid translate level css3</description>
       <result valid="true" />
     </test>
   </type>

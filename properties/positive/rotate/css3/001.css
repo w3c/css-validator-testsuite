@@ -1,0 +1,94 @@
+/*
+ * Reference specification:
+ *   https://www.w3.org/TR/2021/WD-css-transforms-2-20211109/#propdef-rotate
+ */
+
+
+/* ── 1. none ─────────────────────────────────────────────────────────────── */
+
+a { rotate: none }
+
+
+/* ── 2. <angle> alone — 2D rotation (Z axis) ────────────────────────────── */
+
+/* deg */
+b  { rotate: 0deg }
+c  { rotate: 45deg }
+d  { rotate: 90deg }
+e  { rotate: 180deg }
+f  { rotate: 360deg }
+g  { rotate: -45deg }
+h  { rotate: -90deg }
+i  { rotate: 1.5deg }
+
+/* rad */
+j  { rotate: 0rad }
+k  { rotate: 1.5708rad }   /* pi/2 = 90deg */
+l  { rotate: 3.14159rad }  /* pi   = 180deg */
+m  { rotate: -1.5708rad }
+
+/* grad */
+n  { rotate: 100grad }     /* 90deg */
+o  { rotate: 400grad }     /* 360deg */
+
+/* turn */
+p  { rotate: 0.25turn }    /* 90deg */
+q  { rotate: 0.5turn }     /* 180deg */
+r  { rotate: 1turn }       /* 360deg */
+s  { rotate: -0.25turn }
+
+
+/* ── 3. x <angle> — rotation around X axis ───────────────────────────────── */
+
+t  { rotate: x 0deg }
+u  { rotate: x 45deg }
+v  { rotate: x 90deg }
+w  { rotate: x 180deg }
+x  { rotate: x -45deg }
+aa { rotate: x 0.5turn }
+
+
+/* ── 4. y <angle> — rotation around Y axis ───────────────────────────────── */
+
+ab { rotate: y 0deg }
+ac { rotate: y 45deg }
+ad { rotate: y 90deg }
+ae { rotate: y 180deg }
+af { rotate: y -45deg }
+ag { rotate: y 0.5turn }
+
+
+/* ── 5. z <angle> — rotation around Z axis (explicit) ───────────────────── */
+
+ah { rotate: z 0deg }
+ai { rotate: z 45deg }
+aj { rotate: z 90deg }
+ak { rotate: z -90deg }
+al { rotate: z 1turn }
+
+
+/* ── 6. <number> <number> <number> && <angle> — arbitrary axis ───────────── */
+/* The three numbers define the direction vector; the && means the angle     */
+/* may appear before or after the numbers.                                   */
+
+/* axis vector, then angle */
+am { rotate: 0 0 1 45deg }      /* equivalent to z 45deg */
+an { rotate: 1 0 0 90deg }      /* equivalent to x 90deg */
+ao { rotate: 0 1 0 90deg }      /* equivalent to y 90deg */
+ap { rotate: 1 1 0 45deg }      /* diagonal XY axis */
+aq { rotate: 1 1 1 120deg }     /* main diagonal axis */
+ar { rotate: 0 1 1 60deg }
+as { rotate: 1 0 1 30deg }
+at { rotate: -1 0 0 45deg }     /* negative axis components are valid */
+au { rotate: 0.5 0.5 0.707 90deg }  /* non-unit vector (normalised by UA) */
+
+/* angle before axis vector (&&  allows either order) */
+av { rotate: 45deg 0 0 1 }
+aw { rotate: 90deg 1 0 0 }
+ax { rotate: 120deg 1 1 1 }
+
+
+/* ── 7. CSS-wide keywords ────────────────────────────────────────────────── */
+
+y  { rotate: inherit }
+z  { rotate: initial }

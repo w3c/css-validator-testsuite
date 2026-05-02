@@ -1,0 +1,66 @@
+/*
+ * Reference specification:
+ *   https://www.w3.org/TR/2021/WD-css-transforms-2-20211109/#propdef-translate
+ */
+
+
+/* ── 1. none ─────────────────────────────────────────────────────────────── */
+
+a { translate: none }
+
+
+/* ── 2. One value — X axis only ──────────────────────────────────────────── */
+
+/* lengths */
+b  { translate: 0px }
+c  { translate: 100px }
+d  { translate: -100px }
+e  { translate: 1em }
+f  { translate: -2em }
+g  { translate: 1rem }
+h  { translate: 10vw }
+i  { translate: 5vh }
+
+/* percentages */
+j  { translate: 0% }
+k  { translate: 50% }
+l  { translate: 100% }
+m  { translate: -50% }
+
+
+/* ── 3. Two values — X and Y axes ────────────────────────────────────────── */
+
+/* length + length */
+n  { translate: 100px 200px }
+o  { translate: 0px 0px }
+p  { translate: -50px 30px }
+q  { translate: 1em 2em }
+
+/* percentage + percentage */
+r  { translate: 50% 25% }
+s  { translate: 0% 100% }
+t  { translate: -50% 50% }
+
+/* mixed length + percentage */
+u  { translate: 100px 50% }
+v  { translate: 50% 20px }
+w  { translate: 1em 25% }
+
+
+/* ── 4. Three values — X, Y, and Z axes ──────────────────────────────────── */
+/* The third value (Z) must be a <length>, not a <percentage>.               */
+
+x  { translate: 100px 200px 50px }
+aa { translate: 0px 0px 0px }
+ab { translate: 50% 25% 10px }
+ac { translate: 100px 50% 5em }
+ad { translate: 1em 2em 3em }
+ae { translate: -50px 30px -10px }
+af { translate: 50% 25% 1rem }
+ag { translate: 100px 100px 100px }
+
+
+/* ── 5. CSS-wide keywords ────────────────────────────────────────────────── */
+
+y  { translate: inherit }
+z  { translate: initial }

@@ -1,0 +1,149 @@
+/*
+ * Reference specification:
+ *   https://www.w3.org/TR/2021/WD-css-transforms-2-20211109/#three-d-transform-functions
+ */
+
+
+/* ══ matrix3d() ════════════════════════════════════════════════════════════ */
+/* 4×4 column-major matrix: m11 m12 m13 m14 m21 … m44                       */
+
+/* identity matrix */
+a { transform: matrix3d(1,0,0,0, 0,1,0,0, 0,0,1,0, 0,0,0,1) }
+
+/* arbitrary 3D matrix */
+b { transform: matrix3d(1,0,0,0, 0,1,0,0, 0,0,1,0, 10,20,30,1) }
+
+/* with decimal values */
+c { transform: matrix3d(
+      0.866, 0.5,   0,    0,
+     -0.5,   0.866, 0,    0,
+      0,     0,     1,    0,
+      0,     0,     0,    1) }
+
+
+/* ══ translate3d() ══════════════════════════════════════════════════════════ */
+/* translate3d( <length-percentage>, <length-percentage>, <length> )         */
+
+d  { transform: translate3d(0px, 0px, 0px) }
+e  { transform: translate3d(10px, 20px, 30px) }
+f  { transform: translate3d(50%, 25%, 10px) }
+g  { transform: translate3d(100px, 50%, 5em) }
+h  { transform: translate3d(-10px, -20px, -5px) }
+i  { transform: translate3d(1em, 2rem, 10px) }
+j  { transform: translate3d(0%, 0%, 0px) }
+
+
+/* ══ translateZ() ═══════════════════════════════════════════════════════════ */
+/* translateZ( <length> ) — moves element along Z axis only                  */
+
+k  { transform: translateZ(0px) }
+l  { transform: translateZ(100px) }
+m  { transform: translateZ(-50px) }
+n  { transform: translateZ(5em) }
+o  { transform: translateZ(10vw) }
+
+
+/* ══ scale3d() ══════════════════════════════════════════════════════════════ */
+/* scale3d( <number>, <number>, <number> ) — exactly three numbers required  */
+
+p  { transform: scale3d(1, 1, 1) }         /* identity */
+q  { transform: scale3d(2, 2, 2) }         /* uniform scale */
+r  { transform: scale3d(2, 1, 1) }         /* scale X only */
+s  { transform: scale3d(1, 2, 1) }         /* scale Y only */
+t  { transform: scale3d(1, 1, 2) }         /* scale Z only */
+u  { transform: scale3d(0.5, 0.5, 1) }
+v  { transform: scale3d(-1, 1, 1) }        /* flip X */
+w  { transform: scale3d(2, 0.5, 1.5) }
+
+
+/* ══ scaleZ() ═══════════════════════════════════════════════════════════════ */
+/* scaleZ( <number> ) — scales element along Z axis only                     */
+
+x  { transform: scaleZ(1) }
+aa { transform: scaleZ(2) }
+ab { transform: scaleZ(0.5) }
+ac { transform: scaleZ(-1) }
+ad { transform: scaleZ(0) }
+
+
+/* ══ rotate3d() ═════════════════════════════════════════════════════════════ */
+/* rotate3d( <number>, <number>, <number>, <angle> )                         */
+/* First three: axis direction vector. Fourth: rotation angle.               */
+
+ae { transform: rotate3d(0, 0, 1, 45deg) }       /* Z axis = rotate() */
+af { transform: rotate3d(1, 0, 0, 90deg) }        /* X axis = rotateX() */
+ag { transform: rotate3d(0, 1, 0, 90deg) }        /* Y axis = rotateY() */
+ah { transform: rotate3d(1, 1, 0, 45deg) }        /* diagonal XY axis */
+ai { transform: rotate3d(1, 1, 1, 120deg) }       /* main diagonal */
+aj { transform: rotate3d(0, 0, 1, -45deg) }       /* negative angle */
+ak { transform: rotate3d(0, 0, 1, 0.5turn) }      /* turn units */
+al { transform: rotate3d(1, 0, 0, 1.5708rad) }    /* rad units */
+am { transform: rotate3d(0, 1, 0, 100grad) }      /* grad units */
+an { transform: rotate3d(-1, 0, 0, 45deg) }       /* negative axis component */
+ao { transform: rotate3d(0.5, 0.5, 0.707, 90deg) } /* non-unit vector */
+ap { transform: rotate3d(0, 0, 0, 45deg) }        /* zero vector: degenerate but valid */
+
+
+/* ══ rotateX() ══════════════════════════════════════════════════════════════ */
+
+aq { transform: rotateX(0deg) }
+ar { transform: rotateX(45deg) }
+as { transform: rotateX(90deg) }
+at { transform: rotateX(180deg) }
+au { transform: rotateX(-90deg) }
+av { transform: rotateX(0.5turn) }
+aw { transform: rotateX(1.5708rad) }
+
+
+/* ══ rotateY() ══════════════════════════════════════════════════════════════ */
+
+ax { transform: rotateY(0deg) }
+ay { transform: rotateY(45deg) }
+az { transform: rotateY(90deg) }
+ba { transform: rotateY(180deg) }
+bb { transform: rotateY(-90deg) }
+bc { transform: rotateY(0.5turn) }
+
+
+/* ══ rotateZ() ══════════════════════════════════════════════════════════════ */
+/* Equivalent to rotate() from Level 1, but explicit about the Z axis.       */
+
+bd { transform: rotateZ(0deg) }
+be { transform: rotateZ(45deg) }
+bf { transform: rotateZ(90deg) }
+bg { transform: rotateZ(-180deg) }
+bh { transform: rotateZ(1turn) }
+bi { transform: rotateZ(0.25turn) }
+
+
+/* ══ perspective() as a transform function ══════════════════════════════════ */
+/* perspective( <length> ) — applies perspective to the element itself.      */
+/* Must have a positive <length>. 'none' is valid (Level 2 identity form).   */
+/* When used in a transform list, must appear first to have intended effect. */
+
+bj { transform: perspective(200px) }
+bk { transform: perspective(500px) }
+bl { transform: perspective(1000px) }
+bm { transform: perspective(1px) }           /* minimum valid positive length */
+bn { transform: perspective(10em) }
+bo { transform: perspective(none) }          /* identity; new in Level 2 */
+
+/* perspective() combined with other 3D functions (must be first) */
+bp { transform: perspective(500px) rotateY(30deg) }
+bq { transform: perspective(500px) translate3d(10px, 0px, 20px) rotateY(30deg) }
+br { transform: perspective(300px) rotateX(45deg) rotateY(45deg) }
+
+
+/* ══ Combinations of 3D functions ═══════════════════════════════════════════ */
+
+bs { transform: translateZ(50px) rotateY(45deg) }
+bt { transform: rotateX(30deg) rotateY(45deg) rotateZ(60deg) }
+bu { transform: translate3d(10px, 20px, 30px) scale3d(2, 2, 2) }
+bv { transform: scale3d(1.5, 1.5, 1) rotateZ(45deg) translateZ(100px) }
+bw { transform: matrix3d(1,0,0,0, 0,1,0,0, 0,0,1,0, 0,0,0,1) translateZ(50px) }
+
+
+/* ── CSS-wide keywords ────────────────────────────────────────────────────── */
+
+y  { transform: inherit }
+z  { transform: initial }

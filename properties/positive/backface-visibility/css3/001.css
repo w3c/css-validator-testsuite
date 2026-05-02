@@ -1,4 +1,10 @@
-y { backface-visibility: initial }
-z { backface-visibility: inherit }
+/*
+ * Reference specification:
+ *   https://www.w3.org/TR/2021/WD-css-transforms-2-20211109/#propdef-backface-visibility
+ */
+
 a { backface-visibility: visible }
 b { backface-visibility: hidden }
+
+y { backface-visibility: inherit }
+z { backface-visibility: initial }

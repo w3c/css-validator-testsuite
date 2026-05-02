@@ -1,0 +1,57 @@
+/*
+ * Reference specification:
+ *   https://www.w3.org/TR/2021/WD-css-transforms-2-20211109/#propdef-scale
+ */
+
+
+/* ── 1. none ─────────────────────────────────────────────────────────────── */
+
+a { scale: none }
+
+
+/* ── 2. One value — uniform X and Y scale ────────────────────────────────── */
+
+b  { scale: 1 }        /* identity */
+c  { scale: 2 }        /* double size */
+d  { scale: 0.5 }      /* half size */
+e  { scale: 0 }        /* collapsed */
+f  { scale: 3 }
+g  { scale: 1.5 }
+h  { scale: 0.25 }
+i  { scale: -1 }       /* flip */
+j  { scale: -2 }
+k  { scale: 0.333 }
+
+
+/* ── 3. Two values — X and Y axes independently ──────────────────────────── */
+
+l  { scale: 1 1 }
+m  { scale: 2 1 }      /* stretch horizontally */
+n  { scale: 1 2 }      /* stretch vertically */
+o  { scale: 2 0.5 }
+p  { scale: 0.5 2 }
+q  { scale: -1 1 }     /* flip on X */
+r  { scale: 1 -1 }     /* flip on Y */
+s  { scale: -1 -1 }    /* flip on both */
+t  { scale: 1.5 0.75 }
+u  { scale: 0 1 }
+
+
+/* ── 4. Three values — X, Y, and Z axes independently ───────────────────── */
+
+v  { scale: 1 1 1 }
+w  { scale: 2 2 2 }    /* uniform 3D scale */
+x  { scale: 2 1 1 }    /* stretch on X only */
+aa { scale: 1 2 1 }    /* stretch on Y only */
+ab { scale: 1 1 2 }    /* stretch on Z only */
+ac { scale: 2 0.5 1 }
+ad { scale: 1.5 1.5 0.5 }
+ae { scale: -1 1 1 }   /* flip on X in 3D */
+af { scale: 2 2 0.5 }
+ag { scale: 0.5 0.5 2 }
+
+
+/* ── 5. CSS-wide keywords ────────────────────────────────────────────────── */
+
+y  { scale: inherit }
+z  { scale: initial }

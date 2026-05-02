@@ -1,0 +1,71 @@
+/*
+ * Reference specification:
+ *   https://www.w3.org/TR/2024/CRD-compositing-1-20240321/#propdef-background-blend-mode
+ */
+
+
+/* ── 1. Single value — all 16 blend mode keywords ────────────────────────── */
+
+a { background-blend-mode: normal }
+b { background-blend-mode: multiply }
+c { background-blend-mode: screen }
+d { background-blend-mode: overlay }
+e { background-blend-mode: darken }
+f { background-blend-mode: lighten }
+g { background-blend-mode: color-dodge }
+h { background-blend-mode: color-burn }
+i { background-blend-mode: hard-light }
+j { background-blend-mode: soft-light }
+k { background-blend-mode: difference }
+l { background-blend-mode: exclusion }
+m { background-blend-mode: hue }
+n { background-blend-mode: saturation }
+o { background-blend-mode: color }
+p { background-blend-mode: luminosity }
+
+
+/* ── 2. Two values (two background layers) ───────────────────────────────── */
+
+q  { background-blend-mode: normal, normal }
+r  { background-blend-mode: multiply, screen }
+s  { background-blend-mode: overlay, multiply }
+t  { background-blend-mode: darken, lighten }
+u  { background-blend-mode: color-dodge, color-burn }
+v  { background-blend-mode: hard-light, soft-light }
+w  { background-blend-mode: difference, exclusion }
+x  { background-blend-mode: hue, saturation }
+aa { background-blend-mode: color, luminosity }
+ab { background-blend-mode: normal, multiply }
+ac { background-blend-mode: screen, normal }
+
+
+/* ── 3. Three values (three background layers) ───────────────────────────── */
+
+ad { background-blend-mode: multiply, screen, overlay }
+ae { background-blend-mode: normal, multiply, normal }
+af { background-blend-mode: darken, lighten, difference }
+ag { background-blend-mode: hue, saturation, luminosity }
+
+
+/* ── 4. Four or more values ──────────────────────────────────────────────── */
+
+ah { background-blend-mode: normal, multiply, screen, overlay }
+ai { background-blend-mode: darken, lighten, color-dodge, color-burn,
+                             hard-light }
+
+
+/* ── 5. All 16 values in one declaration ─────────────────────────────────── */
+/* Useful for a stylesheet that sets one mode per background layer.          */
+
+aj {
+  background-blend-mode: normal, multiply, screen, overlay,
+                          darken, lighten, color-dodge, color-burn,
+                          hard-light, soft-light, difference, exclusion,
+                          hue, saturation, color, luminosity;
+}
+
+
+/* ── 6. CSS-wide keywords ────────────────────────────────────────────────── */
+
+y { background-blend-mode: inherit }
+z { background-blend-mode: initial }
