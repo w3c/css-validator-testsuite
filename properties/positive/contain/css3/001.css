@@ -1,0 +1,82 @@
+/*
+ * Reference specification:
+ *   https://www.w3.org/TR/2022/WD-css-contain-2-20220917/#propdef-contain
+ */
+
+
+/* ── 1. none ─────────────────────────────────────────────────────────────── */
+
+a { contain: none }
+
+
+/* ── 2. strict ───────────────────────────────────────────────────────────── */
+/* Shorthand: computes to size layout paint style.                           */
+
+b { contain: strict }
+
+
+/* ── 3. content ──────────────────────────────────────────────────────────── */
+/* Shorthand: computes to layout paint style (size containment excluded).    */
+
+c { contain: content }
+
+
+/* ── 4. Single keyword from the || group ─────────────────────────────────── */
+
+d { contain: size }
+e { contain: layout }
+f { contain: style }
+g { contain: paint }
+
+
+/* ── 5. Two-keyword combinations (C(4,2) = 6 pairs) ─────────────────────── */
+
+h  { contain: size layout }
+i  { contain: size style }
+j  { contain: size paint }
+k  { contain: layout style }
+l  { contain: layout paint }
+m  { contain: style paint }
+
+
+/* ── 6. Two-keyword combinations — reversed order (|| is order-free) ──────── */
+
+n  { contain: layout size }
+o  { contain: style size }
+p  { contain: paint size }
+q  { contain: style layout }
+r  { contain: paint layout }
+s  { contain: paint style }
+
+
+/* ── 7. Three-keyword combinations (C(4,3) = 4 triples) ─────────────────── */
+
+t  { contain: size layout style }
+u  { contain: size layout paint }
+v  { contain: size style paint }
+w  { contain: layout style paint }
+
+
+/* ── 8. Three-keyword combinations — sample of other orderings ───────────── */
+
+x  { contain: layout size style }
+aa { contain: paint layout size }
+ab { contain: style paint layout }
+ac { contain: paint size layout }
+
+
+/* ── 9. All four keywords ─────────────────────────────────────────────────── */
+/* Semantically equivalent to 'strict' but specified as individual keywords.  */
+
+ad { contain: size layout style paint }
+
+/* other orderings */
+ae { contain: layout size paint style }
+af { contain: paint style layout size }
+ag { contain: style paint size layout }
+
+
+/* ── 10. CSS-wide keywords ───────────────────────────────────────────────── */
+
+y  { contain: inherit }
+z  { contain: initial }

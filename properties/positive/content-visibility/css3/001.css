@@ -1,0 +1,25 @@
+/*
+ * Reference specification:
+ *   https://www.w3.org/TR/2022/WD-css-contain-2-20220917/#propdef-content-visibility
+ */
+
+
+/* ── 1. visible ──────────────────────────────────────────────────────────── */
+
+a { content-visibility: visible }
+
+
+/* ── 2. hidden ───────────────────────────────────────────────────────────── */
+
+b { content-visibility: hidden }
+
+
+/* ── 3. auto ─────────────────────────────────────────────────────────────── */
+
+c { content-visibility: auto }
+
+
+/* ── 4. CSS-wide keywords ────────────────────────────────────────────────── */
+
+y { content-visibility: inherit }
+z { content-visibility: initial }
