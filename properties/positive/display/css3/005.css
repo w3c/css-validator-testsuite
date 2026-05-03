@@ -1,0 +1,186 @@
+/*
+ * Reference specification:
+ *   https://www.w3.org/TR/2023/CR-css-display-3-20230330/#propdef-display
+ */
+
+
+/* ══ 1. <display-box> ══════════════════════════════════════════════════════ */
+/* Highest-priority alternatives; no box generated (none) or element        */
+/* replaced by its contents (contents).                                     */
+
+a { display: none }
+b { display: contents }
+
+
+/* ══ 2. <display-outside> alone ════════════════════════════════════════════ */
+/* Without an explicit <display-inside>, it defaults to 'flow'.              */
+
+c { display: block }
+d { display: inline }
+e { display: run-in }      /* at-risk */
+
+
+/* ══ 3. <display-inside> alone ══════════════════════════════════════════════ */
+/* Without an explicit <display-outside>, it defaults to 'block' (or         */
+/* 'inline' for ruby).                                                        */
+
+f { display: flow }
+g { display: flow-root }
+h { display: table }
+i { display: flex }
+j { display: grid }
+k { display: ruby }
+
+
+/* ══ 4. <display-outside> || <display-inside> — two-keyword forms ══════════ */
+/* The || combinator means either order is valid. All at-risk per the CR.   */
+
+/* 4a. block + <display-inside> */
+l  { display: block flow }
+m  { display: block flow-root }
+n  { display: block table }
+o  { display: block flex }
+p  { display: block grid }
+q  { display: block ruby }
+
+/* 4b. inline + <display-inside> */
+r  { display: inline flow }
+s  { display: inline flow-root }
+t  { display: inline table }
+u  { display: inline flex }
+v  { display: inline grid }
+w  { display: inline ruby }
+
+/* 4c. run-in + <display-inside> (at-risk) */
+x  { display: run-in flow }
+aa { display: run-in flow-root }
+
+/* 4d. <display-inside> then <display-outside> (|| allows either order) */
+ab { display: flow block }
+ac { display: flow-root block }
+ad { display: table block }
+ae { display: flex block }
+af { display: grid block }
+ag { display: flow inline }
+ah { display: flow-root inline }
+ai { display: table inline }
+aj { display: flex inline }
+ak { display: grid inline }
+al { display: ruby inline }
+am { display: flow run-in }       /* at-risk */
+
+
+/* ══ 5. <display-listitem> — list-item alone ════════════════════════════════ */
+
+an { display: list-item }
+
+
+/* ══ 6. <display-listitem> — <display-outside> && list-item ════════════════ */
+/* Either order valid (&&).                                                  */
+
+ao { display: block list-item }
+ap { display: inline list-item }
+aq { display: run-in list-item }   /* at-risk */
+
+/* list-item first */
+ar { display: list-item block }
+as { display: list-item inline }
+at { display: list-item run-in }   /* at-risk */
+
+
+/* ══ 7. <display-listitem> — [ flow | flow-root ] && list-item ══════════════ */
+
+au { display: flow list-item }
+av { display: flow-root list-item }
+
+/* list-item first */
+aw { display: list-item flow }
+ax { display: list-item flow-root }
+
+
+/* ══ 8. <display-listitem> — all three components ══════════════════════════ */
+/* <display-outside> && [ flow | flow-root ] && list-item, any order.       */
+
+/* outside, flow-keyword, list-item */
+ay { display: block flow list-item }
+az { display: block flow-root list-item }
+ba { display: inline flow list-item }
+bb { display: inline flow-root list-item }
+bc { display: run-in flow list-item }      /* at-risk */
+bd { display: run-in flow-root list-item } /* at-risk */
+
+/* outside, list-item, flow-keyword */
+be { display: block list-item flow }
+bf { display: block list-item flow-root }
+bg { display: inline list-item flow }
+bh { display: inline list-item flow-root }
+
+/* flow-keyword, outside, list-item */
+bi { display: flow block list-item }
+bj { display: flow-root block list-item }
+bk { display: flow inline list-item }
+bl { display: flow-root inline list-item }
+
+/* flow-keyword, list-item, outside */
+bm { display: flow list-item block }
+bn { display: flow-root list-item block }
+bo { display: flow list-item inline }
+bp { display: flow-root list-item inline }
+
+/* list-item, outside, flow-keyword */
+bq { display: list-item block flow }
+br { display: list-item block flow-root }
+bs { display: list-item inline flow }
+bt { display: list-item inline flow-root }
+
+/* list-item, flow-keyword, outside */
+bu { display: list-item flow block }
+bv { display: list-item flow-root block }
+bw { display: list-item flow inline }
+bx { display: list-item flow-root inline }
+
+
+/* ══ 9. <display-internal> — table-related ══════════════════════════════════ */
+/* These values only have meaning inside a table context.                    */
+
+by { display: table-row-group }
+bz { display: table-header-group }
+ca { display: table-footer-group }
+cb { display: table-row }
+cc { display: table-cell }
+cd { display: table-column-group }
+ce { display: table-column }
+cf { display: table-caption }
+
+
+/* ══ 10. <display-internal> — ruby-related ══════════════════════════════════ */
+/* These values only have meaning inside a ruby context.                     */
+
+cg { display: ruby-base }
+ch { display: ruby-text }
+ci { display: ruby-base-container }
+cj { display: ruby-text-container }
+
+
+/* ══ 11. <display-legacy> — precomposed single-keyword values ═══════════════ */
+/* These are the traditional single-keyword aliases for common two-keyword   */
+/* combinations. They are not at-risk.                                       */
+/*   inline-block  = inline flow-root                                        */
+/*   inline-table  = inline table                                            */
+/*   inline-flex   = inline flex                                             */
+/*   inline-grid   = inline grid                                             */
+
+ck { display: inline-block }
+cl { display: inline-table }
+cm { display: inline-flex }
+cn { display: inline-grid }
+
+
+/* ══ 12. CSS-wide keywords (CSS Cascading and Inheritance Level 5) ══════════ */
+/* https://www.w3.org/TR/2022/CR-css-cascade-5-20220113/#defaulting-keywords  */
+
+y  { display: inherit }
+z  { display: initial }
+ya { display: unset }
+yb { display: revert }
+yc { display: revert-layer }

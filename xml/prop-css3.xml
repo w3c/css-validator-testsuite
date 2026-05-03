@@ -1559,10 +1559,20 @@ where warning means warninglevel in use (0 => normal, no => none).
       <description>Valid display level css3</description>
       <result valid="true" />
     </test>
+    <test profile="css3" warning="no">
+      <file>testsuite/properties/positive/display/css3/005.css</file>
+      <description>Valid display level css3</description>
+      <result valid="true" />
+    </test>
   </type>
   <type title="Valid_flex">
     <test profile="css3" warning="no">
       <file>testsuite/properties/positive/flex/css3/001.css</file>
+      <description>Valid flex level css3</description>
+      <result valid="true" />
+    </test>
+    <test profile="css3" warning="no">
+      <file>testsuite/properties/positive/flex/css3/002.css</file>
       <description>Valid flex level css3</description>
       <result valid="true" />
     </test>

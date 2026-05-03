@@ -1,7 +1,60 @@
-a { flex-basis: 0 }
-b { flex-basis: 100px }
-c { flex-basis: 0% }
-d { flex-basis: 10% }
-e { flex-basis: auto }
-y { flex-basis: initial }
-z { flex-basis: inherit }
+/*
+ * Reference specification:
+ *   https://www.w3.org/TR/2025/CRD-css-flexbox-1-20251014/#propdef-flex-basis
+ */
+
+
+/* ── 1. auto ─────────────────────────────────────────────────────────────── */
+
+a { flex-basis: auto }
+
+
+/* ── 2. content ──────────────────────────────────────────────────────────── */
+
+b { flex-basis: content }
+
+
+/* ── 3. <length> values ──────────────────────────────────────────────────── */
+
+c  { flex-basis: 0px }
+d  { flex-basis: 1px }
+e  { flex-basis: 100px }
+f  { flex-basis: 200px }
+g  { flex-basis: 1em }
+h  { flex-basis: 2em }
+i  { flex-basis: 1rem }
+j  { flex-basis: 10vw }
+k  { flex-basis: 50vh }
+l  { flex-basis: 1ch }
+m  { flex-basis: 5ex }
+n  { flex-basis: 10pt }
+o  { flex-basis: 1cm }
+
+
+/* ── 4. <percentage> values ──────────────────────────────────────────────── */
+
+p  { flex-basis: 0% }
+q  { flex-basis: 25% }
+r  { flex-basis: 50% }
+s  { flex-basis: 75% }
+t  { flex-basis: 100% }
+u  { flex-basis: 33.3% }
+
+
+/* ── 5. min-content / max-content ────────────────────────────────────────── */
+
+v  { flex-basis: min-content }
+w  { flex-basis: max-content }
+
+
+/* ── 6. fit-content() ────────────────────────────────────────────────────── */
+
+x  { flex-basis: fit-content(200px) }
+aa { flex-basis: fit-content(50%) }
+ab { flex-basis: fit-content(10em) }
+
+
+/* ── 7. CSS-wide keywords ────────────────────────────────────────────────── */
+
+y  { flex-basis: inherit }
+z  { flex-basis: initial }

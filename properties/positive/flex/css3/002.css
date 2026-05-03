@@ -1,0 +1,102 @@
+/*
+ * Reference specification:
+ *   https://www.w3.org/TR/2025/CRD-css-flexbox-1-20251014/#propdef-flex
+ */
+
+
+/* ── 1. none ─────────────────────────────────────────────────────────────── */
+/* Expands to: flex-grow: 0; flex-shrink: 0; flex-basis: auto            */
+
+a { flex: none }
+
+
+/* ── 2. One value — unitless number (flex-grow) ──────────────────────────── */
+/* basis defaults to 0px, shrink defaults to 1                              */
+
+b { flex: 0 }
+c { flex: 1 }
+d { flex: 2 }
+e { flex: 3 }
+f { flex: 0.5 }
+g { flex: 1.5 }
+
+
+/* ── 3. One value — flex-basis (dimension, percentage, or keyword) ─────────── */
+/* grow defaults to 1, shrink defaults to 1                                 */
+
+h  { flex: auto }          /* flex-basis: auto   → 1 1 auto  */
+i  { flex: content }       /* flex-basis: content → 1 1 content */
+j  { flex: 100px }
+k  { flex: 200px }
+l  { flex: 50% }
+m  { flex: 10em }
+n  { flex: 0px }           /* 0 WITH unit → flex-basis: 0px  */
+o  { flex: min-content }
+p  { flex: max-content }
+
+
+/* ── 4. Two values — flex-grow flex-shrink ───────────────────────────────── */
+/* Both unitless numbers; basis defaults to 0px                             */
+
+q  { flex: 0 0 }
+r  { flex: 1 1 }
+s  { flex: 1 0 }
+t  { flex: 0 1 }
+u  { flex: 2 1 }
+v  { flex: 2 2 }
+w  { flex: 1 0.5 }
+x  { flex: 0.5 1 }
+
+
+/* ── 5. Two values — flex-grow flex-basis ────────────────────────────────── */
+/* Number followed by dimension, percentage, or basis keyword               */
+
+aa { flex: 1 auto }
+ab { flex: 1 100px }
+ac { flex: 1 200px }
+ad { flex: 2 100px }
+ae { flex: 1 50% }
+af { flex: 2 30% }
+ag { flex: 0 auto }
+ah { flex: 1 0px }         /* 0px with unit as basis                     */
+ai { flex: 1 min-content }
+aj { flex: 1 max-content }
+ak { flex: 1 content }
+
+
+/* ── 6. Three values — flex-grow flex-shrink flex-basis ──────────────────── */
+
+al { flex: 0 0 auto }      /* equivalent to 'none'                        */
+am { flex: 1 1 auto }      /* equivalent to 'auto' keyword form           */
+an { flex: 0 1 auto }      /* initial longhand values                     */
+ao { flex: 1 1 0px }
+ap { flex: 1 0 0px }
+aq { flex: 2 1 0px }
+ar { flex: 1 1 100px }
+as { flex: 2 1 100px }
+at { flex: 1 1 200px }
+au { flex: 0 1 100px }
+av { flex: 3 2 50% }
+aw { flex: 1 1 50% }
+ax { flex: 2 2 10% }
+ay { flex: 1 1 1em }
+az { flex: 2 1 10em }
+ba { flex: 1 1 min-content }
+bb { flex: 1 1 max-content }
+bc { flex: 1 1 content }
+bd { flex: 0.5 0.5 200px }
+be { flex: 1.5 1 50% }
+
+
+/* ── 7. fit-content() as flex-basis ─────────────────────────────────────── */
+
+bf { flex: fit-content(200px) }            /* one-value: basis only        */
+bg { flex: 1 fit-content(200px) }         /* two-value: grow + basis      */
+bh { flex: 1 1 fit-content(200px) }       /* three-value                  */
+bi { flex: 1 1 fit-content(50%) }
+
+
+/* ── 8. CSS-wide keywords ────────────────────────────────────────────────── */
+
+y  { flex: inherit }
+z  { flex: initial }
