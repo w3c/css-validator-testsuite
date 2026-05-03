@@ -1,0 +1,78 @@
+/*
+ * Reference specification:
+ *   https://www.w3.org/TR/2023/CRD-css-speech-1-20230214/#voice-props-voice-family
+ */
+
+
+/* ── 1. preserve ─────────────────────────────────────────────────────────── */
+
+a { voice-family: preserve }
+
+
+/* ── 2. <family-name> — specific named voice ─────────────────────────────── */
+
+/* quoted (required for multi-word names, recommended for all) */
+b  { voice-family: "paul" }
+c  { voice-family: "mary" }
+d  { voice-family: "valley girl" }
+e  { voice-family: "Alex" }
+
+/* unquoted single-word name (custom-ident) */
+f  { voice-family: paul }
+g  { voice-family: carlos }
+
+
+/* ── 3. <generic-voice> — gender only ───────────────────────────────────── */
+
+h  { voice-family: male }
+i  { voice-family: female }
+j  { voice-family: neutral }
+
+
+/* ── 4. <generic-voice> — age + gender ──────────────────────────────────── */
+
+k  { voice-family: child male }
+l  { voice-family: child female }
+m  { voice-family: child neutral }
+n  { voice-family: young male }
+o  { voice-family: young female }
+p  { voice-family: old male }
+q  { voice-family: old female }
+r  { voice-family: old neutral }
+
+
+/* ── 5. <generic-voice> — gender + integer (ordinal selection) ───────────── */
+
+s  { voice-family: male 2 }
+t  { voice-family: female 1 }
+u  { voice-family: neutral 3 }
+
+
+/* ── 6. <generic-voice> — age + gender + integer ─────────────────────────── */
+
+v  { voice-family: child male 1 }
+w  { voice-family: young female 2 }
+x  { voice-family: old male 1 }
+
+
+/* ── 7. Comma-separated fallback lists ────────────────────────────────────── */
+
+/* named voices with fallback */
+aa { voice-family: "paul", male }
+ab { voice-family: "mary", female }
+ac { voice-family: "carlos", male 2, male }
+
+/* generic voices with fallback */
+ad { voice-family: child female, female }
+ae { voice-family: young male, male }
+af { voice-family: old neutral, neutral, male }
+
+/* mixed specific + generic */
+ag { voice-family: "valley girl", young female, female }
+ah { voice-family: "Alex", child male, male 1, male }
+
+
+/* ── 8. CSS-wide keywords ────────────────────────────────────────────────── */
+
+y  { voice-family: inherit }
+z  { voice-family: initial }

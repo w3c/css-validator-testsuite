@@ -14,3 +14,14 @@ m { pause: 2.1s 0s }
 n { pause: 0s strong }
 y { pause: initial }
 z { pause: inherit }
+
+af { pause: none none }
+ag { pause: medium strong }
+ah { pause: weak x-strong }
+ai { pause: x-weak medium }
+aj { pause: 500ms 1s }
+ak { pause: 1s none }
+al { pause: weak 500ms }
+am { pause: 250ms strong }
+an { pause: x-strong x-weak }
+ao { pause: strong none }

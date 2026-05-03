@@ -1,0 +1,14 @@
+/*
+ * Reference specification:
+ *   https://www.w3.org/TR/2023/CRD-css-speech-1-20230214/#cue-props
+ */
+
+/* ══ cue-after ═════════════════════════════════════════════════════════════ */
+
+l  { cue-after: none }
+m  { cue-after: url("audio/ding.wav") }
+n  { cue-after: url("audio/ding.wav") 6dB }
+o  { cue-after: url("audio/ding.wav") -6dB }
+p  { cue-after: url("audio/ding.wav") 0dB }
+
+z  { cue-after:  initial }

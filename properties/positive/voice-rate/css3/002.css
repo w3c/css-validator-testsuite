@@ -1,0 +1,54 @@
+/*
+ * Reference specification:
+ *   https://www.w3.org/TR/2023/CRD-css-speech-1-20230214/#voice-props-voice-rate
+ */
+
+
+/* ── 1. Keyword alone ────────────────────────────────────────────────────── */
+
+a { voice-rate: normal }
+b { voice-rate: x-slow }
+c { voice-rate: slow }
+d { voice-rate: medium }
+e { voice-rate: fast }
+f { voice-rate: x-fast }
+
+
+/* ── 2. <percentage> alone ───────────────────────────────────────────────── */
+
+g  { voice-rate: 100% }     /* no change */
+h  { voice-rate: 50% }      /* half speed */
+i  { voice-rate: 200% }     /* double speed */
+j  { voice-rate: 75% }
+k  { voice-rate: 150% }
+l  { voice-rate: 0% }       /* zero is non-negative; valid per spec */
+
+
+/* ── 3. Keyword then <percentage> ────────────────────────────────────────── */
+
+n  { voice-rate: normal 100% }
+o  { voice-rate: slow 75% }
+p  { voice-rate: fast 150% }
+q  { voice-rate: medium 50% }
+r  { voice-rate: x-fast 200% }
+s  { voice-rate: x-slow 100% }
+
+
+/* ── 4. <percentage> then keyword (|| allows either order) ───────────────── */
+
+t  { voice-rate: 100% normal }
+u  { voice-rate: 75% slow }
+v  { voice-rate: 150% fast }
+w  { voice-rate: 50% medium }
+
+
+/* ── 5. CSS-wide keywords ────────────────────────────────────────────────── */
+
+
+/* ── CSS-wide keywords (CSS Cascading and Inheritance Level 5) ──────────── */
+/* https://www.w3.org/TR/2022/CR-css-cascade-5-20220113/#defaulting-keywords  */
+y  { voice-rate: inherit }
+z  { voice-rate: initial }
+ya { voice-rate: unset }
+yb { voice-rate: revert }
+yc { voice-rate: revert-layer }

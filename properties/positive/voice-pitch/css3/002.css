@@ -1,0 +1,96 @@
+/*
+ * Reference specification:
+ *   https://www.w3.org/TR/2023/CRD-css-speech-1-20230214/#voice-props-voice-pitch
+ */
+
+
+/* ── 1. Absolute pitch — <frequency> && absolute ────────────────────────── */
+
+/* frequency before 'absolute' */
+a  { voice-pitch: 120Hz absolute }
+b  { voice-pitch: 220Hz absolute }
+c  { voice-pitch: 85Hz absolute }
+d  { voice-pitch: 1kHz absolute }
+e  { voice-pitch: 0.3kHz absolute }
+
+/* 'absolute' before frequency (&&  allows either order) */
+f  { voice-pitch: absolute 120Hz }
+g  { voice-pitch: absolute 220Hz }
+h  { voice-pitch: absolute 0.5kHz }
+
+
+/* ── 2. Keyword alone ────────────────────────────────────────────────────── */
+
+i  { voice-pitch: x-low }
+j  { voice-pitch: low }
+k  { voice-pitch: medium }
+l  { voice-pitch: high }
+m  { voice-pitch: x-high }
+
+
+/* ── 3. <frequency> offset alone ─────────────────────────────────────────── */
+
+n  { voice-pitch: 0Hz }
+o  { voice-pitch: 20Hz }
+p  { voice-pitch: -20Hz }
+q  { voice-pitch: 5Hz }
+r  { voice-pitch: 0.1kHz }
+
+
+/* ── 4. <semitones> offset alone ─────────────────────────────────────────── */
+
+s  { voice-pitch: 0st }
+t  { voice-pitch: 2st }
+u  { voice-pitch: -2st }
+v  { voice-pitch: 5st }
+w  { voice-pitch: -5st }
+x  { voice-pitch: 12st }
+
+
+/* ── 5. <percentage> offset alone ────────────────────────────────────────── */
+
+aa { voice-pitch: 0% }
+ab { voice-pitch: 50% }
+ac { voice-pitch: -50% }
+ad { voice-pitch: 100% }
+ae { voice-pitch: 200% }
+
+
+/* ── 6. Keyword || frequency offset ──────────────────────────────────────── */
+
+af { voice-pitch: medium 20Hz }
+ag { voice-pitch: high 5Hz }
+ah { voice-pitch: low -10Hz }
+ai { voice-pitch: x-high 0Hz }
+
+/* offset before keyword */
+aj { voice-pitch: 20Hz medium }
+ak { voice-pitch: -10Hz low }
+
+
+/* ── 7. Keyword || semitones offset ──────────────────────────────────────── */
+
+al { voice-pitch: medium 2st }
+am { voice-pitch: high 3st }
+an { voice-pitch: low -2st }
+
+/* semitones before keyword */
+ao { voice-pitch: 2st medium }
+ap { voice-pitch: -2st low }
+
+
+/* ── 8. Keyword || percentage offset ─────────────────────────────────────── */
+
+aq { voice-pitch: medium 50% }
+ar { voice-pitch: high 100% }
+as { voice-pitch: low -50% }
+
+/* percentage before keyword */
+at { voice-pitch: 50% medium }
+au { voice-pitch: -25% high }
+
+
+/* ── 9. CSS-wide keywords ────────────────────────────────────────────────── */
+
+y  { voice-pitch: inherit }
+z  { voice-pitch: initial }

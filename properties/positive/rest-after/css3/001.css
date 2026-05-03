@@ -1,11 +1,21 @@
-a { rest-after:  500ms  }
-b { rest-after:  0s }
-c { rest-after:  2.1s }
-d { rest-after:  none  }
-e { rest-after:  x-weak  }
-f { rest-after:  weak  }
-g { rest-after:  medium  }
-h { rest-after:  strong  }
-i { rest-after:  x-strong  }
-y { rest-after: initial }
-z { rest-after: inherit }
+/*
+ * Reference specification:
+ *   https://www.w3.org/TR/2023/CRD-css-speech-1-20230214/#rest-props
+ */
+
+/* ══ rest-after ════════════════════════════════════════════════════════════ */
+
+m  { rest-after: none }
+n  { rest-after: x-weak }
+o  { rest-after: weak }
+p  { rest-after: medium }
+q  { rest-after: strong }
+r  { rest-after: x-strong }
+s  { rest-after: 0s }
+t  { rest-after: 0.5s }
+u  { rest-after: 500ms }
+
+/* ── CSS-wide keywords ────────────────────────────────────────────────────── */
+
+y  { rest-after: inherit }
+z  { rest-after:  initial }

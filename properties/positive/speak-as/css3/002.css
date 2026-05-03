@@ -1,0 +1,52 @@
+/*
+ * Reference specification:
+ *   https://www.w3.org/TR/2023/CRD-css-speech-1-20230214/#propdef-speak-as
+ */
+
+
+/* ── 1. normal ────────────────────────────────────────────────────────────── */
+
+a { speak-as: normal }
+
+
+/* ── 2. Single keyword from the || group ─────────────────────────────────── */
+
+b { speak-as: spell-out }
+c { speak-as: digits }
+d { speak-as: literal-punctuation }
+e { speak-as: no-punctuation }
+
+
+/* ── 3. Two-keyword combinations from the || group ───────────────────────── */
+
+f  { speak-as: spell-out digits }
+g  { speak-as: digits spell-out }
+
+h  { speak-as: spell-out literal-punctuation }
+i  { speak-as: literal-punctuation spell-out }
+
+j  { speak-as: spell-out no-punctuation }
+k  { speak-as: no-punctuation spell-out }
+
+l  { speak-as: digits literal-punctuation }
+m  { speak-as: literal-punctuation digits }
+
+n  { speak-as: digits no-punctuation }
+o  { speak-as: no-punctuation digits }
+
+
+/* ── 4. Three-keyword combinations ───────────────────────────────────────── */
+
+p  { speak-as: spell-out digits literal-punctuation }
+q  { speak-as: digits spell-out literal-punctuation }
+r  { speak-as: literal-punctuation spell-out digits }
+
+s  { speak-as: spell-out digits no-punctuation }
+t  { speak-as: digits no-punctuation spell-out }
+u  { speak-as: no-punctuation digits spell-out }
+
+
+/* ── 5. CSS-wide keywords ────────────────────────────────────────────────── */
+
+y  { speak-as: inherit }
+z  { speak-as: initial }

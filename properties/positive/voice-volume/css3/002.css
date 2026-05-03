@@ -1,0 +1,56 @@
+/*
+ * Reference specification:
+ *   https://www.w3.org/TR/2023/CRD-css-speech-1-20230214/#mixing-props-voice-volume
+ */
+
+
+/* ── 1. silent ────────────────────────────────────────────────────────────── */
+
+a { voice-volume: silent }
+
+
+/* ── 2. Keyword alone ────────────────────────────────────────────────────── */
+
+b { voice-volume: x-soft }
+c { voice-volume: soft }
+d { voice-volume: medium }
+e { voice-volume: loud }
+f { voice-volume: x-loud }
+
+
+/* ── 3. <decibel> alone ──────────────────────────────────────────────────── */
+
+g  { voice-volume: 0dB }
+h  { voice-volume: 6dB }
+i  { voice-volume: -6dB }
+j  { voice-volume: 3dB }
+k  { voice-volume: -3dB }
+l  { voice-volume: 12dB }
+m  { voice-volume: -12dB }
+n  { voice-volume: 1.5dB }
+
+
+/* ── 4. Keyword then <decibel> ───────────────────────────────────────────── */
+
+o  { voice-volume: x-soft 3dB }
+p  { voice-volume: soft 6dB }
+q  { voice-volume: medium 6dB }
+r  { voice-volume: loud -6dB }
+s  { voice-volume: x-loud -3dB }
+t  { voice-volume: medium 0dB }
+u  { voice-volume: soft -3.5dB }
+
+
+/* ── 5. <decibel> then keyword (|| allows either order) ──────────────────── */
+
+v  { voice-volume: 6dB medium }
+w  { voice-volume: -6dB loud }
+x  { voice-volume: 3dB soft }
+aa { voice-volume: 0dB x-loud }
+ab { voice-volume: -3dB x-soft }
+
+
+/* ── 6. CSS-wide keywords ────────────────────────────────────────────────── */
+
+y  { voice-volume: inherit }
+z  { voice-volume: initial }

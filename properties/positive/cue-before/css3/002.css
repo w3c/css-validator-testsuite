@@ -1,0 +1,26 @@
+/*
+ * Reference specification:
+ *   https://www.w3.org/TR/2023/CRD-css-speech-1-20230214/#cue-props
+ */
+
+/* ══ cue-before ════════════════════════════════════════════════════════════ */
+
+/* none */
+a  { cue-before: none }
+
+/* <uri> only */
+b  { cue-before: url("audio/ping.wav") }
+c  { cue-before: url("audio/chime.mp3") }
+d  { cue-before: url("../sounds/beep.ogg") }
+e  { cue-before: url("https://example.com/audio/cue.wav") }
+
+/* <uri> with positive <decibel> */
+f  { cue-before: url("audio/ping.wav") 6dB }
+g  { cue-before: url("audio/ping.wav") 3dB }
+h  { cue-before: url("audio/ping.wav") 0dB }
+
+/* <uri> with negative <decibel> */
+i  { cue-before: url("audio/ping.wav") -6dB }
+j  { cue-before: url("audio/ping.wav") -12dB }
+k  { cue-before: url("audio/ping.wav") -3.5dB }
+

@@ -1494,6 +1494,11 @@ where warning means warninglevel in use (0 => normal, no => none).
       <description>Valid cue level css3</description>
       <result valid="true" />
     </test>
+    <test profile="css3" warning="no">
+      <file>testsuite/properties/positive/cue/css3/002.css</file>
+      <description>Valid cue level css3</description>
+      <result valid="true" />
+    </test>
   </type>
   <type title="Valid_cue-after">
     <test profile="css3" warning="no">
@@ -1501,10 +1506,20 @@ where warning means warninglevel in use (0 => normal, no => none).
       <description>Valid cue-after level css3</description>
       <result valid="true" />
     </test>
+    <test profile="css3" warning="no">
+      <file>testsuite/properties/positive/cue-after/css3/002.css</file>
+      <description>Valid cue-after level css3</description>
+      <result valid="true" />
+    </test>
   </type>
   <type title="Valid_cue-before">
     <test profile="css3" warning="no">
       <file>testsuite/properties/positive/cue-before/css3/001.css</file>
+      <description>Valid cue-before level css3</description>
+      <result valid="true" />
+    </test>
+    <test profile="css3" warning="no">
+      <file>testsuite/properties/positive/cue-before/css3/002.css</file>
       <description>Valid cue-before level css3</description>
       <result valid="true" />
     </test>
@@ -2214,6 +2229,11 @@ where warning means warninglevel in use (0 => normal, no => none).
       <description>Valid speak-as level css3</description>
       <result valid="true" />
     </test>
+    <test profile="css3" warning="no">
+      <file>testsuite/properties/positive/speak-as/css3/002.css</file>
+      <description>Valid speak-as level css3</description>
+      <result valid="true" />
+    </test>
   </type>
   <type title="Valid_tab-size">
     <test profile="css3" warning="no">
@@ -2455,10 +2475,20 @@ where warning means warninglevel in use (0 => normal, no => none).
       <description>Valid voice-family level css3</description>
       <result valid="true" />
     </test>
+    <test profile="css3" warning="no">
+      <file>testsuite/properties/positive/voice-family/css3/002.css</file>
+      <description>Valid voice-family level css3</description>
+      <result valid="true" />
+    </test>
   </type>
   <type title="Valid_voice-pitch">
     <test profile="css3" warning="no">
       <file>testsuite/properties/positive/voice-pitch/css3/001.css</file>
+      <description>Valid voice-pitch level css3</description>
+      <result valid="true" />
+    </test>
+    <test profile="css3" warning="no">
+      <file>testsuite/properties/positive/voice-pitch/css3/002.css</file>
       <description>Valid voice-pitch level css3</description>
       <result valid="true" />
     </test>
@@ -2476,6 +2506,11 @@ where warning means warninglevel in use (0 => normal, no => none).
       <description>Valid voice-rate level css3</description>
       <result valid="true" />
     </test>
+    <test profile="css3" warning="no">
+      <file>testsuite/properties/positive/voice-rate/css3/002.css</file>
+      <description>Valid voice-rate level css3</description>
+      <result valid="true" />
+    </test>
   </type>
   <type title="Valid_voice-stress">
     <test profile="css3" warning="no">
@@ -2487,6 +2522,11 @@ where warning means warninglevel in use (0 => normal, no => none).
   <type title="Valid_voice-volume">
     <test profile="css3" warning="no">
       <file>testsuite/properties/positive/voice-volume/css3/001.css</file>
+      <description>Valid voice-volume level css3</description>
+      <result valid="true" />
+    </test>
+    <test profile="css3" warning="no">
+      <file>testsuite/properties/positive/voice-volume/css3/002.css</file>
       <description>Valid voice-volume level css3</description>
       <result valid="true" />
     </test>

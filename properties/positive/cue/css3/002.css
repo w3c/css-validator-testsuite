@@ -1,0 +1,27 @@
+/*
+ * Reference specification:
+ *   https://www.w3.org/TR/2023/CRD-css-speech-1-20230214/#cue-props
+ */
+
+/* ══ cue shorthand ═════════════════════════════════════════════════════════ */
+
+/* one value — applies to both before and after */
+q  { cue: none }
+r  { cue: url("audio/ping.wav") }
+s  { cue: url("audio/ping.wav") 6dB }
+t  { cue: url("audio/ping.wav") -6dB }
+
+/* two values — before then after */
+u  { cue: none none }
+v  { cue: url("audio/start.wav") url("audio/end.wav") }
+w  { cue: url("audio/start.wav") none }
+x  { cue: none url("audio/end.wav") }
+aa { cue: url("audio/ping.wav") 6dB url("audio/ding.wav") }
+ab { cue: url("audio/ping.wav") url("audio/ding.wav") -6dB }
+ac { cue: url("audio/ping.wav") -3dB url("audio/ding.wav") 3dB }
+
+
+/* ── CSS-wide keywords ────────────────────────────────────────────────────── */
+
+y  { cue: inherit }
+z  { cue:  initial }

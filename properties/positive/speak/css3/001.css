@@ -1,5 +1,11 @@
-a { speak: normal }
-b { speak: none }
-c { speak: auto }
-y { speak: initial }
-z { speak: inherit }
+/*
+ * Reference specification:
+ *   https://www.w3.org/TR/2023/CRD-css-speech-1-20230214/#propdef-speak
+ */
+
+a { speak: auto }
+b { speak: never }
+c { speak: always }
+
+y { speak: inherit }
+z { speak: initial }
