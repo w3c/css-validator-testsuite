@@ -1,0 +1,247 @@
+/*
+ * Reference specification:
+ *   https://www.w3.org/TR/2022/CR-css-cascade-5-20220113/#at-layer
+ */
+
+
+/* ══ 1. Statement at-rule — single layer name ══════════════════════════════ */
+
+@layer base;
+@layer reset;
+@layer theme;
+@layer utilities;
+
+
+/* ══ 2. Statement at-rule — comma-separated list (declares order) ══════════ */
+/* Establishes the cascade order: leftmost = lowest priority.                */
+
+@layer reset, base, theme, utilities;
+@layer reset, typography, layout, theme, components, utilities;
+@layer vendor, framework, app;
+
+
+/* ══ 3. Statement at-rule — dot-notation nested layer names ════════════════ */
+
+@layer framework.base;
+@layer framework.components;
+@layer framework.utilities;
+@layer vendor.reset, vendor.base, vendor.theme;
+
+
+/* ══ 4. Block at-rule — anonymous (no name) ════════════════════════════════ */
+/* Cannot be referenced again; rules are evaluated in declaration order.     */
+
+@layer {
+  p { margin: 0 }
+}
+
+@layer {
+  h1 { font-size: 2em }
+  h2 { font-size: 1.5em }
+}
+
+/* empty anonymous block (valid — zero rules) */
+@layer { }
+
+
+/* ══ 5. Block at-rule — single-word named layer ════════════════════════════ */
+
+@layer reset {
+  * { box-sizing: border-box }
+  body { margin: 0; padding: 0 }
+}
+
+@layer base {
+  a { color: blue }
+  p { line-height: 1.5 }
+}
+
+@layer theme {
+  :root { --color-primary: #06c }
+  body { background-color: white; color: #333 }
+}
+
+@layer utilities {
+  .hidden { display: none }
+  .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden }
+}
+
+/* empty named block (valid — establishes layer, no rules yet) */
+@layer placeholder { }
+
+
+/* ══ 6. Block at-rule — dot-notation nested names ══════════════════════════ */
+/* 'a.b' is syntactic sugar for nesting layer 'b' inside layer 'a'.         */
+
+@layer framework.base {
+  * { box-sizing: border-box }
+}
+
+@layer framework.components {
+  .btn { display: inline-block; padding: 0.5em 1em }
+}
+
+@layer framework.utilities {
+  .text-center { text-align: center }
+}
+
+/* three-level nesting */
+@layer vendor.framework.base {
+  body { margin: 0 }
+}
+
+
+/* ══ 7. Multiple block rules for the same named layer ══════════════════════ */
+/* Rules accumulate; the layer is not redeclared, just appended to.         */
+
+@layer components {
+  .card { border: 1px solid #ccc; border-radius: 4px }
+}
+
+@layer components {
+  .card-header { padding: 1em; font-weight: bold }
+  .card-body { padding: 1em }
+}
+
+
+/* ══ 8. Nested @layer inside a block @layer ════════════════════════════════ */
+/* Equivalent to dot-notation: outer.inner                                   */
+
+@layer outer {
+  @layer inner {
+    p { color: navy }
+  }
+
+  @layer another {
+    p { color: teal }
+  }
+}
+
+/* deeper nesting */
+@layer top {
+  @layer middle {
+    @layer bottom {
+      a { text-decoration: none }
+    }
+  }
+}
+
+
+/* ══ 9. @layer statement inside a block @layer ══════════════════════════════ */
+/* A statement inside a block establishes order for sub-layers.              */
+
+@layer framework {
+  @layer base, components, utilities;
+
+  @layer base {
+    * { box-sizing: border-box }
+  }
+
+  @layer components {
+    .btn { cursor: pointer }
+  }
+
+  @layer utilities {
+    .mt-1 { margin-top: 0.25rem }
+  }
+}
+
+
+/* ══ 10. @layer interacting with other at-rules ════════════════════════════ */
+
+/* @layer block containing @media */
+@layer responsive {
+  @media (max-width: 600px) {
+    .container { padding: 0 1rem }
+  }
+  @media (min-width: 601px) {
+    .container { padding: 0 2rem }
+  }
+}
+
+/* @layer block containing @supports */
+@layer progressive {
+  @supports (display: grid) {
+    .layout { display: grid; grid-template-columns: 1fr 1fr }
+  }
+}
+
+/* @layer block containing @keyframes */
+@layer animations {
+  @keyframes fade-in {
+    from { opacity: 0 }
+    to   { opacity: 1 }
+  }
+}
+
+/* @layer block containing @font-face */
+@layer typography {
+  @font-face {
+    font-family: "MyFont";
+    src: url("myfont.woff2") format("woff2");
+  }
+}
+
+/* @layer block containing @counter-style */
+@layer counters {
+  @counter-style thumbs {
+    system: cyclic;
+    symbols: "\1F44D";
+    suffix: " ";
+  }
+}
+
+
+/* ══ 11. Statement at-rule with a single dot-notation name ═════════════════ */
+
+@layer app.pages;
+@layer app.components;
+@layer app.utilities;
+
+/* comma list of dot-notation names */
+@layer app.pages, app.components, app.utilities;
+
+
+/* ══ 12. Realistic layered architecture example ════════════════════════════ */
+
+/* Step 1: establish layer order */
+@layer reset, tokens, base, components, patterns, utilities;
+
+/* Step 2: populate layers */
+@layer reset {
+  *, *::before, *::after { box-sizing: border-box }
+  body { margin: 0 }
+}
+
+@layer tokens {
+  :root {
+    --color-brand:   #06c;
+    --color-surface: #fff;
+    --space-1:       0.25rem;
+    --space-2:       0.5rem;
+    --space-4:       1rem;
+  }
+}
+
+@layer base {
+  body { font-family: system-ui, sans-serif; line-height: 1.5 }
+  a    { color: var(--color-brand) }
+}
+
+@layer components {
+  .btn {
+    display: inline-flex;
+    padding: var(--space-2) var(--space-4);
+    background: var(--color-brand);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+}
+
+@layer utilities {
+  .mt-auto  { margin-top: auto }
+  .flex     { display: flex }
+  .hidden   { display: none }
+}
