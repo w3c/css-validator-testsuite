@@ -1,0 +1,1156 @@
+/*
+ * CSS Validator Test Suite — @supports at-rule (positive tests)
+ *
+ * Source grammar (CSS Conditional Rules Module Level 3, CRD 15 August 2024):
+ *
+ *   @supports = @supports <supports-condition> { <rule-list> }
+ *
+ *   <supports-condition> = not <supports-in-parens>
+ *                        | <supports-in-parens> [ and <supports-in-parens> ]*
+ *                        | <supports-in-parens> [ or  <supports-in-parens> ]*
+ *
+ *   <supports-in-parens>  = ( <supports-condition> ) | <supports-feature>
+ *                         | <general-enclosed>
+ *   <supports-feature>    = <supports-decl>
+ *   <supports-decl>       = ( <declaration> )
+ *
+ * Reference specification:
+ *   https://www.w3.org/TR/2024/CRD-css-conditional-3-20240815/#at-supports
+ *
+ * Level 3 scope note:
+ *   In Level 3, the ONLY <supports-feature> form is <supports-decl>
+ *   (a property:value declaration in parentheses). The selector(),
+ *   font-tech(), and font-format() functions are defined in Level 4
+ *   and are NOT tested here.
+ *
+ * Key structural constraints:
+ *   - 'and' and 'or' cannot be mixed at the same level without parentheses.
+ *   - 'not' at the top level does NOT need extra wrapping parentheses.
+ *   - When 'not' is combined with 'and'/'or' it must be inside parentheses.
+ *   - Extra parentheses around <supports-decl> are valid.
+ *   - A trailing !important on the tested declaration is allowed (spec §6).
+ *   - An empty value in a declaration is valid for @supports purposes.
+ *   - <general-enclosed> exists for UA forward-compatibility only;
+ *     authors must not use it — it is excluded from this positive suite.
+ *   - The condition evaluates to true/false at runtime; syntactic validity
+ *     is independent of whether the UA actually supports the tested feature.
+ */
+
+
+/* ══════════════════════════════════════════════════════════════════════════ */
+/* SECTION 1 — Single <supports-decl>: basic property:value pairs           */
+/* ══════════════════════════════════════════════════════════════════════════ */
+
+/* 1a. Well-known properties and values */
+@supports (display: flex) {
+  .flex { display: flex }
+}
+
+@supports (display: grid) {
+  .grid { display: grid }
+}
+
+@supports (display: block) {
+  .block { display: block }
+}
+
+/* 1b. Properties from the specs in this test suite */
+@supports (contain: layout) {
+  .contained { contain: layout }
+}
+
+@supports (content-visibility: auto) {
+  .cv { content-visibility: auto }
+}
+
+@supports (translate: 10px) {
+  .translated { translate: 10px }
+}
+
+@supports (rotate: 45deg) {
+  .rotated { rotate: 45deg }
+}
+
+@supports (scale: 2) {
+  .scaled { scale: 2 }
+}
+
+@supports (grid-template-columns: subgrid) {
+  .subgrid { grid-template-columns: subgrid }
+}
+
+@supports (gap: 1em) {
+  .gap { gap: 1em }
+}
+
+@supports (color: oklch(0.5 0.2 30)) {
+  .oklch { color: oklch(0.5 0.2 30) }
+}
+
+@supports (scrollbar-gutter: stable) {
+  .sg { scrollbar-gutter: stable }
+}
+
+@supports (overflow-clip-margin: 10px) {
+  .ocm { overflow-clip-margin: 10px }
+}
+
+@supports (mix-blend-mode: multiply) {
+  .blend { mix-blend-mode: multiply }
+}
+
+@supports (isolation: isolate) {
+  .isolated { isolation: isolate }
+}
+
+@supports (will-change: transform) {
+  .wc { will-change: transform }
+}
+
+@supports (transform-style: preserve-3d) {
+  .ts { transform-style: preserve-3d }
+}
+
+@supports (backface-visibility: hidden) {
+  .bfv { backface-visibility: hidden }
+}
+
+/* 1c. Shorthand properties */
+@supports (flex: 1) {
+  .flex-1 { flex: 1 }
+}
+
+@supports (grid: none) {
+  .grid-none { grid: none }
+}
+
+@supports (all: unset) {
+  .reset { all: unset }
+}
+
+/* 1d. Custom properties (always syntactically valid in @supports) */
+@supports (--my-var: 1) {
+  .cv1 { color: var(--my-var) }
+}
+
+@supports (--color: red) {
+  .cv2 { color: var(--color) }
+}
+
+/* 1e. Property with a complex multi-token value */
+@supports (background: linear-gradient(to right, red, blue)) {
+  .gradient { background: linear-gradient(to right, red, blue) }
+}
+
+@supports (transform: rotate(45deg) translateX(10px)) {
+  .transform { transform: rotate(45deg) translateX(10px) }
+}
+
+@supports (grid-template: "a b" 100px "c d" 1fr / 1fr 1fr) {
+  .gt { grid-template: "a b" 100px "c d" 1fr / 1fr 1fr }
+}
+
+@supports (color: color-mix(in oklch, red, blue)) {
+  .cm { color: color-mix(in oklch, red, blue) }
+}
+
+/* 1f. var() in the tested declaration — always syntactically valid */
+@supports (color: var(--missing, red)) {
+  .var-color { color: var(--missing, red) }
+}
+
+@supports (width: var(--w, 100px)) {
+  .var-width { width: var(--w, 100px) }
+}
+
+
+/* ══════════════════════════════════════════════════════════════════════════ */
+/* SECTION 2 — not <supports-in-parens>                                     */
+/* ══════════════════════════════════════════════════════════════════════════ */
+
+/* 2a. not at the top level — no extra parentheses required */
+@supports not (display: flex) {
+  .no-flex { float: left }
+}
+
+@supports not (display: grid) {
+  .no-grid { display: table }
+}
+
+@supports not (contain: layout) {
+  .no-contain { overflow: hidden }
+}
+
+/* 2b. not with a complex value */
+@supports not (transform: rotate(45deg) translateX(10px)) {
+  .no-transform { top: 0; left: 0 }
+}
+
+/* 2c. double negation: not (not (...)) */
+@supports not (not (display: flex)) {
+  .double-not { display: flex }
+}
+
+/* 2d. not around a parenthesised condition */
+@supports not (not (not (display: grid))) {
+  .triple-not { display: grid }
+}
+
+
+/* ══════════════════════════════════════════════════════════════════════════ */
+/* SECTION 3 — conjunction: <supports-in-parens> [ and <supports-in-parens> ]* */
+/* ══════════════════════════════════════════════════════════════════════════ */
+
+/* 3a. Two conditions */
+@supports (display: flex) and (gap: 1em) {
+  .flex-gap { display: flex; gap: 1em }
+}
+
+@supports (display: grid) and (grid-template-columns: subgrid) {
+  .grid-subgrid { display: grid }
+}
+
+@supports (contain: layout) and (content-visibility: auto) {
+  .containment { contain: layout; content-visibility: auto }
+}
+
+@supports (translate: 10px) and (rotate: 45deg) and (scale: 2) {
+  .individual-transforms { translate: 10px; rotate: 45deg; scale: 2 }
+}
+
+/* 3b. Three conditions */
+@supports (display: grid) and (gap: 1em) and (grid-template-columns: 1fr) {
+  .grid-full { display: grid; gap: 1em; grid-template-columns: 1fr }
+}
+
+/* 3c. and with not inside parentheses */
+@supports (display: grid) and (not (display: inline-grid)) {
+  .grid-not-inline { display: grid }
+}
+
+@supports (display: flex) and (not (float: left)) {
+  .flex-not-float { display: flex }
+}
+
+/* 3d. and with nested conditions in parentheses */
+@supports ((display: grid) and (gap: 1em)) and (grid-template-columns: subgrid) {
+  .nested-and { display: grid }
+}
+
+
+/* ══════════════════════════════════════════════════════════════════════════ */
+/* SECTION 4 — disjunction: <supports-in-parens> [ or <supports-in-parens> ]* */
+/* ══════════════════════════════════════════════════════════════════════════ */
+
+/* 4a. Two conditions */
+@supports (display: flex) or (display: -webkit-flex) {
+  .flex-prefixed { display: flex }
+}
+
+@supports (gap: 1em) or (grid-gap: 1em) {
+  .gap-legacy { gap: 1em }
+}
+
+@supports (color: oklch(0 0 0)) or (color: lab(0% 0 0)) {
+  .color-modern { color: oklch(0 0 0) }
+}
+
+/* 4b. Three conditions */
+@supports (display: flex) or (display: -webkit-flex) or (display: -ms-flexbox) {
+  .flex-all-prefixes { display: flex }
+}
+
+/* 4c. or with not inside parentheses */
+@supports (display: flex) or (not (float: left)) {
+  .flex-or-not { display: flex }
+}
+
+
+/* ══════════════════════════════════════════════════════════════════════════ */
+/* SECTION 5 — Mixing operators with parentheses                            */
+/* 'and' and 'or' cannot be mixed at the same level; parentheses required.  */
+/* ══════════════════════════════════════════════════════════════════════════ */
+
+/* 5a. (and) or (or): outer conjunction */
+@supports (display: flex) and ((gap: 1em) or (column-gap: 1em)) {
+  .and-or { display: flex; gap: 1em }
+}
+
+@supports (display: grid) and ((grid-template-columns: subgrid) or (grid-template-rows: subgrid)) {
+  .grid-subgrid-either { display: grid }
+}
+
+/* 5b. (or) and (and): outer disjunction */
+@supports ((display: flex) and (gap: 1em)) or ((display: grid) and (gap: 1em)) {
+  .flex-or-grid-with-gap { gap: 1em }
+}
+
+@supports ((display: flex) and (flex-wrap: wrap)) or (display: grid) {
+  .flex-wrap-or-grid { display: grid }
+}
+
+/* 5c. not wrapping and/or groups */
+@supports not ((display: flex) and (gap: 1em)) {
+  .not-flex-gap { float: left }
+}
+
+@supports not ((display: grid) or (display: flex)) {
+  .no-modern-layout { display: table }
+}
+
+/* 5d. Deeply nested conditions */
+@supports (display: grid) and (not ((display: inline-grid) or (display: contents))) {
+  .complex { display: grid }
+}
+
+@supports ((display: flex) and (gap: 1em)) or (not (float: left)) {
+  .complex-2 { display: flex }
+}
+
+
+/* ══════════════════════════════════════════════════════════════════════════ */
+/* SECTION 6 — Extra parentheses (spec explicitly allows these)             */
+/* ══════════════════════════════════════════════════════════════════════════ */
+
+@supports ((display: flex)) {
+  .extra-parens-1 { display: flex }
+}
+
+@supports (((display: grid))) {
+  .extra-parens-2 { display: grid }
+}
+
+@supports ((display: flex)) and ((gap: 1em)) {
+  .extra-parens-and { display: flex; gap: 1em }
+}
+
+@supports ((display: flex)) or ((display: grid)) {
+  .extra-parens-or { display: flex }
+}
+
+
+/* ══════════════════════════════════════════════════════════════════════════ */
+/* SECTION 7 — !important on the tested declaration (spec §6 allows this)  */
+/* "A trailing !important on a declaration being tested is allowed,         */
+/*  though it won't change the validity of the declaration."                */
+/* ══════════════════════════════════════════════════════════════════════════ */
+
+@supports (display: flex !important) {
+  .important-test { display: flex }
+}
+
+@supports (color: red !important) {
+  .important-color { color: red }
+}
+
+@supports not (display: flex !important) {
+  .not-important { float: left }
+}
+
+
+/* ══════════════════════════════════════════════════════════════════════════ */
+/* SECTION 8 — Contents of @supports: all rule types valid inside           */
+/* (at-risk per spec but valid per CRD grammar)                             */
+/* ══════════════════════════════════════════════════════════════════════════ */
+
+/* 8a. Style rules (always valid) */
+@supports (display: flex) {
+  .a { display: flex }
+  .b { flex-direction: row }
+  #c { flex-wrap: wrap }
+  h1, h2 { gap: 1em }
+}
+
+/* 8b. @media nested inside @supports */
+@supports (display: grid) {
+  @media (min-width: 600px) {
+    .layout { display: grid; grid-template-columns: repeat(3, 1fr) }
+  }
+}
+
+/* 8c. @supports nested inside @supports */
+@supports (display: flex) {
+  @supports (gap: 1em) {
+    .flex-gap { display: flex; gap: 1em }
+  }
+}
+
+/* 8d. @layer nested inside @supports */
+@supports (display: grid) {
+  @layer grid-styles {
+    .grid { display: grid }
+  }
+}
+
+/* 8e. @keyframes nested inside @supports (at-risk) */
+@supports (animation-name: test) {
+  @keyframes slide-in {
+    from { transform: translateX(-100%) }
+    to   { transform: translateX(0) }
+  }
+  .animated { animation: slide-in 0.3s ease }
+}
+
+/* 8f. @font-face nested inside @supports (at-risk) */
+@supports (display: flex) {
+  @font-face {
+    font-family: "MyFont";
+    src: url("myfont.woff2") format("woff2");
+  }
+}
+
+/* 8g. @counter-style nested inside @supports (at-risk) */
+@supports (list-style-type: disc) {
+  @counter-style thumbs {
+    system: cyclic;
+    symbols: "\1F44D";
+    suffix: " ";
+  }
+}
+
+
+/* ══════════════════════════════════════════════════════════════════════════ */
+/* SECTION 9 — @supports nested inside @media                               */
+/* ══════════════════════════════════════════════════════════════════════════ */
+
+@media screen {
+  @supports (display: flex) {
+    .screen-flex { display: flex }
+  }
+}
+
+@media (min-width: 600px) {
+  @supports (display: grid) {
+    .wide-grid { display: grid; grid-template-columns: repeat(3, 1fr) }
+  }
+  @supports not (display: grid) {
+    .wide-fallback { display: flex; flex-wrap: wrap }
+  }
+}
+
+
+/* ══════════════════════════════════════════════════════════════════════════ */
+/* SECTION 10 — @supports nested inside @layer                              */
+/* ══════════════════════════════════════════════════════════════════════════ */
+
+@layer progressive {
+  @supports (display: grid) {
+    .layout { display: grid }
+  }
+}
+
+@layer base {
+  @supports (contain: layout) {
+    .widget { contain: layout }
+  }
+}
+
+
+/* ══════════════════════════════════════════════════════════════════════════ */
+/* SECTION 11 — Realistic use-case patterns                                 */
+/* ══════════════════════════════════════════════════════════════════════════ */
+
+/* 11a. Progressive enhancement: flex with gap fallback */
+.container { display: flex; flex-wrap: wrap; margin: -0.5em }
+.container > * { margin: 0.5em }
+
+@supports (gap: 1em) {
+  .container { margin: 0; gap: 1em }
+  .container > * { margin: 0 }
+}
+
+/* 11b. Grid with subgrid progressive enhancement */
+@supports (display: grid) {
+  .page { display: grid; grid-template-columns: 1fr 3fr }
+
+  @supports (grid-template-columns: subgrid) {
+    .page > * { display: grid; grid-template-columns: subgrid }
+  }
+}
+
+/* 11c. Containment progressive enhancement */
+@supports (content-visibility: auto) and (contain: layout style) {
+  .offscreen { content-visibility: auto; contain: layout style }
+}
+
+/* 11d. Feature detection with negation for fallback */
+@supports not (display: grid) {
+  .layout { display: flex; flex-wrap: wrap }
+}
+
+@supports (display: grid) {
+  .layout { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)) }
+}
+
+/* 11e. Checking for individual transform properties */
+@supports (translate: 0px) and (rotate: 0deg) and (scale: 1) {
+  .uses-individual-transforms {
+    translate: 10px 20px;
+    rotate: 45deg;
+    scale: 1.5;
+  }
+}
+
+/* 11f. Checking for color-mix() support */
+@supports (color: color-mix(in srgb, red, blue)) {
+  :root { --accent: color-mix(in oklch, #06c, #009 30%) }
+}
+
+/* 11g. Checking for cascade layer support */
+@supports (all: revert-layer) {
+  @layer base {
+    .item { color: navy }
+  }
+}
+
+
+/* ══════════════════════════════════════════════════════════════════════════ */
+/* SECTION 12 — selector() — CSS Conditional Rules Level 4 extension        */
+/*                                                                           */
+/* Source grammar (CSS Conditional Rules Level 4, CRD 4 September 2025):    */
+/*                                                                           */
+/*   <supports-feature>     = <supports-selector-fn> | <supports-decl>      */
+/*   <supports-selector-fn> = selector( <complex-selector> )                */
+/*                                                                           */
+/* Reference:                                                               */
+/*   https://www.w3.org/TR/2025/CRD-css-conditional-4-20250904/#at-supports-ext */
+/*                                                                           */
+/* A <complex-selector> is a sequence of <compound-selector>s separated     */
+/* by combinators (descendant, child >, adjacent +, sibling ~, column ||).  */
+/*                                                                           */
+/* The result is true if the UA supports the given selector in full.        */
+/* Note: selectors parsed forgivingly (e.g. :is(), :where()) may parse      */
+/* without error but still be considered unsupported if any argument is     */
+/* unknown — those are not included here as positive tests.                 */
+/* ══════════════════════════════════════════════════════════════════════════ */
+
+
+/* ── 12a. Simple type and universal selectors ────────────────────────────── */
+
+@supports selector(a) {
+  a { color: blue }
+}
+
+@supports selector(*) {
+  * { box-sizing: border-box }
+}
+
+@supports selector(div) {
+  div { display: block }
+}
+
+
+/* ── 12b. Class and ID selectors ─────────────────────────────────────────── */
+
+@supports selector(.foo) {
+  .foo { color: red }
+}
+
+@supports selector(#bar) {
+  #bar { color: blue }
+}
+
+
+/* ── 12c. Attribute selectors ────────────────────────────────────────────── */
+
+@supports selector([hidden]) {
+  [hidden] { display: none }
+}
+
+@supports selector([type="text"]) {
+  [type="text"] { border: 1px solid }
+}
+
+@supports selector([href^="https"]) {
+  [href^="https"] { color: green }
+}
+
+@supports selector([lang|="en"]) {
+  [lang|="en"] { quotes: "\201C" "\201D" }
+}
+
+@supports selector(a[href]) {
+  a[href] { text-decoration: underline }
+}
+
+
+/* ── 12d. Pseudo-classes ─────────────────────────────────────────────────── */
+
+@supports selector(:hover) {
+  a:hover { color: red }
+}
+
+@supports selector(:focus) {
+  :focus { outline: 2px solid blue }
+}
+
+@supports selector(:focus-visible) {
+  :focus-visible { outline: 3px solid blue }
+}
+
+@supports selector(:focus-within) {
+  :focus-within { background: lightyellow }
+}
+
+@supports selector(:not(.disabled)) {
+  :not(.disabled) { cursor: pointer }
+}
+
+@supports selector(:is(h1, h2, h3)) {
+  :is(h1, h2, h3) { font-weight: bold }
+}
+
+@supports selector(:where(header, footer)) {
+  :where(header, footer) { padding: 1rem }
+}
+
+@supports selector(:has(> img)) {
+  :has(> img) { display: flex }
+}
+
+@supports selector(:nth-child(2n+1)) {
+  :nth-child(2n+1) { background: #f5f5f5 }
+}
+
+@supports selector(:nth-of-type(even)) {
+  :nth-of-type(even) { background: #eee }
+}
+
+@supports selector(:first-child) {
+  :first-child { margin-top: 0 }
+}
+
+@supports selector(:last-child) {
+  :last-child { margin-bottom: 0 }
+}
+
+@supports selector(:only-child) {
+  :only-child { margin: auto }
+}
+
+@supports selector(:checked) {
+  :checked + label { font-weight: bold }
+}
+
+@supports selector(:disabled) {
+  :disabled { opacity: 0.5 }
+}
+
+@supports selector(:empty) {
+  :empty { display: none }
+}
+
+@supports selector(:root) {
+  :root { font-size: 16px }
+}
+
+@supports selector(:target) {
+  :target { background: yellow }
+}
+
+@supports selector(:link) {
+  :link { color: blue }
+}
+
+@supports selector(:visited) {
+  :visited { color: purple }
+}
+
+@supports selector(:any-link) {
+  :any-link { text-decoration: underline }
+}
+
+@supports selector(:required) {
+  :required { border-color: red }
+}
+
+@supports selector(:valid) {
+  :valid { border-color: green }
+}
+
+@supports selector(:invalid) {
+  :invalid { border-color: red }
+}
+
+@supports selector(:placeholder-shown) {
+  :placeholder-shown { font-style: italic }
+}
+
+@supports selector(:scope) {
+  :scope > p { color: navy }
+}
+
+
+/* ── 12e. Pseudo-elements ────────────────────────────────────────────────── */
+
+@supports selector(::before) {
+  .icon::before { content: "" }
+}
+
+@supports selector(::after) {
+  .icon::after { content: "" }
+}
+
+@supports selector(::placeholder) {
+  ::placeholder { color: gray }
+}
+
+@supports selector(::selection) {
+  ::selection { background: blue; color: white }
+}
+
+@supports selector(::first-line) {
+  p::first-line { font-variant: small-caps }
+}
+
+@supports selector(::first-letter) {
+  p::first-letter { font-size: 2em }
+}
+
+@supports selector(::marker) {
+  li::marker { color: blue }
+}
+
+@supports selector(::file-selector-button) {
+  ::file-selector-button { appearance: none }
+}
+
+
+/* ── 12f. Compound selectors (multiple simple selectors on one element) ───── */
+
+@supports selector(a.external) {
+  a.external { color: orange }
+}
+
+@supports selector(input[type="checkbox"]:checked) {
+  input[type="checkbox"]:checked + label { font-weight: bold }
+}
+
+@supports selector(div.container#main) {
+  div.container#main { max-width: 1200px }
+}
+
+@supports selector(button:hover:not(:disabled)) {
+  button:hover:not(:disabled) { background: lightblue }
+}
+
+
+/* ── 12g. Complex selectors — combinators ────────────────────────────────── */
+
+/* descendant combinator (space) */
+@supports selector(nav a) {
+  nav a { color: white }
+}
+
+@supports selector(ul li a) {
+  ul li a { display: block }
+}
+
+/* child combinator (>) */
+@supports selector(ul > li) {
+  ul > li { list-style: disc }
+}
+
+@supports selector(.parent > .child) {
+  .parent > .child { margin: 0 }
+}
+
+/* adjacent sibling combinator (+) */
+@supports selector(h1 + p) {
+  h1 + p { margin-top: 0 }
+}
+
+@supports selector(input:checked + label) {
+  input:checked + label { font-weight: bold }
+}
+
+/* general sibling combinator (~) */
+@supports selector(h1 ~ p) {
+  h1 ~ p { color: gray }
+}
+
+@supports selector(.active ~ .item) {
+  .active ~ .item { opacity: 0.5 }
+}
+
+/* column combinator (||) — the canonical Level 4 example */
+@supports selector(col || td) {
+  col.selected || td { background: tan }
+}
+
+@supports selector(col.highlight || td) {
+  col.highlight || td { background: yellow }
+}
+
+
+/* ── 12h. Complex selectors — combined combinators ───────────────────────── */
+
+@supports selector(nav > ul > li > a) {
+  nav > ul > li > a { display: block }
+}
+
+@supports selector(form input:focus + .hint) {
+  form input:focus + .hint { display: block }
+}
+
+@supports selector(section.active > h2 ~ p) {
+  section.active > h2 ~ p { color: navy }
+}
+
+
+/* ── 12i. selector() combined with and / or / not ───────────────────────── */
+
+/* selector() with and */
+@supports selector(:has(> img)) and (display: flex) {
+  :has(> img) { display: flex; align-items: center }
+}
+
+@supports selector(::placeholder) and (color: oklch(0 0 0)) {
+  ::placeholder { color: oklch(0.6 0 0) }
+}
+
+/* selector() with or */
+@supports selector(::marker) or (list-style-type: disc) {
+  li::marker { color: blue }
+}
+
+/* selector() with not */
+@supports not selector(col || td) {
+  /* column combinator not supported — use class-based fallback */
+  .col-selected td { background: tan }
+}
+
+/* selector() combined with other conditions in parentheses */
+@supports (display: grid) and (selector(:has(> img))) {
+  .gallery:has(> img) { display: grid }
+}
+
+@supports (selector(:focus-visible)) and (outline: 3px solid blue) {
+  :focus-visible { outline: 3px solid blue; outline-offset: 2px }
+}
+
+
+/* ══════════════════════════════════════════════════════════════════════════ */
+/* SECTION 13 — CSS Conditional Rules Level 5 extensions to @supports       */
+/*                                                                           */
+/* Source grammar (CSS Conditional Rules Level 5, WD 30 October 2025):      */
+/*                                                                           */
+/*   <supports-feature> = <supports-selector-fn>      (from Level 4)        */
+/*                      | <supports-font-tech-fn>     (NEW in Level 5)      */
+/*                      | <supports-font-format-fn>   (NEW in Level 5)      */
+/*                      | <supports-at-rule-fn>       (NEW in Level 5)      */
+/*                      | <supports-decl>             (extended in Level 5) */
+/*                                                                           */
+/*   <supports-decl>          = ( [ <declaration> | <supports-condition-name> ] ) */
+/*   <supports-font-tech-fn>  = font-tech( <font-tech> )                    */
+/*   <supports-font-format-fn>= font-format( <font-format> )                */
+/*   <supports-at-rule-fn>    = at-rule( <at-keyword-token> )               */
+/*                                                                           */
+/*   <font-tech>   = <font-features-tech> | <color-font-tech>               */
+/*                 | variations | palettes                                   */
+/*                 | incremental-patch | incremental-range | incremental-auto*/
+/*   <font-features-tech> = features-opentype | features-aat                */
+/*                        | features-graphite                                */
+/*   <color-font-tech>    = color-COLRv0 | color-COLRv1 | color-SVG        */
+/*                        | color-sbix   | color-CBDT                       */
+/*                                                                           */
+/*   <font-format> = <string> | collection | embedded-opentype | opentype   */
+/*                 | svg | truetype | woff | woff2                           */
+/*                                                                           */
+/* Reference:                                                               */
+/*   https://www.w3.org/TR/2025/WD-css-conditional-5-20251030/#at-supports-ext */
+/*                                                                           */
+/* IMPORTANT NOTE on font-format() and <string>:                            */
+/*   The spec defines that a format specified as a <string> is NEVER         */
+/*   considered supported under the support definition. Syntactically a     */
+/*   <string> is still valid in the grammar, but it always evaluates to     */
+/*   false. For positive tests we therefore use keyword forms only.         */
+/*                                                                           */
+/* IMPORTANT NOTE on at-rule():                                             */
+/*   The argument is an <at-keyword-token>, which includes the '@' prefix.  */
+/*   Example: at-rule(@layer), at-rule(@supports).                          */
+/*   Note: @charset is explicitly excluded by the spec — it is not a valid  */
+/*   at-rule and is never considered supported.                             */
+/* ══════════════════════════════════════════════════════════════════════════ */
+
+
+/* ── 13a. font-tech() — font features technologies ───────────────────────── */
+
+@supports font-tech(features-opentype) {
+  body { font-feature-settings: "kern" 1 }
+}
+
+@supports font-tech(features-aat) {
+  body { font-feature-settings: normal }
+}
+
+@supports font-tech(features-graphite) {
+  body { font-feature-settings: normal }
+}
+
+
+/* ── 13b. font-tech() — color font technologies ──────────────────────────── */
+
+@supports font-tech(color-COLRv0) {
+  .icon { font-family: colored-icons, monochrome-icons }
+}
+
+@supports font-tech(color-COLRv1) {
+  .icon { font-family: gradient-icons, colored-icons, monochrome-icons }
+}
+
+@supports font-tech(color-SVG) {
+  .icon { font-family: svg-icons, monochrome-icons }
+}
+
+@supports font-tech(color-sbix) {
+  .icon { font-family: sbix-icons, monochrome-icons }
+}
+
+@supports font-tech(color-CBDT) {
+  .icon { font-family: cbdt-icons, monochrome-icons }
+}
+
+
+/* ── 13c. font-tech() — other technologies ───────────────────────────────── */
+
+@supports font-tech(variations) {
+  h1 { font-variation-settings: "wght" 700 }
+}
+
+@supports font-tech(palettes) {
+  .colored { font-palette: --brand-palette }
+}
+
+/* ── 13d. font-tech() combined with not / and / or ───────────────────────── */
+
+/* not */
+@supports not font-tech(color-COLRv1) {
+  .icon { font-family: monochrome-icons }
+}
+
+/* and — two font techs */
+@supports font-tech(color-COLRv1) and font-tech(variations) {
+  .icon { font-family: gradient-variable-icons }
+}
+
+/* and — font-tech with a property declaration */
+@supports font-tech(color-COLRv1) and (font-palette: normal) {
+  .icon { font-family: gradient-icons; font-palette: --brand }
+}
+
+/* or — fallback chain between color formats */
+@supports font-tech(color-COLRv1) or font-tech(color-SVG) or font-tech(color-COLRv0) {
+  .icon { font-family: color-icons, monochrome-fallback }
+}
+
+/* nested: (and) or (or) */
+@supports (font-tech(color-COLRv1) and font-tech(variations))
+       or  font-tech(color-SVG) {
+  .icon { font-family: best-color-font, monochrome-fallback }
+}
+
+
+/* ── 13e. font-format() — keyword forms ─────────────────────────────────── */
+/* Only keyword forms are used here; <string> form always evaluates false.  */
+
+@supports font-format(woff2) {
+  @font-face {
+    font-family: "MyFont";
+    src: url("myfont.woff2") format(woff2);
+  }
+}
+
+@supports font-format(woff) {
+  @font-face {
+    font-family: "MyFont";
+    src: url("myfont.woff") format(woff);
+  }
+}
+
+@supports font-format(opentype) {
+  @font-face {
+    font-family: "MyFont";
+    src: url("myfont.otf") format(opentype);
+  }
+}
+
+@supports font-format(truetype) {
+  @font-face {
+    font-family: "MyFont";
+    src: url("myfont.ttf") format(truetype);
+  }
+}
+
+@supports font-format(svg) {
+  @font-face {
+    font-family: "MyFont";
+    src: url("myfont.svg#MyFont") format(svg);
+  }
+}
+
+@supports font-format(collection) {
+  @font-face {
+    font-family: "MyFont";
+    src: url("myfont.ttc") format(collection);
+  }
+}
+
+@supports font-format(embedded-opentype) {
+  @font-face {
+    font-family: "MyFont";
+    src: url("myfont.eot") format(embedded-opentype);
+  }
+}
+
+
+/* ── 13f. font-format() combined with not / and / or ─────────────────────── */
+
+/* not */
+@supports not font-format(woff) {
+  /* woff not supported — use woff2 only */
+  @font-face {
+    font-family: "ModernFont";
+    src: url("font.woff2") format(woff2);
+  }
+}
+
+/* and — format + tech */
+@supports font-format(woff2) and font-tech(variations) {
+  @font-face {
+    font-family: "VarFont";
+    src: url("var.woff2") format(woff2) tech(variations);
+  }
+}
+
+/* or — format fallback */
+@supports font-format(woff2) or font-format(woff) {
+  @font-face {
+    font-family: "MyFont";
+    src: url("font.woff2") format(woff2), url("font.woff") format(woff);
+  }
+}
+
+/* font-format with property declaration */
+@supports font-format(woff2) and (color: red) {
+  @font-face {
+    font-family: "MyFont";
+    src: url("font.woff2") format(woff2);
+    font-display: swap;
+  }
+}
+
+
+/* ── 13g. font-tech() and font-format() combined ─────────────────────────── */
+
+/* The canonical progressive enhancement pattern for color fonts */
+@supports font-tech(color-COLRv1) and font-format(woff2) {
+  @font-face {
+    font-family: icons;
+    src: url("icons-gradient-var.woff2") format(woff2) tech(color-COLRv1);
+  }
+}
+
+@supports not (font-tech(color-COLRv1) and font-format(woff2)) {
+  @font-face {
+    font-family: icons;
+    src: url("icons-fallback.woff2") format(woff2);
+  }
+}
+
+
+/* ── 13h. at-rule() — testing for supported at-rules ─────────────────────── */
+/* The argument is an <at-keyword-token>, i.e. the keyword including '@'.   */
+/* @charset is excluded by spec: it is not a valid at-rule.                 */
+
+/* CSS core at-rules */
+@supports at-rule(@media) {
+  .responsive { color: inherit }
+}
+
+@supports at-rule(@supports) {
+  .progressive { color: inherit }
+}
+
+@supports at-rule(@import) {
+  .importable { color: inherit }
+}
+
+@supports at-rule(@keyframes) {
+  .animated { animation: none }
+}
+
+@supports at-rule(@font-face) {
+  .uses-font { font-family: system-ui }
+}
+
+/* CSS Cascade Level 5 */
+@supports at-rule(@layer) {
+  .layered { color: inherit }
+}
+
+/* CSS Counter Styles Level 3 */
+@supports at-rule(@counter-style) {
+  li { list-style: disc }
+}
+
+/* CSS Conditional Level 5 */
+@supports at-rule(@when) {
+  .when-supported { color: inherit }
+}
+
+@supports at-rule(@else) {
+  .else-supported { color: inherit }
+}
+
+@supports at-rule(@container) {
+  .containable { color: inherit }
+}
+
+/* CSS Fonts Level 4 */
+@supports at-rule(@font-palette-values) {
+  .palette { font-palette: normal }
+}
+
+/* CSS Page (for print) */
+@supports at-rule(@page) {
+  body { margin: 0 }
+}
+
+/* CSS Color Level 5 */
+@supports at-rule(@color-profile) {
+  body { color: inherit }
+}
+
+
+/* ── 13i. at-rule() combined with not / and / or ─────────────────────────── */
+
+/* not */
+@supports not at-rule(@layer) {
+  /* @layer not supported — define order manually */
+  .fallback { color: inherit }
+}
+
+/* and — at-rule + property */
+@supports at-rule(@layer) and (all: revert-layer) {
+  @layer base {
+    .layered { color: navy }
+  }
+}
+
+/* and — two at-rules */
+@supports at-rule(@layer) and at-rule(@container) {
+  .modern { color: inherit }
+}
+
+/* or */
+@supports at-rule(@when) or at-rule(@supports) {
+  .conditional { color: inherit }
+}
+
+/* at-rule() with other feature types */
+@supports at-rule(@layer) and font-tech(variations) {
+  @layer fonts {
+    body { font-variation-settings: "wght" 400 }
+  }
+}

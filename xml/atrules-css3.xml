@@ -18,6 +18,11 @@ where warning means warninglevel in use (0 => normal, no => none).
       <description>Valid @supports level css3</description>
       <result valid="true" />
     </test>
+    <test profile="css3" warning="no">
+      <file>testsuite/at-rules/positive/supports/css3/supports-4.css</file>
+      <description>Valid @supports level css3</description>
+      <result valid="true" />
+    </test>
   </type>
 <!--
 test markup also accepts 3 properties: warning, profile and medium
