@@ -1,0 +1,512 @@
+/*
+ * CSS Validator Test Suite — @keyframes at-rule (positive tests)
+ *
+ * Source grammar (CSS Animations Level 1, WD 2 March 2023):
+ *
+ *   @keyframes = @keyframes <keyframes-name> { <rule-list> }
+ *
+ *   <keyframes-name>    = <custom-ident> | <string>
+ *   <keyframe-block>    = <keyframe-selector># { <declaration-list> }
+ *   <keyframe-selector> = from | to | <percentage [0,100]>
+ *
+ * Reference specification:
+ *   https://www.w3.org/TR/2023/WD-css-animations-1-20230302/#keyframes
+ *
+ * Key constraints from the spec (§3):
+ *   - <keyframes-name> as <custom-ident> EXCLUDES: none, and all CSS-wide
+ *     keywords (initial, inherit, unset, revert, revert-layer). Those names
+ *     ARE valid when given as <string> form (quoted).
+ *   - <keyframe-selector> percentages MUST carry the % unit. Bare 0 (without
+ *     %) is explicitly invalid per spec: "the percentage unit specifier must
+ *     be used on percentage values. Therefore, 0 is an invalid keyframe
+ *     selector."
+ *   - Valid range: 0% to 100% inclusive. Values outside this range are
+ *     invalid and cause their keyframe-block to be ignored.
+ *   - 'from' is equivalent to 0%. 'to' is equivalent to 100%.
+ *   - Multiple <keyframe-selector>s per block are comma-separated.
+ *   - Multiple blocks with the same selector value cascade within the rule.
+ *   - The <declaration-list> accepts any CSS property EXCEPT the animation
+ *     properties defined in this spec, with the single exception that
+ *     animation-timing-function IS accepted and has special meaning.
+ *   - !important in keyframe blocks is invalid and ignored (not tested here).
+ *   - If multiple @keyframes rules share the same name, the last one wins.
+ *   - Case-sensitive: 'foo' ≠ 'FOO'; 'foo' == "foo" (same name, last wins).
+ *   - Empty @keyframes block is valid.
+ */
+
+
+/* ══════════════════════════════════════════════════════════════════════════ */
+/* SECTION 1 — <keyframes-name>: <custom-ident> forms                       */
+/* ══════════════════════════════════════════════════════════════════════════ */
+
+/* 1a. Simple single-word identifiers */
+@keyframes slide { from { left: 0px } to { left: 100px } }
+@keyframes fade  { from { opacity: 0 } to { opacity: 1 } }
+@keyframes spin  { from { rotate: 0deg } to { rotate: 360deg } }
+@keyframes grow  { from { scale: 1 } to { scale: 2 } }
+@keyframes blink { from { visibility: visible } to { visibility: hidden } }
+
+/* 1b. Hyphenated identifiers */
+@keyframes slide-in     { from { translate: -100% } to { translate: 0% } }
+@keyframes slide-out    { from { translate: 0% }    to { translate: 100% } }
+@keyframes fade-in      { from { opacity: 0 }       to { opacity: 1 } }
+@keyframes fade-out     { from { opacity: 1 }       to { opacity: 0 } }
+@keyframes bounce-left  { from { left: 0px }        to { left: 50px } }
+@keyframes color-shift  { from { color: red }       to { color: blue } }
+@keyframes scale-up-down {
+  from { scale: 1 }
+  50%  { scale: 1.5 }
+  to   { scale: 1 }
+}
+
+/* 1c. Identifiers starting with a letter followed by digits */
+@keyframes anim1 { from { opacity: 0 } to { opacity: 1 } }
+@keyframes anim2 { from { opacity: 1 } to { opacity: 0 } }
+@keyframes step3 { from { left: 0px } to { left: 100px } }
+
+/* 1d. Identifiers with underscores */
+@keyframes my_animation { from { opacity: 0 } to { opacity: 1 } }
+@keyframes _private     { from { opacity: 0 } to { opacity: 1 } }
+
+/* 1e. Case sensitivity: these are three distinct @keyframes rules */
+@keyframes foo { from { opacity: 0 } to { opacity: 1 } }
+@keyframes Foo { from { opacity: 0 } to { opacity: 1 } }
+@keyframes FOO { from { opacity: 0 } to { opacity: 1 } }
+
+/* 1f. Valid CSS-like words that are NOT excluded custom-idents */
+@keyframes running   { from { opacity: 0 } to { opacity: 1 } }
+@keyframes paused    { from { opacity: 1 } to { opacity: 0 } }
+@keyframes forwards  { from { opacity: 0 } to { opacity: 1 } }
+@keyframes backwards { from { opacity: 0 } to { opacity: 1 } }
+@keyframes both      { from { opacity: 0 } to { opacity: 1 } }
+@keyframes normal    { from { opacity: 0 } to { opacity: 1 } }
+@keyframes alternate { from { opacity: 0 } to { opacity: 1 } }
+@keyframes infinite  { from { opacity: 0 } to { opacity: 1 } }
+
+
+/* ══════════════════════════════════════════════════════════════════════════ */
+/* SECTION 2 — <keyframes-name>: <string> forms                             */
+/* ══════════════════════════════════════════════════════════════════════════ */
+
+/* 2a. Regular names as strings (equivalent to unquoted form) */
+@keyframes "slide"    { from { left: 0px }   to { left: 100px } }
+@keyframes "fade-in"  { from { opacity: 0 }  to { opacity: 1 } }
+@keyframes "my anim"  { from { opacity: 0 }  to { opacity: 1 } } /* space: string only */
+
+/* 2b. CSS-wide keywords as strings — ONLY valid in string form */
+/* These are explicitly shown as valid in the spec (§3):         */
+/* "@keyframes "initial" { } and @keyframes "None" { } are valid" */
+@keyframes "initial"      { from { opacity: 0 } to { opacity: 1 } }
+@keyframes "inherit"      { from { opacity: 0 } to { opacity: 1 } }
+@keyframes "unset"        { from { opacity: 0 } to { opacity: 1 } }
+@keyframes "revert"       { from { opacity: 0 } to { opacity: 1 } }
+@keyframes "revert-layer" { from { opacity: 0 } to { opacity: 1 } }
+
+/* 2c. 'none' as a string — ONLY valid in string form */
+@keyframes "none" { from { opacity: 0 } to { opacity: 1 } }
+@keyframes "None" { from { opacity: 0 } to { opacity: 1 } } /* case variant */
+
+/* 2d. String with numeric content */
+@keyframes "123"  { from { opacity: 0 } to { opacity: 1 } }
+@keyframes "1st"  { from { opacity: 0 } to { opacity: 1 } }
+
+
+/* ══════════════════════════════════════════════════════════════════════════ */
+/* SECTION 3 — <keyframe-selector>: from, to, <percentage [0,100]>          */
+/* ══════════════════════════════════════════════════════════════════════════ */
+
+/* 3a. from and to keywords only */
+@keyframes from-to-only {
+  from { opacity: 0 }
+  to   { opacity: 1 }
+}
+
+/* 3b. from only (UA constructs to from computed values) */
+@keyframes from-only {
+  from { opacity: 0 }
+}
+
+/* 3c. to only (UA constructs from from computed values) */
+@keyframes to-only {
+  to { opacity: 1 }
+}
+
+/* 3d. Percentage selectors — boundary values */
+@keyframes boundary-values {
+  0%   { opacity: 0 }   /* valid: 0% with unit */
+  100% { opacity: 1 }
+}
+
+/* 3e. 0% is equivalent to 'from' */
+@keyframes zero-percent {
+  0%   { left: 0px }
+  100% { left: 200px }
+}
+
+/* 3f. 100% is equivalent to 'to' */
+@keyframes hundred-percent {
+  from  { left: 0px }
+  100%  { left: 200px }
+}
+
+/* 3g. Mixing from/to with percentages */
+@keyframes mixed-selectors {
+  from { opacity: 0 }
+  50%  { opacity: 0.5 }
+  to   { opacity: 1 }
+}
+
+/* 3h. Multiple intermediate stops */
+@keyframes multi-stop {
+  0%   { left: 0px }
+  25%  { left: 50px }
+  50%  { left: 100px }
+  75%  { left: 150px }
+  100% { left: 200px }
+}
+
+/* 3i. Non-round percentage values */
+@keyframes non-round {
+  0%    { opacity: 0 }
+  33.3% { opacity: 0.33 }
+  66.6% { opacity: 0.66 }
+  100%  { opacity: 1 }
+}
+
+/* 3j. Single percentage (neither from nor to) */
+@keyframes single-mid {
+  50% { opacity: 0.5 }
+}
+
+/* 3k. Out-of-order selectors (UA sorts by time, not source order) */
+@keyframes out-of-order {
+  to   { opacity: 1 }
+  50%  { opacity: 0.5 }
+  from { opacity: 0 }
+}
+
+/* 3l. Comma-separated multiple selectors on one block */
+@keyframes comma-selector {
+  from, to   { color: red }       /* same styles at 0% and 100% */
+}
+
+@keyframes comma-selector-2 {
+  0%, 100%   { opacity: 1 }
+  50%        { opacity: 0 }
+}
+
+@keyframes comma-selector-3 {
+  from, 50%  { opacity: 0 }
+  to         { opacity: 1 }
+}
+
+@keyframes comma-three {
+  0%, 50%, 100% { opacity: 1 }
+  25%, 75%      { opacity: 0 }
+}
+
+/* 3m. Duplicate selectors (cascade within rule — both are valid) */
+@keyframes duplicate-selectors {
+  from { margin-left: 0px }
+
+  50%  { margin-left: 110px; opacity: 1 }
+  50%  { opacity: 0.9 }          /* cascades with prior 50% block */
+
+  to   { margin-left: 200px }
+}
+
+
+/* ══════════════════════════════════════════════════════════════════════════ */
+/* SECTION 4 — Declaration content inside keyframe blocks                   */
+/* ══════════════════════════════════════════════════════════════════════════ */
+
+/* 4a. Single property */
+@keyframes single-prop {
+  from { opacity: 0 }
+  to   { opacity: 1 }
+}
+
+/* 4b. Multiple properties */
+@keyframes multi-prop {
+  from {
+    opacity: 0;
+    transform: translateX(-100px);
+    color: red;
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0px);
+    color: blue;
+  }
+}
+
+/* 4c. Shorthand properties */
+@keyframes shorthand-props {
+  from {
+    margin: 0px;
+    padding: 0px;
+    border: 0px solid transparent;
+    background: transparent;
+  }
+  to {
+    margin: 10px;
+    padding: 20px;
+    border: 2px solid black;
+    background: white;
+  }
+}
+
+/* 4d. Individual transform properties (CSS Transforms Level 2) */
+@keyframes individual-transforms {
+  from {
+    translate: 0px 0px;
+    rotate: 0deg;
+    scale: 1;
+  }
+  to {
+    translate: 100px 50px;
+    rotate: 360deg;
+    scale: 2;
+  }
+}
+
+/* 4e. CSS Grid properties */
+@keyframes grid-gap {
+  from { gap: 0px }
+  to   { gap: 2em }
+}
+
+/* 4f. CSS Flexbox properties */
+@keyframes flex-grow-anim {
+  from { flex-grow: 0 }
+  to   { flex-grow: 1 }
+}
+
+/* 4g. Color properties with modern syntax */
+@keyframes color-anim {
+  from { color: oklch(0.5 0.2 30) }
+  to   { color: oklch(0.8 0.1 200) }
+}
+
+/* 4h. Custom properties (CSS Variables) */
+@keyframes custom-props {
+  from { --my-color: red; --my-size: 10px }
+  to   { --my-color: blue; --my-size: 100px }
+}
+
+/* 4i. var() in property values */
+@keyframes var-values {
+  from { opacity: var(--start-opacity, 0) }
+  to   { opacity: var(--end-opacity, 1) }
+}
+
+/* 4j. Empty keyframe block (valid — property will be treated as if
+   this keyframe did not exist for animation purposes) */
+@keyframes empty-block {
+  from { }
+  to   { opacity: 1 }
+}
+
+/* 4k. Empty @keyframes (valid — UA constructs from and to from computed) */
+@keyframes fully-empty { }
+
+
+/* ══════════════════════════════════════════════════════════════════════════ */
+/* SECTION 5 — animation-timing-function inside keyframe blocks             */
+/* The spec explicitly states this is the ONE animation property accepted   */
+/* inside @keyframes blocks, with special semantics: it applies from that   */
+/* keyframe until the next one (not to the keyframe itself). A timing       */
+/* function on the 'to'/100% keyframe is ignored.                           */
+/* ══════════════════════════════════════════════════════════════════════════ */
+
+/* 5a. animation-timing-function on from */
+@keyframes timing-on-from {
+  from {
+    top: 100px;
+    animation-timing-function: ease-out;
+  }
+  to {
+    top: 0px;
+  }
+}
+
+/* 5b. animation-timing-function on intermediate keyframes */
+@keyframes bounce {
+  from {
+    top: 100px;
+    animation-timing-function: ease-out;
+  }
+  25% {
+    top: 50px;
+    animation-timing-function: ease-in;
+  }
+  50% {
+    top: 100px;
+    animation-timing-function: ease-out;
+  }
+  75% {
+    top: 75px;
+    animation-timing-function: ease-in;
+  }
+  to {
+    top: 100px;
+    /* timing function on 'to' is ignored by UA, but valid syntax */
+    animation-timing-function: linear;
+  }
+}
+
+/* 5c. All timing function keyword values */
+@keyframes timing-keywords {
+  0%   { opacity: 0; animation-timing-function: ease }
+  20%  { opacity: 0.2; animation-timing-function: ease-in }
+  40%  { opacity: 0.4; animation-timing-function: ease-out }
+  60%  { opacity: 0.6; animation-timing-function: ease-in-out }
+  80%  { opacity: 0.8; animation-timing-function: linear }
+  100% { opacity: 1; animation-timing-function: step-start }
+}
+
+/* 5d. cubic-bezier() timing function */
+@keyframes cubic-bezier-timing {
+  from {
+    left: 0px;
+    animation-timing-function: cubic-bezier(0.25, 0.1, 0.25, 1.0);
+  }
+  to {
+    left: 100px;
+  }
+}
+
+/* 5e. steps() timing function */
+@keyframes steps-timing {
+  from {
+    left: 0px;
+    animation-timing-function: steps(4, end);
+  }
+  to {
+    left: 100px;
+  }
+}
+
+@keyframes steps-start {
+  from {
+    opacity: 0;
+    animation-timing-function: steps(1, start);
+  }
+  to { opacity: 1 }
+}
+
+
+/* ══════════════════════════════════════════════════════════════════════════ */
+/* SECTION 6 — Multiple @keyframes rules with the same name                 */
+/* Last one in document order wins; all preceding ones are ignored.         */
+/* Both are syntactically valid — the cascade rule is a runtime concern.    */
+/* ══════════════════════════════════════════════════════════════════════════ */
+
+@keyframes duplicate-name {
+  from { opacity: 0 }
+  to   { opacity: 1 }
+}
+
+@keyframes duplicate-name {         /* this one wins per spec */
+  from { opacity: 1 }
+  to   { opacity: 0 }
+}
+
+/* String and unquoted form with the same name — last wins */
+@keyframes myAnim  { from { opacity: 0 } to { opacity: 1 } }
+@keyframes "myAnim"{ from { opacity: 0.5 } to { opacity: 1 } } /* same name, wins */
+
+
+/* ══════════════════════════════════════════════════════════════════════════ */
+/* SECTION 7 — @keyframes inside @layer and @supports                       */
+/* ══════════════════════════════════════════════════════════════════════════ */
+
+@layer animations {
+  @keyframes layer-fade {
+    from { opacity: 0 }
+    to   { opacity: 1 }
+  }
+}
+
+@supports (animation-name: test) {
+  @keyframes supports-slide {
+    from { translate: -100% }
+    to   { translate: 0% }
+  }
+}
+
+@layer base {
+  @supports (display: flex) {
+    @keyframes nested-deep {
+      from { opacity: 0 }
+      to   { opacity: 1 }
+    }
+  }
+}
+
+
+/* ══════════════════════════════════════════════════════════════════════════ */
+/* SECTION 8 — Realistic complete examples from the spec                    */
+/* ══════════════════════════════════════════════════════════════════════════ */
+
+/* 8a. Diagonal slide (spec §2 example) */
+@keyframes diagonal-slide {
+  from {
+    left: 0px;
+    top: 0px;
+  }
+  to {
+    left: 100px;
+    top: 100px;
+  }
+}
+
+/* 8b. Slide right with cascading 50% blocks (spec §3 example) */
+@keyframes slide-right {
+  from {
+    margin-left: 0px;
+  }
+  50% {
+    margin-left: 110px;
+    opacity: 0.9;
+  }
+  to {
+    margin-left: 200px;
+  }
+}
+
+/* 8c. Wobble (spec §3 example) */
+@keyframes wobble {
+  0%   { left: 100px }
+  40%  { left: 150px }
+  60%  { left: 75px }
+  100% { left: 100px }
+}
+
+/* 8d. Progressive enhancement with custom properties */
+@keyframes themed-fade {
+  from {
+    opacity: 0;
+    color: var(--color-start, transparent);
+  }
+  to {
+    opacity: 1;
+    color: var(--color-end, black);
+  }
+}
+
+/* 8e. Multi-axis transform animation */
+@keyframes fly-in {
+  from {
+    translate: -200px -100px;
+    rotate: -15deg;
+    scale: 0.5;
+    opacity: 0;
+  }
+  to {
+    translate: 0px 0px;
+    rotate: 0deg;
+    scale: 1;
+    opacity: 1;
+  }
+}
