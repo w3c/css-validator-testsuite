@@ -100,6 +100,11 @@ where warning means warninglevel in use (0 => normal, no => none).
     </test>
   </type>
   <type title="Valid_aspect-ratio">
+    <test profile="css3" warning="no">
+      <file>testsuite/properties/positive/aspect-ratio/css3/001.css</file>
+      <description>Valid aspect-ratio level css3</description>
+      <result valid="true" />
+    </test>
   </type>
   <type title="Valid_backface-visibility">
     <test profile="css3" warning="no">
