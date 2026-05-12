@@ -1,0 +1,161 @@
+/*
+ * CSS Validator Test Suite — contain-intrinsic-* properties (positive tests)
+ *
+ * Source (CSS Box Sizing Module Level 4, Editor's Draft 28 April 2026):
+ *
+ *   contain-intrinsic-width       = none | <length [0,∞]>
+ *                                 | auto [ none | <length [0,∞]> ]
+ *   contain-intrinsic-height      = (same grammar)
+ *   contain-intrinsic-inline-size = (same grammar)
+ *   contain-intrinsic-block-size  = (same grammar)
+ *
+ *   contain-intrinsic-size = [ none | <length [0,∞]>
+ *                            | auto [ none | <length [0,∞]> ] ]{1,2}
+ *
+ * Reference specification:
+ *   https://drafts.csswg.org/css-sizing-4/#intrinsic-size-override
+ *
+ * Purpose:
+ *   These properties allow elements with size containment to specify an
+ *   explicit intrinsic inner size, so that the browser can lay them out
+ *   as if they had that size even when their content is not rendered
+ *   (e.g. off-screen with content-visibility: auto).
+ *
+ * Value semantics:
+ *   none          — the element has no explicit intrinsic size in that axis;
+ *                   treated as having no content (collapses to zero if
+ *                   size-contained).
+ *   <length [0,∞]> — a specific non-negative length used as the intrinsic
+ *                   size. Percentages are NOT valid here.
+ *   auto <length>  — use the "last remembered" size if the element was
+ *                   previously normally rendered; otherwise use <length>.
+ *   auto none      — use the last remembered size if available; otherwise none.
+ *
+ * Key constraints:
+ *   - Negative lengths are INVALID (explicitly disallowed by the spec).
+ *   - Percentages are INVALID (only <length>, not <length-percentage>).
+ *   - These properties only have effect when size containment is active
+ *     (e.g. via contain: size or content-visibility: auto).
+ *
+ * contain-intrinsic-size shorthand:
+ *   - One value  → applies to both width/height (or inline/block).
+ *   - Two values → first applies to width/height, second to the other axis.
+ *
+ * Initial value: none for all longhands. Not inherited.
+ */
+
+
+/* ══ 1. contain-intrinsic-width ════════════════════════════════════════════ */
+
+a  { contain-intrinsic-width: none }
+
+/* <length> forms */
+b  { contain-intrinsic-width: 0px }
+c  { contain-intrinsic-width: 100px }
+d  { contain-intrinsic-width: 300px }
+e  { contain-intrinsic-width: 1em }
+f  { contain-intrinsic-width: 20rem }
+g  { contain-intrinsic-width: 50vw }
+
+/* auto <length> — remember last rendered width, else use the length */
+h  { contain-intrinsic-width: auto 100px }
+i  { contain-intrinsic-width: auto 300px }
+j  { contain-intrinsic-width: auto 0px }
+k  { contain-intrinsic-width: auto 20rem }
+l  { contain-intrinsic-width: auto 50vw }
+
+/* auto none — remember last rendered width, else treat as none */
+m  { contain-intrinsic-width: auto none }
+
+
+/* ══ 2. contain-intrinsic-height ═══════════════════════════════════════════ */
+
+n  { contain-intrinsic-height: none }
+o  { contain-intrinsic-height: 0px }
+p  { contain-intrinsic-height: 200px }
+q  { contain-intrinsic-height: 1000px }
+r  { contain-intrinsic-height: 10em }
+s  { contain-intrinsic-height: auto 200px }
+t  { contain-intrinsic-height: auto 0px }
+u  { contain-intrinsic-height: auto none }
+
+
+/* ══ 3. contain-intrinsic-inline-size (logical) ════════════════════════════ */
+
+v  { contain-intrinsic-inline-size: none }
+w  { contain-intrinsic-inline-size: 100px }
+x  { contain-intrinsic-inline-size: 1em }
+aa { contain-intrinsic-inline-size: auto 100px }
+ab { contain-intrinsic-inline-size: auto none }
+
+
+/* ══ 4. contain-intrinsic-block-size (logical) ═════════════════════════════ */
+
+ac { contain-intrinsic-block-size: none }
+ad { contain-intrinsic-block-size: 200px }
+ae { contain-intrinsic-block-size: 10rem }
+af { contain-intrinsic-block-size: auto 200px }
+ag { contain-intrinsic-block-size: auto none }
+
+
+/* ══ 5. contain-intrinsic-size shorthand ═══════════════════════════════════ */
+/* {1,2} multiplier: one value → both axes; two values → width then height. */
+
+/* One value forms */
+ah { contain-intrinsic-size: none }
+ai { contain-intrinsic-size: 0px }
+aj { contain-intrinsic-size: 300px }
+ak { contain-intrinsic-size: 1em }
+al { contain-intrinsic-size: auto 300px }
+am { contain-intrinsic-size: auto none }
+
+/* Two value forms — first = width axis, second = height axis */
+an { contain-intrinsic-size: none none }
+ao { contain-intrinsic-size: 300px 200px }
+ap { contain-intrinsic-size: 300px none }
+aq { contain-intrinsic-size: none 200px }
+ar { contain-intrinsic-size: auto 300px auto 200px }
+as { contain-intrinsic-size: auto 300px none }
+at { contain-intrinsic-size: none auto 200px }
+au { contain-intrinsic-size: auto 300px auto none }
+av { contain-intrinsic-size: auto none auto none }
+aw { contain-intrinsic-size: 300px auto 200px }
+ax { contain-intrinsic-size: auto none 200px }
+
+
+/* ══ 6. Realistic use-cases ═════════════════════════════════════════════════ */
+
+/* Off-screen element with content-visibility: auto */
+.lazy-section {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 300px; /* remember last height, else 300px */
+}
+
+/* Fixed intrinsic size for a sidebar */
+.sidebar {
+  contain: size;
+  contain-intrinsic-size: 250px 100vh;
+}
+
+/* Article with known approximate height */
+.article {
+  content-visibility: auto;
+  contain-intrinsic-height: auto 500px;
+  contain-intrinsic-width: auto none;
+}
+
+/* Ad slot with fixed dimensions */
+.ad-slot {
+  contain: size;
+  contain-intrinsic-width:  728px;
+  contain-intrinsic-height: 90px;
+}
+
+
+/* ══ 7. CSS-wide keywords ═══════════════════════════════════════════════════ */
+
+y  { contain-intrinsic-size:        inherit }
+z  { contain-intrinsic-width:       initial }
+ya { contain-intrinsic-height:      unset }
+yb { contain-intrinsic-inline-size: revert }
+yc { contain-intrinsic-block-size:  revert-layer }

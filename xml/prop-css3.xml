@@ -1462,6 +1462,13 @@ where warning means warninglevel in use (0 => normal, no => none).
       <result valid="true" />
     </test>
   </type>
+  <type title="Valid_contain-intrinsic-size">
+    <test profile="css3" warning="no">
+      <file>testsuite/properties/positive/contain-intrinsic-size/css3/contain-intrinsic-size.css</file>
+      <description>Valid contain-intrinsic-size level css3</description>
+      <result valid="true" />
+    </test>
+  </type>
   <type title="Valid_content">
     <test profile="css3" warning="no">
       <file>testsuite/properties/positive/content/css3/001.css</file>
