@@ -1,0 +1,144 @@
+/*
+ * CSS Validator Test Suite — aspect-ratio (positive tests)
+ *
+ * Source (CSS Box Sizing Module Level 4, Editor's Draft 28 April 2026):
+ *
+ *   aspect-ratio = auto || <ratio>
+ *   <ratio>      = <number [0,∞]> [ / <number [0,∞]> ]?
+ *
+ * Reference specification:
+ *   https://drafts.csswg.org/css-sizing-4/#aspect-ratio
+ *
+ * The || combinator means any of these three forms are valid:
+ *   1. auto               — replaced elements use natural ratio; others have none.
+ *   2. <ratio>            — explicit ratio regardless of element type.
+ *   3. auto && <ratio>    — use natural ratio for replaced elements, explicit
+ *                          ratio otherwise; either order is valid.
+ *
+ * <ratio> grammar notes (from CSS Values Level 4):
+ *   - <ratio> = <number [0,∞]> [ / <number [0,∞]> ]?
+ *   - The '/' denominator is optional; omitting it gives an implicit /1.
+ *     e.g. 'aspect-ratio: 2' means 2/1 (2:1 ratio).
+ *   - Both numbers must be non-negative (≥ 0).
+ *   - A degenerate ratio (0/0, 0/N, N/0, N/∞) causes the property to behave
+ *     as 'auto', but is syntactically valid.
+ *   - The '/' must be surrounded by whitespace or have it adjacent to
+ *     the numbers to be unambiguous; 'aspect-ratio: 16/9' is valid.
+ *
+ * Applies to: all elements except inline boxes and internal ruby or table boxes.
+ * Initial value: auto. Not inherited.
+ */
+
+
+/* ── 1. auto ─────────────────────────────────────────────────────────────── */
+
+a { aspect-ratio: auto }
+
+
+/* ── 2. <ratio> alone — integer ratios ───────────────────────────────────── */
+
+b  { aspect-ratio: 1 / 1 }     /* square */
+c  { aspect-ratio: 16 / 9 }    /* widescreen HD */
+d  { aspect-ratio: 4 / 3 }     /* classic TV */
+e  { aspect-ratio: 3 / 2 }     /* 35mm film */
+f  { aspect-ratio: 2 / 1 }     /* 2:1 wide */
+g  { aspect-ratio: 9 / 16 }    /* portrait mobile */
+h  { aspect-ratio: 1 / 2 }     /* portrait 1:2 */
+i  { aspect-ratio: 21 / 9 }    /* ultra-wide */
+j  { aspect-ratio: 1 / 3 }
+k  { aspect-ratio: 5 / 4 }
+
+
+/* ── 3. <ratio> alone — single number (denominator defaults to 1) ─────────── */
+
+l  { aspect-ratio: 1 }         /* 1/1 square */
+m  { aspect-ratio: 2 }         /* 2/1 */
+n  { aspect-ratio: 0.5 }       /* 1/2 */
+o  { aspect-ratio: 1.5 }
+p  { aspect-ratio: 1.777 }     /* ≈ 16/9 */
+q  { aspect-ratio: 0.75 }      /* ≈ 4/3 portrait */
+
+
+/* ── 4. <ratio> alone — decimal ratios ───────────────────────────────────── */
+
+r  { aspect-ratio: 1.6 / 1 }
+s  { aspect-ratio: 16 / 10 }   /* 8:5 widescreen */
+t  { aspect-ratio: 2.35 / 1 }  /* cinemascope */
+u  { aspect-ratio: 0.5 / 1 }
+
+
+/* ── 5. <ratio> — degenerate ratios (syntactically valid; behave as auto) ── */
+/* A ratio with zero in numerator, denominator, or both is degenerate.      */
+/* These are syntactically valid but compute as 'auto'.                     */
+
+v  { aspect-ratio: 0 / 1 }     /* zero numerator */
+w  { aspect-ratio: 1 / 0 }     /* zero denominator */
+x  { aspect-ratio: 0 / 0 }     /* both zero */
+aa { aspect-ratio: 0 }         /* zero alone */
+
+
+/* ── 6. auto && <ratio> — natural order (auto first) ─────────────────────── */
+/* For replaced elements: uses natural aspect ratio.                         */
+/* For non-replaced: uses specified ratio.                                   */
+/* Size calculations use content-box in both cases.                         */
+
+ab { aspect-ratio: auto 1 / 1 }
+ac { aspect-ratio: auto 16 / 9 }
+ad { aspect-ratio: auto 4 / 3 }
+ae { aspect-ratio: auto 2 / 1 }
+af { aspect-ratio: auto 9 / 16 }
+ag { aspect-ratio: auto 1 }
+
+
+/* ── 7. auto && <ratio> — reversed order (<ratio> first) ─────────────────── */
+/* The || combinator permits either order.                                   */
+
+ah { aspect-ratio: 1 / 1 auto }
+ai { aspect-ratio: 16 / 9 auto }
+aj { aspect-ratio: 4 / 3 auto }
+ak { aspect-ratio: 2 / 1 auto }
+al { aspect-ratio: 1 auto }
+
+
+/* ── 8. auto && degenerate <ratio> ───────────────────────────────────────── */
+
+am { aspect-ratio: auto 0 / 1 }
+an { aspect-ratio: auto 1 / 0 }
+ao { aspect-ratio: 0 / 1 auto }
+
+
+/* ── 9. Realistic use-cases ──────────────────────────────────────────────── */
+
+/* Force a div to be 16:9 */
+.video-container {
+  aspect-ratio: 16 / 9;
+  width: 100%;
+}
+
+/* Square avatar */
+.avatar {
+  aspect-ratio: 1;
+  width: 64px;
+}
+
+/* Responsive card that preserves ratio */
+.card {
+  aspect-ratio: 4 / 3;
+  width: 100%;
+  overflow: hidden;
+}
+
+/* Let replaced elements (img) use natural ratio, others use 1:1 */
+.media {
+  aspect-ratio: auto 1 / 1;
+  width: 100%;
+  height: auto;
+}
+
+/* ── 10. CSS-wide keywords ───────────────────────────────────────────────── */
+
+y  { aspect-ratio: inherit }
+z  { aspect-ratio: initial }
+ya { aspect-ratio: unset }
+yb { aspect-ratio: revert }
+yc { aspect-ratio: revert-layer }
