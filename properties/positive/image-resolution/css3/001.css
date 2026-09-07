@@ -1,0 +1,95 @@
+/*
+ * CSS Validator Test Suite — image-resolution (positive tests)
+ *
+ * Source (CSS Images Module Level 4, WD 30 September 2025):
+ *
+ *   image-resolution = [ from-image || <resolution> ] && snap?
+ *
+ * Reference specification:
+ *   https://www.w3.org/TR/2025/WD-css-images-4-20250930/#the-image-resolution
+ *
+ * Grammar notes:
+ *   - The || group means 'from-image' and <resolution> may each appear
+ *     once, in either order, and at least one of them must be present.
+ *   - 'snap' is optional and, being joined by &&, may appear before or
+ *     after the || group -- but not between 'from-image' and the
+ *     <resolution>, since those two form a single group.
+ *   - <resolution> units are dpi, dpcm, dppx and x (1x == 1dppx).
+ *   - 'snap' alone is not a valid value: the || group is required.
+ *
+ * Applies to: all elements. Initial value: 1dppx. Inherited: yes.
+ * Animation type: discrete. Canonical order: per grammar.
+ */
+
+
+/* -- 1. <resolution> alone, every unit ------------------------------------- */
+
+a { image-resolution: 1dppx }
+b { image-resolution: 300dpi }
+c { image-resolution: 118dpcm }
+d { image-resolution: 2x }
+e { image-resolution: 1.5dppx }
+f { image-resolution: 0.5x }
+g { image-resolution: 600dpi }
+
+
+/* -- 2. from-image alone --------------------------------------------------- */
+
+h { image-resolution: from-image }
+
+
+/* -- 3. from-image || <resolution>, both orders ---------------------------- */
+/* The <resolution> acts as a fallback when the image carries no
+   resolution metadata of its own.                                          */
+
+i { image-resolution: from-image 300dpi }
+j { image-resolution: 300dpi from-image }
+k { image-resolution: from-image 2x }
+l { image-resolution: 1dppx from-image }
+
+
+/* -- 4. snap? with a single <resolution> ----------------------------------- */
+
+m { image-resolution: 300dpi snap }
+n { image-resolution: snap 300dpi }
+o { image-resolution: 2x snap }
+p { image-resolution: snap 1dppx }
+
+
+/* -- 5. snap? with from-image ---------------------------------------------- */
+
+q { image-resolution: from-image snap }
+r { image-resolution: snap from-image }
+
+
+/* -- 6. snap? with the full || group --------------------------------------- */
+/* 'snap' may precede or follow the group, but must not split it.           */
+
+s { image-resolution: from-image 300dpi snap }
+t { image-resolution: snap from-image 300dpi }
+u { image-resolution: 300dpi from-image snap }
+v { image-resolution: snap 300dpi from-image }
+
+
+/* -- 7. realistic use-cases ------------------------------------------------ */
+
+/* Honour EXIF/JFIF resolution, falling back to 300dpi for images that
+   do not declare one */
+.print-figure {
+  image-resolution: from-image 300dpi;
+}
+
+/* Snap the used resolution to an integer multiple of the device
+   resolution, to avoid resampling artefacts */
+.icon {
+  image-resolution: 1dppx snap;
+}
+
+
+/* -- 8. CSS-wide keywords -------------------------------------------------- */
+
+y  { image-resolution: inherit }
+z  { image-resolution: initial }
+ya { image-resolution: unset }
+yb { image-resolution: revert }
+yc { image-resolution: revert-layer }

@@ -774,6 +774,16 @@ where warning means warninglevel in use (0 => normal, no => none).
       <description>Valid background-image level css3</description>
       <result valid="true" />
     </test>
+    <test profile="css3" warning="no">
+      <file>testsuite/properties/positive/background-image/css3/002.css</file>
+      <description>Valid background-image level css3</description>
+      <result valid="true" />
+    </test>
+    <test profile="css3" warning="no">
+      <file>testsuite/properties/positive/background-image/css3/003.css</file>
+      <description>Valid background-image level css3</description>
+      <result valid="true" />
+    </test>
   </type>
   <type title="Valid_background-origin">
     <test profile="css3" warning="no">
@@ -1897,6 +1907,13 @@ where warning means warninglevel in use (0 => normal, no => none).
       <result valid="true" />
     </test>
   </type>
+  <type title="Valid_image-resolution">
+    <test profile="css3" warning="no">
+      <file>testsuite/properties/positive/image-resolution/css3/001.css</file>
+      <description>Valid image-resolution level css3</description>
+      <result valid="true" />
+    </test>
+  </type>
   <type title="Valid_isolation">
     <test profile="css3" warning="no">
       <file>testsuite/properties/positive/isolation/css3/001.css</file>
@@ -2076,6 +2093,13 @@ where warning means warninglevel in use (0 => normal, no => none).
     <test profile="css3" warning="no">
       <file>testsuite/properties/positive/mix-blend-mode/css3/001.css</file>
       <description>Valid mix-blend-mode level css3</description>
+      <result valid="true" />
+    </test>
+  </type>
+  <type title="Valid_object-fit">
+    <test profile="css3" warning="no">
+      <file>testsuite/properties/positive/object-fit/css3/001.css</file>
+      <description>Valid object-fit level css3</description>
       <result valid="true" />
     </test>
   </type>

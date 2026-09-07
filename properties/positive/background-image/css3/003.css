@@ -1,0 +1,178 @@
+/*
+ * CSS Validator Test Suite — background-image (positive tests)
+ * Gradient additions from CSS Images Level 4
+ *
+ * Source (CSS Images Module Level 4, WD 30 September 2025):
+ *
+ *   <linear-gradient-syntax> =
+ *     [ [ <angle> | <zero> | to <side-or-corner> ]
+ *       || <color-interpolation-method> ]? , <color-stop-list>
+ *
+ *   <radial-gradient-syntax> =
+ *     [ [ [ <radial-shape> || <radial-size> ]? [ at <position> ]? ]
+ *       || <color-interpolation-method> ]? , <color-stop-list>
+ *
+ *   <conic-gradient-syntax> =
+ *     [ [ [ from [ <angle> | <zero> ] ]? [ at <position> ]? ]
+ *       || <color-interpolation-method> ]? , <angular-color-stop-list>
+ *
+ *   <radial-size>     = <radial-extent>{1,2}
+ *                     | <length-percentage [0,inf]>{1,2}
+ *
+ *   <color-stop-list> = <linear-color-stop>
+ *                       , [ <linear-color-hint>? , <linear-color-stop> ]#?
+ *
+ * Reference specification:
+ *   https://www.w3.org/TR/2025/WD-css-images-4-20250930/#gradients
+ *
+ * Three changes over Level 3 are exercised here:
+ *   1. <color-interpolation-method> is accepted by all six gradient
+ *      functions. Being joined by ||, it may appear before or after the
+ *      geometry part of the prologue.
+ *   2. A single color stop is now sufficient; the repetition in
+ *      <color-stop-list> became optional.
+ *   3. <radial-size> accepts a <percentage> for circles (resolved
+ *      against the scaled diagonal of the gradient box), and two
+ *      <radial-extent> keywords for ellipses.
+ *
+ * <color-interpolation-method> is defined in CSS Color 4:
+ *   in [ <rectangular-color-space> | <polar-color-space>
+ *        <hue-interpolation-method>? | <custom-color-space> ]
+ */
+
+
+/* -- 1. <color-interpolation-method>: rectangular color spaces ------------- */
+
+a { background-image: linear-gradient(in srgb, red, blue) }
+b { background-image: linear-gradient(in srgb-linear, red, blue) }
+c { background-image: linear-gradient(in display-p3, red, blue) }
+d { background-image: linear-gradient(in a98-rgb, red, blue) }
+e { background-image: linear-gradient(in prophoto-rgb, red, blue) }
+f { background-image: linear-gradient(in rec2020, red, blue) }
+g { background-image: linear-gradient(in lab, red, blue) }
+h { background-image: linear-gradient(in oklab, red, blue) }
+i { background-image: linear-gradient(in xyz, red, blue) }
+j { background-image: linear-gradient(in xyz-d50, red, blue) }
+k { background-image: linear-gradient(in xyz-d65, red, blue) }
+
+
+/* -- 2. <color-interpolation-method>: polar spaces and hue interpolation --- */
+
+l { background-image: linear-gradient(in hsl, red, blue) }
+m { background-image: linear-gradient(in hwb, red, blue) }
+n { background-image: linear-gradient(in lch, red, blue) }
+o { background-image: linear-gradient(in oklch, red, blue) }
+p { background-image: linear-gradient(in hsl shorter hue, red, blue) }
+q { background-image: linear-gradient(in hwb longer hue, red, blue) }
+r { background-image: linear-gradient(in lch increasing hue, red, blue) }
+s { background-image: linear-gradient(in oklch decreasing hue, red, blue) }
+
+
+/* -- 3. <color-interpolation-method>: custom color space ------------------- */
+
+t { background-image: linear-gradient(in --my-space, red, blue) }
+
+
+/* -- 4. || is order-independent in linear gradients ------------------------ */
+
+u  { background-image: linear-gradient(in srgb to right, red, blue) }
+v  { background-image: linear-gradient(to right in srgb, red, blue) }
+w  { background-image: linear-gradient(in lab 90deg, red, blue) }
+x  { background-image: linear-gradient(90deg in lab, red, blue) }
+aa { background-image: linear-gradient(to bottom right in oklab, red, blue) }
+ab { background-image: linear-gradient(45deg in oklch longer hue, red, blue) }
+ac { background-image: repeating-linear-gradient(45deg in oklab, red, blue) }
+ad { background-image: repeating-linear-gradient(in oklab to left, red, blue) }
+
+
+/* -- 5. || is order-independent in radial gradients ------------------------ */
+
+ae { background-image: radial-gradient(in oklab, red, blue) }
+af { background-image: radial-gradient(circle in oklab, red, blue) }
+ag { background-image: radial-gradient(in oklab circle, red, blue) }
+ah { background-image: radial-gradient(at 40% 40% in lab, red, blue) }
+ai { background-image: radial-gradient(in lab farthest-side at left bottom, red, #081) }
+aj { background-image: radial-gradient(in oklab ellipse farthest-corner at top left, red, blue) }
+ak { background-image: repeating-radial-gradient(circle closest-side at 50% 50% in lch longer hue, red, blue) }
+
+
+/* -- 6. || is order-independent in conic gradients ------------------------- */
+
+al { background-image: conic-gradient(in oklab, red, blue) }
+am { background-image: conic-gradient(from 45deg in oklch longer hue, red, blue) }
+an { background-image: conic-gradient(in hsl longer hue at 25% 30%, red, blue) }
+ao { background-image: conic-gradient(at 25% 30% in oklab, red, blue) }
+ap { background-image: conic-gradient(from 0deg at center in hsl shorter hue, red, blue) }
+aq { background-image: repeating-conic-gradient(from 45deg in oklab, red, blue) }
+ar { background-image: repeating-conic-gradient(in oklab from 0deg, red, blue) }
+
+
+/* -- 7. a single color stop is valid --------------------------------------- */
+/* Level 4 made the repetition in <color-stop-list> optional.               */
+
+as { background-image: linear-gradient(red) }
+at { background-image: linear-gradient(red 50%) }
+au { background-image: radial-gradient(red) }
+av { background-image: radial-gradient(circle, red) }
+aw { background-image: conic-gradient(red) }
+ax { background-image: conic-gradient(from 45deg, red) }
+ay { background-image: repeating-linear-gradient(red) }
+az { background-image: repeating-radial-gradient(red) }
+ba { background-image: repeating-conic-gradient(red) }
+bb { background-image: linear-gradient(in oklab, red) }
+
+
+/* -- 8. <radial-size>: <percentage> for circles ---------------------------- */
+/* Level 4 resolves a circle percentage against the scaled diagonal        */
+/* sqrt(width^2 + height^2)/sqrt(2) of the gradient box.                   */
+
+bc { background-image: radial-gradient(circle 50%, red, blue) }
+bd { background-image: radial-gradient(circle 40%, red, blue) }
+be { background-image: radial-gradient(circle 25% at 30% 40%, red, blue) }
+
+
+/* -- 9. <radial-size>: single value with no explicit shape ----------------- */
+
+bf { background-image: radial-gradient(50%, red, blue) }
+bg { background-image: radial-gradient(30%, red, blue) }
+
+
+/* -- 10. <radial-size>: two <radial-extent> keywords for ellipses ---------- */
+
+bh { background-image: radial-gradient(ellipse closest-side farthest-corner, red, blue) }
+bi { background-image: radial-gradient(ellipse farthest-side closest-corner, red, blue) }
+bj { background-image: radial-gradient(ellipse closest-side closest-side, red, blue) }
+
+
+/* -- 11. Level 3 forms still valid ----------------------------------------- */
+
+bk { background-image: radial-gradient(circle 10px, red, blue) }
+bl { background-image: radial-gradient(circle 12em, red, blue) }
+bm { background-image: radial-gradient(circle closest-side, red, blue) }
+bn { background-image: radial-gradient(ellipse 50% 60%, red, blue) }
+bo { background-image: radial-gradient(farthest-corner at 40% 40%, red, blue) }
+bp { background-image: linear-gradient(to right top, red, blue) }
+bq { background-image: linear-gradient(red 10% 20%, blue) }
+br { background-image: linear-gradient(red, 30%, blue) }
+bs { background-image: conic-gradient(from 45deg at 50% 50%, red 20%, blue 80%) }
+
+
+/* -- 12. <zero> where an <angle> is expected ------------------------------- */
+
+bt { background-image: linear-gradient(0, red, blue) }
+bu { background-image: conic-gradient(from 0, red, blue) }
+bv { background-image: conic-gradient(red 0, blue 100%) }
+bw { background-image: conic-gradient(red, 0, blue) }
+
+
+/* -- 13. realistic use-cases ----------------------------------------------- */
+
+/* Perceptually uniform fade, avoiding the dark sRGB midpoint */
+.banner {
+  background-image: linear-gradient(in oklab to right, #f01, #081);
+}
+
+/* Colour wheel using the long way round the hue circle */
+.wheel {
+  background-image: conic-gradient(in hsl longer hue, red, red);
+}

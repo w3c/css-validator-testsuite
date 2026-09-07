@@ -1,0 +1,78 @@
+/*
+ * CSS Validator Test Suite — object-fit (positive tests)
+ *
+ * Source (CSS Images Module Level 4, WD 30 September 2025):
+ *
+ *   object-fit = fill | none | [contain | cover] || scale-down
+ *
+ * Reference specification:
+ *   https://www.w3.org/TR/2025/WD-css-images-4-20250930/#the-object-fit
+ *
+ * Level 4 changes the Level 3 grammar
+ * (fill | contain | cover | none | scale-down) by making 'scale-down'
+ * combinable with 'contain' or 'cover' through the || combinator.
+ * Because || binds tighter than |, the production groups as:
+ *
+ *   fill | none | ( [contain | cover] || scale-down )
+ *
+ * so 'scale-down' pairs only with 'contain' or 'cover', never with
+ * 'fill' or 'none', and either order is accepted.
+ *
+ * Applies to: replaced elements. Initial value: fill. Not inherited.
+ * Animation type: discrete. Canonical order: per grammar.
+ */
+
+
+/* -- 1. single keywords ---------------------------------------------------- */
+
+a { object-fit: fill }
+b { object-fit: none }
+c { object-fit: contain }
+d { object-fit: cover }
+e { object-fit: scale-down }
+
+
+/* -- 2. [contain | cover] || scale-down, geometry keyword first ------------- */
+
+f { object-fit: contain scale-down }
+g { object-fit: cover scale-down }
+
+
+/* -- 3. [contain | cover] || scale-down, scale-down first ------------------- */
+/* The || combinator permits either order.                                   */
+
+h { object-fit: scale-down contain }
+i { object-fit: scale-down cover }
+
+
+/* -- 4. realistic use-cases ------------------------------------------------ */
+
+/* Thumbnail that crops to fill its box */
+.thumb {
+  object-fit: cover;
+  width: 120px;
+  height: 120px;
+}
+
+/* Logo that is never enlarged beyond its natural size, but is shrunk
+   to fit when the box is too small */
+.logo {
+  object-fit: scale-down;
+  width: 100%;
+}
+
+/* Same, but constrained by 'contain' semantics when scaling down */
+.figure img {
+  object-fit: contain scale-down;
+  width: 100%;
+  height: auto;
+}
+
+
+/* -- 5. CSS-wide keywords -------------------------------------------------- */
+
+y  { object-fit: inherit }
+z  { object-fit: initial }
+ya { object-fit: unset }
+yb { object-fit: revert }
+yc { object-fit: revert-layer }

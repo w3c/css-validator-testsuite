@@ -1,0 +1,131 @@
+/*
+ * CSS Validator Test Suite — background-image (positive tests)
+ * image-set() and cross-fade() notations
+ *
+ * Source (CSS Images Module Level 4, WD 30 September 2025):
+ *
+ *   <image>            = <url> | <image()> | <image-set()> | <cross-fade()>
+ *                      | <element()> | <gradient>
+ *
+ *   <image-set()>      = image-set( <image-set-option># )
+ *   <image-set-option> = [ <image> | <string> ]
+ *                        [ <resolution> || type(<string>) ]?
+ *
+ *   cross-fade()       = cross-fade( <cf-image># )
+ *   <cf-image>         = [ <image> | <color> ] && <percentage [0,100]>?
+ *
+ * Reference specifications:
+ *   https://www.w3.org/TR/2025/WD-css-images-4-20250930/#funcdef-image-set
+ *   https://www.w3.org/TR/2025/WD-css-images-4-20250930/#funcdef-cross-fade
+ *   https://www.w3.org/TR/2025/WD-css-images-4-20250930/#deprecated
+ *
+ * Notes:
+ *   - Each <string> inside image-set() represents a <url>.
+ *   - The <resolution> and type() parts are both optional and, being
+ *     joined by ||, may appear in either order.
+ *   - -webkit-image-set() is a required parse-time alias of image-set().
+ *   - cross-fade() takes one or more arguments; percentages are optional
+ *     and may precede or follow the image, since && is order-independent.
+ */
+
+
+/* -- 1. image-set(): resolution negotiation -------------------------------- */
+
+a { background-image: image-set("foo.png" 1x, "foo-2x.png" 2x, "foo-print.png" 600dpi) }
+b { background-image: image-set(url("a.png") 1x, "b.png" 2x) }
+c { background-image: image-set("a.png" 0.5x, "b.png" 1dppx, "c.png" 300dpi, "d.png" 118dpcm) }
+
+
+/* -- 2. image-set(): resolution and type() are optional -------------------- */
+
+d { background-image: image-set("a.png") }
+e { background-image: image-set("a.png" type("image/png")) }
+
+
+/* -- 3. image-set(): type() for format negotiation ------------------------- */
+
+f { background-image: image-set("foo.avif" type("image/avif"), "foo.jpg" type("image/jpeg")) }
+
+
+/* -- 4. image-set(): <resolution> || type(<string>), either order ---------- */
+
+g { background-image: image-set(url(a.png) type("image/png") 2x) }
+h { background-image: image-set(url(a.png) 2x type("image/png")) }
+
+
+/* -- 5. image-set(): any <image> may be an option -------------------------- */
+
+i { background-image: image-set(linear-gradient(cornflowerblue, white) 1x, url("detailed.png") 3x) }
+j { background-image: image-set(radial-gradient(red, blue) 1x, conic-gradient(red, blue) 2x) }
+k { background-image: image-set(image("a.png", red) 1x) }
+l { background-image: image-set(cross-fade(url(a.png) 50%, url(b.png) 50%) 2x) }
+
+
+/* -- 6. -webkit-image-set(): required parse-time alias --------------------- */
+
+m { background-image: -webkit-image-set(url(a.png) 1x, url(b.png) 2x) }
+n { background-image: -webkit-image-set("a.png" 1x, "b.png" 2x) }
+
+
+/* -- 7. cross-fade(): two or more images ----------------------------------- */
+
+o { background-image: cross-fade(url(a.png) 50%, url(b.png) 50%) }
+p { background-image: cross-fade(url(a.png) 25%, url(b.png) 25%, url(c.png) 50%) }
+q { background-image: cross-fade(url(a.png) 0%, url(b.png) 100%) }
+
+
+/* -- 8. cross-fade(): a single argument is valid --------------------------- */
+/* Level 4 relaxed cross-fade() to accept 1+ arguments.                     */
+
+r { background-image: cross-fade(url(a.png)) }
+s { background-image: cross-fade(url(a.png) 50%) }
+
+
+/* -- 9. cross-fade(): omitted percentages ---------------------------------- */
+/* Missing percentages are distributed at computed-value time.              */
+
+t { background-image: cross-fade(url(a.png) 30%, url(b.png)) }
+u { background-image: cross-fade(url(a.png), url(b.png)) }
+
+
+/* -- 10. cross-fade(): percentage may precede the image -------------------- */
+/* <cf-image> uses &&, so either order is valid.                            */
+
+v { background-image: cross-fade(20% url(a.png), url(b.png)) }
+w { background-image: cross-fade(50% url(a.png), 50% url(b.png)) }
+
+
+/* -- 11. cross-fade(): <color> arguments ----------------------------------- */
+/* A <color> represents a solid-color image with automatic dimensions.      */
+
+x  { background-image: cross-fade(red 50%, blue) }
+aa { background-image: cross-fade(currentColor 50%, url(a.png) 50%) }
+ab { background-image: cross-fade(rgb(0 0 255 / 0.5) 50%, url(a.png)) }
+
+
+/* -- 12. cross-fade(): nesting and other <image> types --------------------- */
+
+ac { background-image: cross-fade(linear-gradient(red, blue) 30%, url(a.png) 70%) }
+ad { background-image: cross-fade(cross-fade(url(a.png) 50%, url(b.png) 50%) 30%, url(c.png) 70%) }
+ae { background-image: cross-fade(image-set("a.png" 1x) 40%, url(b.png) 60%) }
+
+
+/* -- 13. layered backgrounds ----------------------------------------------- */
+
+af { background-image: image-set("a.png" 1x), url(b.png) }
+ag { background-image: cross-fade(url(a.png) 50%, url(b.png) 50%), image-set("c.png" 2x) }
+
+
+/* -- 14. realistic use-cases ----------------------------------------------- */
+
+/* Serve a modern format first, with a widely-supported fallback */
+.hero {
+  background-image: image-set("hero.avif" type("image/avif"),
+                              "hero.webp" type("image/webp"),
+                              "hero.jpg"  type("image/jpeg"));
+}
+
+/* Tint a photograph with a translucent overlay */
+.tinted {
+  background-image: cross-fade(rgb(0 0 255 / 0.5) 50%, url("photo.jpg") 50%);
+}
