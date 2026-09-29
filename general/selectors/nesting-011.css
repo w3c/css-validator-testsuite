@@ -1,0 +1,14 @@
+.carousel-container {
+  > div {
+    display: flex;
+  }
+  figure {
+    height: 400px !important;
+  }
+  &::before {
+    content: none;
+  }
+  > div > figure {
+    margin: 0;
+  }
+}

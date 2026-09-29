@@ -1,0 +1,22 @@
+.card {
+  display: block;
+  @media (min-width: 40em) {
+    display: grid;
+    .title { font-size: 2em; }
+    @supports (display: grid) {
+      gap: 1em;
+    }
+  }
+  @supports (display: flex) {
+    & > .item { flex: 1; }
+  }
+  @layer base {
+    color: black;
+  }
+  padding: 1em;
+}
+@media print {
+  .card {
+    .title { color: black; }
+  }
+}

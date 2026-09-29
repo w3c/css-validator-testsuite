@@ -1,0 +1,11 @@
+ul, ol {
+  > li { margin: 0; }
+  + p { margin-top: 0; }
+  ~ p { color: gray; }
+  li, dd {
+    a {
+      color: red;
+      &:focus { outline: 1px solid; }
+    }
+  }
+}

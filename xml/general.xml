@@ -493,4 +493,102 @@ test markup also accepts 3 properties: warning, profile and medium
         </result>
     </test>
   </type>
+  <type title="Nesting">
+    <test profile="css3" warning="no">
+      <file>testsuite/general/selectors/nesting-001.css</file>
+      <description>Nested style rule (w3c/css-validator#431)</description>
+      <result valid="true">
+        <errors>0</errors>
+        <warnings>0</warnings>
+      </result>
+    </test>
+    <test profile="css3" warning="no">
+      <file>testsuite/general/selectors/nesting-002.css</file>
+      <description>Nested style rule after custom properties (w3c/css-validator#481)</description>
+      <result valid="true">
+        <errors>0</errors>
+        <warnings>0</warnings>
+      </result>
+    </test>
+    <test profile="css3" warning="no">
+      <file>testsuite/general/selectors/nesting-003.css</file>
+      <description>Nesting selector in various positions</description>
+      <result valid="true">
+        <errors>0</errors>
+        <warnings>0</warnings>
+      </result>
+    </test>
+    <test profile="css3" warning="no">
+      <file>testsuite/general/selectors/nesting-004.css</file>
+      <description>Relative selectors, selector lists, and deep nesting</description>
+      <result valid="true">
+        <errors>0</errors>
+        <warnings>0</warnings>
+      </result>
+    </test>
+    <test profile="css3" warning="no">
+      <file>testsuite/general/selectors/nesting-005.css</file>
+      <description>Nested rules starting with type selectors and pseudo-classes, mixed with declarations</description>
+      <result valid="true">
+        <errors>0</errors>
+        <warnings>0</warnings>
+      </result>
+    </test>
+    <test profile="css3" warning="no">
+      <file>testsuite/general/selectors/nesting-006.css</file>
+      <description>Nested conditional group rules with declarations</description>
+      <result valid="true">
+        <errors>0</errors>
+        <warnings>0</warnings>
+      </result>
+    </test>
+    <test profile="css3" warning="no">
+      <file>testsuite/general/selectors/nesting-007.css</file>
+      <description>Invalid nested selector is dropped, parsing continues</description>
+      <result valid="false">
+        <errors>1</errors>
+        <warnings>0</warnings>
+      </result>
+    </test>
+    <test profile="css3" warning="no">
+      <file>testsuite/general/selectors/nesting-008.css</file>
+      <description>Invalid property in nested rule, parsing continues</description>
+      <result valid="false">
+        <errors>1</errors>
+        <warnings>0</warnings>
+      </result>
+    </test>
+    <test profile="css21" warning="no">
+      <file>testsuite/general/selectors/nesting-009.css</file>
+      <description>Nesting is not allowed in CSS 2.1</description>
+      <result valid="false">
+        <errors>1</errors>
+        <warnings>0</warnings>
+      </result>
+    </test>
+    <test profile="css3" warning="no">
+      <file>testsuite/general/selectors/nesting-010.css</file>
+      <description>Type selector must not follow nesting selector</description>
+      <result valid="false">
+        <errors>1</errors>
+        <warnings>0</warnings>
+      </result>
+    </test>
+    <test profile="css3" warning="no">
+      <file>testsuite/general/selectors/nesting-011.css</file>
+      <description>Nested rules with combinators and pseudo-elements (w3c/css-validator#521)</description>
+      <result valid="true">
+        <errors>0</errors>
+        <warnings>0</warnings>
+      </result>
+    </test>
+    <test profile="css3" warning="no">
+      <file>testsuite/general/selectors/nesting-012.css</file>
+      <description>Unsupported at-rules nested in style rules, parsing continues</description>
+      <result valid="false">
+        <errors>2</errors>
+        <warnings>0</warnings>
+      </result>
+    </test>
+  </type>
 </testsuite>

@@ -1,0 +1,14 @@
+.snapshot {
+  /* CSS custom properties */
+  --grid-color: #3f7082;
+  --sans: system-ui, sans-serif;
+
+  .big-bold {
+    font-family: var(--sans);
+    font-size: 1.25rem;
+    font-weight: 800;
+    line-height: 1.5;
+    text-transform: uppercase;
+    color: #525b64;
+  }
+}
