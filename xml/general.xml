@@ -582,5 +582,13 @@ test markup also accepts 3 properties: warning, profile and medium
         <warnings>0</warnings>
       </result>
     </test>
+    <test profile="css3" warning="no">
+      <file>testsuite/general/selectors/nesting-012.css</file>
+      <description>Unsupported at-rules nested in style rules, parsing continues</description>
+      <result valid="false">
+        <errors>2</errors>
+        <warnings>0</warnings>
+      </result>
+    </test>
   </type>
 </testsuite>

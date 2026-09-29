@@ -1,0 +1,10 @@
+.a {
+  color: red;
+  @container (min-width: 40em) {
+    color: blue;
+  }
+  @scope (.b) {
+    color: green;
+  }
+  margin: 0;
+}
