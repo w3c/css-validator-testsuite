@@ -1,0 +1,9 @@
+.card {
+  color:red;
+  a:hover { color: blue; }
+  div { margin: 0; }
+  input:focus-visible { outline: none; }
+  background-color: white;
+  p { padding: 0 }
+  font:12px/1.5 serif
+}

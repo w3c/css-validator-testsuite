@@ -1,0 +1,15 @@
+& {
+  color: black;
+}
+.a {
+  &:hover { color: red; }
+  &.active { color: green; }
+  &::before { content: ""; }
+  .parent & { color: blue; }
+  & + & { margin-top: 1em; }
+  & > b { font-weight: bold; }
+  & & { color: gray; }
+  :is(&) { color: navy; }
+  div& { color: olive; }
+  .x &.y:not(&) { color: teal; }
+}
