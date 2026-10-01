@@ -1,4 +1,7 @@
 .a {
   .b!! { color: red; }
   color: blue;
+  .bar {
+    color: teal;
+  }
 }
