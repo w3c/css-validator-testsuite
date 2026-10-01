@@ -1,4 +1,7 @@
 .a {
   &div { color: red; }
   color: blue;
+  .bar {
+    color: teal;
+  }
 }
