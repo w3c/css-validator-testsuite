@@ -1,4 +1,4 @@
 .a {
-  .b { colr: red; }
+  .b { colr: red; bckground-color: red; }
   color: blue;
 }

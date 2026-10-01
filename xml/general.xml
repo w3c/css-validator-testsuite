@@ -554,7 +554,7 @@ test markup also accepts 3 properties: warning, profile and medium
       <file>testsuite/general/selectors/nesting-008.css</file>
       <description>Invalid property in nested rule, parsing continues</description>
       <result valid="false">
-        <errors>1</errors>
+        <errors>2</errors>
         <warnings>0</warnings>
       </result>
     </test>
